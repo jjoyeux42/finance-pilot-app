@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -12,14 +11,13 @@ import {
   TrendingUp, 
   Users, 
   Target,
-  Calendar,
   Bell
 } from 'lucide-react';
 
 const Index = () => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           {/* Header */}
