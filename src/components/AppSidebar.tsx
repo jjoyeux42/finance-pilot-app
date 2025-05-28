@@ -8,7 +8,8 @@ import {
   Settings,
   BarChart3,
   Wallet,
-  PieChart
+  PieChart,
+  User
 } from "lucide-react";
 import {
   Sidebar,
@@ -64,8 +65,8 @@ export function AppSidebar() {
   const currentPath = window.location.pathname;
 
   return (
-    <Sidebar className="border-r border-slate-200">
-      <SidebarHeader className="border-b border-slate-200 p-4">
+    <Sidebar className="border-r border-slate-200 bg-white">
+      <SidebarHeader className="border-b border-slate-200 p-4 bg-white">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
             <DollarSign className="w-6 h-6 text-white" />
@@ -77,7 +78,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
       
-      <SidebarContent className="px-2">
+      <SidebarContent className="px-2 bg-white">
         <SidebarGroup>
           <SidebarGroupLabel className="text-slate-700 font-semibold">
             Navigation
@@ -133,10 +134,11 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-slate-200 p-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center">
-            <span className="text-sm font-medium text-slate-700">JD</span>
+      <SidebarFooter className="border-t border-slate-200 p-4 bg-white">
+        <div className="flex items-center space-x-3 cursor-pointer hover:bg-slate-50 rounded-lg p-2 transition-colors"
+             onClick={() => window.location.href = '/profile'}>
+          <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+            <User className="w-4 h-4 text-blue-600" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-slate-900">John Doe</p>
