@@ -19,7 +19,7 @@ import {
 const Index = () => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
+      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-gray-100">
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           {/* Header */}
@@ -27,16 +27,16 @@ const Index = () => {
             <div className="flex items-center space-x-4">
               <SidebarTrigger className="lg:hidden" />
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Dashboard Financier</h1>
-                <p className="text-gray-600">Vue d'ensemble de votre performance financière</p>
+                <h1 className="text-3xl font-bold text-slate-900">Dashboard Financier</h1>
+                <p className="text-slate-600">Vue d'ensemble de votre performance financière</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <p className="text-sm text-gray-600">Dernière mise à jour</p>
-                <p className="text-sm font-medium text-gray-900">Aujourd'hui, 14:30</p>
+                <p className="text-sm text-slate-600">Dernière mise à jour</p>
+                <p className="text-sm font-medium text-slate-900">Aujourd'hui, 14:30</p>
               </div>
-              <Bell className="w-6 h-6 text-gray-400" />
+              <Bell className="w-6 h-6 text-slate-400" />
             </div>
           </div>
 
@@ -93,8 +93,8 @@ const Index = () => {
           <TopPerformers />
 
           {/* Footer */}
-          <div className="text-center py-6 border-t border-gray-200">
-            <p className="text-sm text-gray-500">
+          <div className="text-center py-6 border-t border-slate-200">
+            <p className="text-sm text-slate-500">
               FinancePilot © 2024 - Pilotage financier intelligent
             </p>
           </div>

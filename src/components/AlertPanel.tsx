@@ -52,21 +52,21 @@ export function AlertPanel() {
   const getAlertColor = (type: string) => {
     switch (type) {
       case 'warning':
-        return 'text-warning-600 bg-warning-100';
+        return 'text-orange-600 bg-orange-100';
       case 'danger':
-        return 'text-danger-600 bg-danger-100';
+        return 'text-red-500 bg-red-100';
       case 'success':
-        return 'text-success-600 bg-success-100';
+        return 'text-emerald-600 bg-emerald-100';
       default:
         return 'text-blue-600 bg-blue-100';
     }
   };
 
   return (
-    <Card>
+    <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-gray-900 flex items-center space-x-2">
-          <AlertTriangle className="w-5 h-5 text-warning-600" />
+        <CardTitle className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
+          <AlertTriangle className="w-5 h-5 text-orange-600" />
           <span>Alertes et Notifications</span>
         </CardTitle>
       </CardHeader>
@@ -74,19 +74,19 @@ export function AlertPanel() {
         {alerts.map((alert) => (
           <div
             key={alert.id}
-            className="flex items-start space-x-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            className="flex items-start space-x-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors"
           >
             <div className={`p-2 rounded-full ${getAlertColor(alert.type)}`}>
               {getAlertIcon(alert.type)}
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-medium text-gray-900 mb-1">
+              <h4 className="text-sm font-medium text-slate-900 mb-1">
                 {alert.title}
               </h4>
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-slate-600 mb-2">
                 {alert.message}
               </p>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-slate-500">
                 {alert.timestamp}
               </span>
             </div>

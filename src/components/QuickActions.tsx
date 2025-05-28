@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Plus, FileText, Send, Download, BarChart3, Users } from 'lucide-react';
+import { Plus, FileText, Send, BarChart3 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -9,19 +9,19 @@ const quickActions = [
     icon: Plus,
     title: 'Nouvelle transaction',
     description: 'Ajouter une entrée/sortie',
-    color: 'bg-finance-500 hover:bg-finance-600',
+    color: 'bg-blue-500 hover:bg-blue-600',
   },
   {
     icon: FileText,
     title: 'Générer rapport',
     description: 'Export mensuel',
-    color: 'bg-success-500 hover:bg-success-600',
+    color: 'bg-emerald-500 hover:bg-emerald-600',
   },
   {
     icon: Send,
     title: 'Envoyer facture',
     description: 'Nouvelle facturation',
-    color: 'bg-warning-500 hover:bg-warning-600',
+    color: 'bg-orange-500 hover:bg-orange-600',
   },
   {
     icon: BarChart3,
@@ -33,9 +33,9 @@ const quickActions = [
 
 export function QuickActions() {
   return (
-    <Card>
+    <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-gray-900">
+        <CardTitle className="text-lg font-semibold text-slate-900">
           Actions Rapides
         </CardTitle>
       </CardHeader>
@@ -51,8 +51,8 @@ export function QuickActions() {
                 <action.icon className="w-5 h-5" />
               </div>
               <div className="text-center">
-                <p className="text-sm font-medium text-gray-900">{action.title}</p>
-                <p className="text-xs text-gray-500 mt-1">{action.description}</p>
+                <p className="text-sm font-medium text-slate-900">{action.title}</p>
+                <p className="text-xs text-slate-500 mt-1">{action.description}</p>
               </div>
             </Button>
           ))}

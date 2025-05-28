@@ -25,48 +25,48 @@ export function KPICard({
   const getTrendIcon = () => {
     switch (trend) {
       case 'up':
-        return <TrendingUp className="w-4 h-4 text-success-600" />;
+        return <TrendingUp className="w-4 h-4 text-emerald-600" />;
       case 'down':
-        return <TrendingDown className="w-4 h-4 text-danger-600" />;
+        return <TrendingDown className="w-4 h-4 text-red-500" />;
       default:
-        return <Minus className="w-4 h-4 text-gray-400" />;
+        return <Minus className="w-4 h-4 text-slate-400" />;
     }
   };
 
   const getTrendColor = () => {
     switch (trend) {
       case 'up':
-        return 'text-success-600';
+        return 'text-emerald-600';
       case 'down':
-        return 'text-danger-600';
+        return 'text-red-500';
       default:
-        return 'text-gray-500';
+        return 'text-slate-500';
     }
   };
 
   const getColorClasses = () => {
     switch (color) {
       case 'success':
-        return 'border-l-4 border-success-500 bg-success-50/50';
+        return 'border-l-4 border-emerald-500 bg-white/70 backdrop-blur-sm shadow-md';
       case 'warning':
-        return 'border-l-4 border-warning-500 bg-warning-50/50';
+        return 'border-l-4 border-orange-500 bg-white/70 backdrop-blur-sm shadow-md';
       case 'danger':
-        return 'border-l-4 border-danger-500 bg-danger-50/50';
+        return 'border-l-4 border-red-500 bg-white/70 backdrop-blur-sm shadow-md';
       default:
-        return 'border-l-4 border-finance-500 bg-finance-50/50';
+        return 'border-l-4 border-blue-500 bg-white/70 backdrop-blur-sm shadow-md';
     }
   };
 
   return (
-    <Card className={`transition-all duration-200 hover:shadow-lg hover:-translate-y-1 ${getColorClasses()}`}>
+    <Card className={`transition-all duration-200 hover:shadow-lg hover:-translate-y-1 border-0 ${getColorClasses()}`}>
       <CardContent className="p-6">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center space-x-2 mb-2">
-              {icon && <div className="text-finance-600">{icon}</div>}
-              <h3 className="text-sm font-medium text-gray-600">{title}</h3>
+              {icon && <div className="text-blue-600">{icon}</div>}
+              <h3 className="text-sm font-medium text-slate-600">{title}</h3>
             </div>
-            <p className="text-2xl font-bold text-gray-900 mb-2">{value}</p>
+            <p className="text-2xl font-bold text-slate-900 mb-2">{value}</p>
             {change !== undefined && (
               <div className="flex items-center space-x-1">
                 {getTrendIcon()}
@@ -74,7 +74,7 @@ export function KPICard({
                   {change > 0 ? '+' : ''}{change}%
                 </span>
                 {changeLabel && (
-                  <span className="text-sm text-gray-500">{changeLabel}</span>
+                  <span className="text-sm text-slate-500">{changeLabel}</span>
                 )}
               </div>
             )}

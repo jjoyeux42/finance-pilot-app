@@ -7,7 +7,8 @@ import {
   Users, 
   Settings,
   BarChart3,
-  Wallet
+  Wallet,
+  PieChart
 } from "lucide-react";
 import {
   Sidebar,
@@ -36,7 +37,7 @@ const menuItems = [
   },
   {
     title: "Rentabilité",
-    icon: TrendingUp,
+    icon: PieChart,
     url: "/profitability",
   },
   {
@@ -60,49 +61,56 @@ const secondaryItems = [
 ];
 
 export function AppSidebar() {
+  const currentPath = window.location.pathname;
+
   return (
-    <Sidebar className="border-r border-finance-100">
-      <SidebarHeader className="border-b border-finance-100 p-4">
+    <Sidebar className="border-r border-slate-200">
+      <SidebarHeader className="border-b border-slate-200 p-4">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl finance-gradient flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
             <DollarSign className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="font-bold text-lg text-finance-900">FinancePilot</h1>
-            <p className="text-sm text-finance-600">Pilotage financier</p>
+            <h1 className="font-bold text-lg text-slate-900">FinancePilot</h1>
+            <p className="text-sm text-slate-600">Pilotage financier</p>
           </div>
         </div>
       </SidebarHeader>
       
       <SidebarContent className="px-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-finance-700 font-semibold">
+          <SidebarGroupLabel className="text-slate-700 font-semibold">
             Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton 
-                    asChild 
-                    className={`
-                      transition-all duration-200 hover:bg-finance-50 hover:text-finance-700
-                      ${item.isActive ? 'bg-finance-100 text-finance-800 font-medium border-r-2 border-finance-500' : 'text-finance-600'}
-                    `}
-                  >
-                    <a href={item.url} className="flex items-center space-x-3">
-                      <item.icon className="w-5 h-5" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {menuItems.map((item) => {
+                const isActive = currentPath === item.url || 
+                  (item.url !== "/" && currentPath.startsWith(item.url));
+                
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton 
+                      asChild 
+                      className={`
+                        transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                      `}
+                    >
+                      <a href={item.url} className="flex items-center space-x-3">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-finance-700 font-semibold">
+          <SidebarGroupLabel className="text-slate-700 font-semibold">
             Système
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -111,7 +119,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 
-                    className="transition-all duration-200 hover:bg-finance-50 hover:text-finance-700 text-finance-600"
+                    className="transition-all duration-200 hover:bg-slate-100 hover:text-slate-800 text-slate-600"
                   >
                     <a href={item.url} className="flex items-center space-x-3">
                       <item.icon className="w-5 h-5" />
@@ -125,14 +133,14 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-finance-100 p-4">
+      <SidebarFooter className="border-t border-slate-200 p-4">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 rounded-full bg-finance-100 flex items-center justify-center">
-            <span className="text-sm font-medium text-finance-700">JD</span>
+          <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center">
+            <span className="text-sm font-medium text-slate-700">JD</span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-finance-900">John Doe</p>
-            <p className="text-xs text-finance-600 truncate">admin@financepilot.com</p>
+            <p className="text-sm font-medium text-slate-900">John Doe</p>
+            <p className="text-xs text-slate-600 truncate">admin@financepilot.com</p>
           </div>
         </div>
       </SidebarFooter>
