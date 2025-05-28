@@ -1,17 +1,14 @@
 
+import React from 'react';
 import { 
   LayoutDashboard, 
   TrendingUp, 
-  PiggyBank, 
+  DollarSign, 
   Users, 
-  FileText, 
-  Settings, 
-  CreditCard,
+  Settings,
   BarChart3,
-  Target,
-  AlertCircle
+  Wallet
 } from "lucide-react";
-
 import {
   Sidebar,
   SidebarContent,
@@ -28,69 +25,95 @@ import {
 const menuItems = [
   {
     title: "Dashboard",
-    url: "/",
     icon: LayoutDashboard,
+    url: "/",
+    isActive: true,
   },
   {
     title: "Trésorerie",
-    url: "/tresorerie",
-    icon: PiggyBank,
+    icon: Wallet,
+    url: "/treasury",
   },
   {
     title: "Rentabilité",
-    url: "/rentabilite",
     icon: TrendingUp,
+    url: "/profitability",
   },
   {
     title: "Commercial",
-    url: "/commercial",
     icon: Users,
+    url: "/sales",
   },
   {
-    title: "Rapports",
-    url: "/rapports",
-    icon: FileText,
+    title: "Analytics",
+    icon: BarChart3,
+    url: "/analytics",
   },
-  {
-    title: "Prévisions",
-    url: "/previsions",
-    icon: Target,
-  },
-  {
-    title: "Alertes",
-    url: "/alertes",
-    icon: AlertCircle,
-  },
+];
+
+const secondaryItems = [
   {
     title: "Paramètres",
-    url: "/parametres",
     icon: Settings,
+    url: "/settings",
   },
 ];
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-white border-r border-gray-200">
-      <SidebarHeader className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-finance-500 rounded-lg flex items-center justify-center">
-            <BarChart3 className="w-5 h-5 text-white" />
+    <Sidebar className="border-r border-finance-100">
+      <SidebarHeader className="border-b border-finance-100 p-4">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 rounded-xl finance-gradient flex items-center justify-center">
+            <DollarSign className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-xl font-bold text-gray-900">FinancePilot</h1>
+          <div>
+            <h1 className="font-bold text-lg text-finance-900">FinancePilot</h1>
+            <p className="text-sm text-finance-600">Pilotage financier</p>
+          </div>
         </div>
       </SidebarHeader>
       
-      <SidebarContent>
+      <SidebarContent className="px-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-gray-600 font-medium">
+          <SidebarGroupLabel className="text-finance-700 font-semibold">
             Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="hover:bg-finance-50">
-                    <a href={item.url} className="flex items-center space-x-3 text-gray-700">
+                  <SidebarMenuButton 
+                    asChild 
+                    className={`
+                      transition-all duration-200 hover:bg-finance-50 hover:text-finance-700
+                      ${item.isActive ? 'bg-finance-100 text-finance-800 font-medium border-r-2 border-finance-500' : 'text-finance-600'}
+                    `}
+                  >
+                    <a href={item.url} className="flex items-center space-x-3">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-finance-700 font-semibold">
+            Système
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {secondaryItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton 
+                    asChild 
+                    className="transition-all duration-200 hover:bg-finance-50 hover:text-finance-700 text-finance-600"
+                  >
+                    <a href={item.url} className="flex items-center space-x-3">
                       <item.icon className="w-5 h-5" />
                       <span>{item.title}</span>
                     </a>
@@ -102,9 +125,15 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-6 border-t border-gray-200">
-        <div className="text-sm text-gray-500">
-          © 2024 FinancePilot
+      <SidebarFooter className="border-t border-finance-100 p-4">
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 rounded-full bg-finance-100 flex items-center justify-center">
+            <span className="text-sm font-medium text-finance-700">JD</span>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-finance-900">John Doe</p>
+            <p className="text-xs text-finance-600 truncate">admin@financepilot.com</p>
+          </div>
         </div>
       </SidebarFooter>
     </Sidebar>
