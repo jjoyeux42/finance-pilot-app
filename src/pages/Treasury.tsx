@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -8,13 +7,13 @@ import {
   TrendingUp, 
   TrendingDown, 
   Calendar,
-  AlertTriangle,
   DollarSign,
-  CreditCard,
   Wallet,
   Target
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { TransactionModal } from '@/components/modals/TransactionModal';
+import { PeriodModal } from '@/components/modals/PeriodModal';
 
 const cashFlowData = [
   { month: 'Jan', entrees: 45000, sorties: 38000, solde: 7000 },
@@ -33,7 +32,7 @@ const upcomingPayments = [
 ];
 
 const Treasury = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState('6m');
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
   return (
     <SidebarProvider>
@@ -50,11 +49,18 @@ const Treasury = () => {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => setActiveModal('period')}
+              >
                 <Calendar className="w-4 h-4 mr-2" />
                 Période
               </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={() => setActiveModal('transaction')}
+              >
                 <DollarSign className="w-4 h-4 mr-2" />
                 Nouvelle Transaction
               </Button>
@@ -216,6 +222,16 @@ const Treasury = () => {
           </Card>
         </main>
       </div>
+
+      <TransactionModal
+        isOpen={activeModal === 'transaction'}
+        onClose={() => setActiveModal(null)}
+      />
+      
+      <PeriodModal
+        isOpen={activeModal === 'period'}
+        onClose={() => setActiveModal(null)}
+      />
     </SidebarProvider>
   );
 };

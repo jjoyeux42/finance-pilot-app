@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -10,12 +9,11 @@ import {
   Users,
   Target,
   Calendar,
-  Phone,
-  Mail,
-  MapPin,
   Star
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { PlanningModal } from '@/components/modals/PlanningModal';
+import { ProspectModal } from '@/components/modals/ProspectModal';
 
 const salesData = [
   { month: 'Jan', leads: 45, converted: 12, revenue: 87000 },
@@ -42,13 +40,13 @@ const pipeline = [
 ];
 
 const Sales = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState('6m');
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'text-emerald-600 bg-emerald-100';
       case 'growing': return 'text-blue-600 bg-blue-100';
-      case 'at_risk': return 'text-orange-600 bg-orange-100';
+      case 'at_risk': return 'text-red-600 bg-red-100';
       default: return 'text-slate-600 bg-slate-100';
     }
   };
@@ -58,7 +56,7 @@ const Sales = () => {
       case 'Closing': return 'text-emerald-600 bg-emerald-100';
       case 'Négociation': return 'text-blue-600 bg-blue-100';
       case 'Proposition': return 'text-purple-600 bg-purple-100';
-      case 'Qualification': return 'text-orange-600 bg-orange-100';
+      case 'Qualification': return 'text-indigo-600 bg-indigo-100';
       default: return 'text-slate-600 bg-slate-100';
     }
   };
@@ -78,11 +76,18 @@ const Sales = () => {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => setActiveModal('planning')}
+              >
                 <Calendar className="w-4 h-4 mr-2" />
                 Planning
               </Button>
-              <Button className="bg-emerald-600 hover:bg-emerald-700">
+              <Button 
+                className="bg-emerald-600 hover:bg-emerald-700"
+                onClick={() => setActiveModal('prospect')}
+              >
                 <Users className="w-4 h-4 mr-2" />
                 Nouveau Prospect
               </Button>
@@ -150,7 +155,7 @@ const Sales = () => {
                       <span className="text-sm text-emerald-600 ml-1">+8 ce mois</span>
                     </div>
                   </div>
-                  <Star className="w-8 h-8 text-orange-500" />
+                  <Star className="w-8 h-8 text-indigo-500" />
                 </div>
               </CardContent>
             </Card>
@@ -278,6 +283,16 @@ const Sales = () => {
           </div>
         </main>
       </div>
+
+      <PlanningModal
+        isOpen={activeModal === 'planning'}
+        onClose={() => setActiveModal(null)}
+      />
+      
+      <ProspectModal
+        isOpen={activeModal === 'prospect'}
+        onClose={() => setActiveModal(null)}
+      />
     </SidebarProvider>
   );
 };

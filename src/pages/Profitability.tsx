@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -14,6 +13,8 @@ import {
   BarChart3
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { ReportModal } from '@/components/modals/ReportModal';
+import { AnalysisModal } from '@/components/modals/AnalysisModal';
 
 const profitabilityData = [
   { month: 'Jan', ca: 45000, couts: 28000, marge: 17000 },
@@ -39,10 +40,10 @@ const productProfitability = [
   { product: 'Service D', revenue: 43000, margin: 45, growth: 15 },
 ];
 
-const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+const COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b'];
 
 const Profitability = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState('6m');
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
   return (
     <SidebarProvider>
@@ -59,11 +60,18 @@ const Profitability = () => {
               </div>
             </div>
             <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => setActiveModal('report')}
+              >
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Rapport
               </Button>
-              <Button className="bg-purple-600 hover:bg-purple-700">
+              <Button 
+                className="bg-purple-600 hover:bg-purple-700"
+                onClick={() => setActiveModal('analysis')}
+              >
                 <PieChartIcon className="w-4 h-4 mr-2" />
                 Analyser
               </Button>
@@ -220,7 +228,7 @@ const Profitability = () => {
                         <td className="py-3 px-4 font-medium text-slate-900">{product.product}</td>
                         <td className="py-3 px-4 text-right text-slate-700">{product.revenue.toLocaleString()}€</td>
                         <td className="py-3 px-4 text-right">
-                          <span className={`font-semibold ${product.margin > 60 ? 'text-emerald-600' : product.margin > 50 ? 'text-blue-600' : 'text-orange-600'}`}>
+                          <span className={`font-semibold ${product.margin > 60 ? 'text-emerald-600' : product.margin > 50 ? 'text-blue-600' : 'text-purple-600'}`}>
                             {product.margin}%
                           </span>
                         </td>
@@ -239,6 +247,16 @@ const Profitability = () => {
           </Card>
         </main>
       </div>
+
+      <ReportModal
+        isOpen={activeModal === 'report'}
+        onClose={() => setActiveModal(null)}
+      />
+      
+      <AnalysisModal
+        isOpen={activeModal === 'analysis'}
+        onClose={() => setActiveModal(null)}
+      />
     </SidebarProvider>
   );
 };

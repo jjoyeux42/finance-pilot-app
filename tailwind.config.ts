@@ -83,11 +83,11 @@ export default {
 					500: '#22c55e',
 					600: '#16a34a'
 				},
-				warning: {
-					50: '#fffbeb',
-					100: '#fef3c7',
-					500: '#f59e0b',
-					600: '#d97706'
+				info: {
+					50: '#eff6ff',
+					100: '#dbeafe',
+					500: '#3b82f6',
+					600: '#2563eb'
 				},
 				danger: {
 					50: '#fef2f2',

@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TransactionModal } from '@/components/modals/TransactionModal';
 import { ReportModal } from '@/components/modals/ReportModal';
+import { InvoiceModal } from '@/components/modals/InvoiceModal';
 
 const quickActions = [
   {
@@ -25,14 +26,14 @@ const quickActions = [
     icon: Send,
     title: 'Envoyer facture',
     description: 'Nouvelle facturation',
-    color: 'bg-orange-500 hover:bg-orange-600',
+    color: 'bg-purple-500 hover:bg-purple-600',
     action: 'invoice'
   },
   {
     icon: BarChart3,
     title: 'Analyse poussée',
     description: 'Dashboard avancé',
-    color: 'bg-purple-500 hover:bg-purple-600',
+    color: 'bg-indigo-500 hover:bg-indigo-600',
     action: 'analytics'
   },
 ];
@@ -49,8 +50,7 @@ export function QuickActions() {
         setActiveModal('report');
         break;
       case 'invoice':
-        console.log('Redirection vers création de facture');
-        // Ici on pourrait rediriger vers une page de création de facture
+        setActiveModal('invoice');
         break;
       case 'analytics':
         window.location.href = '/analytics';
@@ -97,6 +97,11 @@ export function QuickActions() {
       
       <ReportModal
         isOpen={activeModal === 'report'}
+        onClose={() => setActiveModal(null)}
+      />
+
+      <InvoiceModal
+        isOpen={activeModal === 'invoice'}
         onClose={() => setActiveModal(null)}
       />
     </>
