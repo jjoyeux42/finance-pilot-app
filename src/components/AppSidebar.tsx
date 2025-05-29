@@ -9,7 +9,8 @@ import {
   BarChart3,
   Wallet,
   PieChart,
-  User
+  User,
+  LogOut
 } from "lucide-react";
 import {
   Sidebar,
@@ -23,6 +24,9 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { useProfile } from "@/hooks/useProfile";
 
 const menuItems = [
   {
@@ -63,6 +67,20 @@ const secondaryItems = [
 
 export function AppSidebar() {
   const currentPath = window.location.pathname;
+  const { user, signOut } = useAuth();
+  const { profile } = useProfile();
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
+  const displayName = profile?.first_name && profile?.last_name 
+    ? `${profile.first_name} ${profile.last_name}`
+    : user?.email || 'Utilisateur';
+
+  const initials = profile?.first_name && profile?.last_name
+    ? `${profile.first_name[0]}${profile.last_name[0]}`
+    : user?.email?.[0]?.toUpperCase() || 'U';
 
   return (
     <Sidebar className="border-r border-slate-200 bg-white">
@@ -134,17 +152,26 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-slate-200 p-4 bg-white">
+      <SidebarFooter className="border-t border-slate-200 p-4 bg-white space-y-2">
         <div className="flex items-center space-x-3 cursor-pointer hover:bg-slate-50 rounded-lg p-2 transition-colors"
              onClick={() => window.location.href = '/profile'}>
           <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
-            <User className="w-4 h-4 text-blue-600" />
+            <span className="text-blue-600 font-medium text-sm">{initials}</span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-900">John Doe</p>
-            <p className="text-xs text-slate-600 truncate">admin@financepilot.com</p>
+            <p className="text-sm font-medium text-slate-900 truncate">{displayName}</p>
+            <p className="text-xs text-slate-600 truncate">{user?.email}</p>
           </div>
         </div>
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          onClick={handleSignOut}
+          className="w-full justify-start text-slate-600 hover:text-red-600 hover:bg-red-50"
+        >
+          <LogOut className="w-4 h-4 mr-2" />
+          Déconnexion
+        </Button>
       </SidebarFooter>
     </Sidebar>
   );

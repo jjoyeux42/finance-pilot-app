@@ -1,10 +1,16 @@
 
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
 
 interface ReportModalProps {
   isOpen: boolean;
@@ -12,140 +18,109 @@ interface ReportModalProps {
 }
 
 export function ReportModal({ isOpen, onClose }: ReportModalProps) {
-  const [reportConfig, setReportConfig] = useState({
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
     type: '',
     period: '',
-    format: 'pdf',
-    sections: {
-      kpis: true,
-      cashflow: true,
-      profitability: false,
-      sales: true
-    }
+    startDate: '',
+    endDate: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Génération du rapport:', reportConfig);
+    
+    // Simuler la génération de rapport
+    toast({
+      title: "Rapport généré",
+      description: `Le rapport ${formData.type} pour la période sélectionnée a été généré avec succès.`,
+    });
+    
+    // Reset form
+    setFormData({
+      type: '',
+      period: '',
+      startDate: '',
+      endDate: '',
+    });
+    
     onClose();
-    // Ici on générerait le rapport
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Générer un Rapport</DialogTitle>
+          <DialogTitle>Générer un rapport</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="type">Type de rapport</Label>
-            <Select onValueChange={(value) => setReportConfig({...reportConfig, type: value})}>
+            <Label>Type de rapport</Label>
+            <Select 
+              value={formData.type} 
+              onValueChange={(value) => setFormData(prev => ({ ...prev, type: value }))}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Sélectionner le type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="monthly">Rapport mensuel</SelectItem>
-                <SelectItem value="quarterly">Rapport trimestriel</SelectItem>
-                <SelectItem value="annual">Rapport annuel</SelectItem>
-                <SelectItem value="custom">Période personnalisée</SelectItem>
+                <SelectItem value="financial">Rapport financier</SelectItem>
+                <SelectItem value="sales">Rapport de ventes</SelectItem>
+                <SelectItem value="expenses">Rapport de dépenses</SelectItem>
+                <SelectItem value="cash-flow">Rapport de trésorerie</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          
+
           <div className="space-y-2">
-            <Label htmlFor="period">Période</Label>
-            <Select onValueChange={(value) => setReportConfig({...reportConfig, period: value})}>
+            <Label>Période</Label>
+            <Select 
+              value={formData.period} 
+              onValueChange={(value) => setFormData(prev => ({ ...prev, period: value }))}
+            >
               <SelectTrigger>
                 <SelectValue placeholder="Sélectionner la période" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="current">Mois en cours</SelectItem>
-                <SelectItem value="previous">Mois précédent</SelectItem>
-                <SelectItem value="last3">3 derniers mois</SelectItem>
-                <SelectItem value="ytd">Début d'année</SelectItem>
+                <SelectItem value="this-month">Ce mois</SelectItem>
+                <SelectItem value="last-month">Mois dernier</SelectItem>
+                <SelectItem value="this-quarter">Ce trimestre</SelectItem>
+                <SelectItem value="this-year">Cette année</SelectItem>
+                <SelectItem value="custom">Période personnalisée</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="format">Format</Label>
-            <Select onValueChange={(value) => setReportConfig({...reportConfig, format: value})}>
-              <SelectTrigger>
-                <SelectValue placeholder="Sélectionner le format" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="pdf">PDF</SelectItem>
-                <SelectItem value="excel">Excel</SelectItem>
-                <SelectItem value="csv">CSV</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div className="space-y-2">
-            <Label>Sections à inclure</Label>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="kpis"
-                  checked={reportConfig.sections.kpis}
-                  onCheckedChange={(checked) => 
-                    setReportConfig({
-                      ...reportConfig, 
-                      sections: {...reportConfig.sections, kpis: checked as boolean}
-                    })
-                  }
+
+          {formData.period === 'custom' && (
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="startDate">Date de début</Label>
+                <Input
+                  id="startDate"
+                  type="date"
+                  value={formData.startDate}
+                  onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
+                  required
                 />
-                <Label htmlFor="kpis">Indicateurs clés</Label>
               </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="cashflow"
-                  checked={reportConfig.sections.cashflow}
-                  onCheckedChange={(checked) => 
-                    setReportConfig({
-                      ...reportConfig, 
-                      sections: {...reportConfig.sections, cashflow: checked as boolean}
-                    })
-                  }
+              <div className="space-y-2">
+                <Label htmlFor="endDate">Date de fin</Label>
+                <Input
+                  id="endDate"
+                  type="date"
+                  value={formData.endDate}
+                  onChange={(e) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
+                  required
                 />
-                <Label htmlFor="cashflow">Trésorerie</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="profitability"
-                  checked={reportConfig.sections.profitability}
-                  onCheckedChange={(checked) => 
-                    setReportConfig({
-                      ...reportConfig, 
-                      sections: {...reportConfig.sections, profitability: checked as boolean}
-                    })
-                  }
-                />
-                <Label htmlFor="profitability">Rentabilité</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="sales"
-                  checked={reportConfig.sections.sales}
-                  onCheckedChange={(checked) => 
-                    setReportConfig({
-                      ...reportConfig, 
-                      sections: {...reportConfig.sections, sales: checked as boolean}
-                    })
-                  }
-                />
-                <Label htmlFor="sales">Commercial</Label>
               </div>
             </div>
-          </div>
-          
+          )}
+
           <div className="flex justify-end space-x-2">
             <Button type="button" variant="outline" onClick={onClose}>
               Annuler
             </Button>
             <Button type="submit">
-              Générer
+              Générer le rapport
             </Button>
           </div>
         </form>

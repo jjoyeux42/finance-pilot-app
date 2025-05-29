@@ -1,10 +1,13 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
+import { useSettings } from '@/hooks/useSettings';
+import { useProfile } from '@/hooks/useProfile';
+import { useAuth } from '@/hooks/useAuth';
 import { 
   Settings as SettingsIcon, 
   User, 
@@ -20,24 +23,37 @@ import {
 } from 'lucide-react';
 
 const Settings = () => {
-  const [notifications, setNotifications] = useState({
-    email: true,
-    push: false,
-    sms: true,
-    weekly: true
-  });
+  const { user, signOut } = useAuth();
+  const { profile } = useProfile();
+  const { settings, updateSettings, isUpdating } = useSettings();
 
-  const [privacy, setPrivacy] = useState({
-    dataSharing: false,
-    analytics: true,
-    marketing: false
-  });
+  const handleNotificationChange = (key: string, value: boolean) => {
+    if (settings) {
+      const updates = { [key]: value };
+      updateSettings(updates);
+    }
+  };
 
-  const [integrations, setIntegrations] = useState({
-    banking: true,
-    accounting: false,
-    crm: true
-  });
+  const handleProfileRedirect = () => {
+    window.location.href = '/profile';
+  };
+
+  const handlePasswordChange = () => {
+    // Redirect to change password functionality
+    console.log('Redirection vers changement de mot de passe');
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+  };
+
+  const displayName = profile?.first_name && profile?.last_name 
+    ? `${profile.first_name} ${profile.last_name}`
+    : 'Utilisateur';
+
+  const initials = profile?.first_name && profile?.last_name
+    ? `${profile.first_name[0]}${profile.last_name[0]}`
+    : user?.email?.[0]?.toUpperCase() || 'U';
 
   return (
     <SidebarProvider>
@@ -66,15 +82,15 @@ const Settings = () => {
               <CardContent className="space-y-4">
                 <div className="text-center">
                   <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-blue-600">JD</span>
+                    <span className="text-2xl font-bold text-blue-600">{initials}</span>
                   </div>
-                  <h3 className="font-semibold">John Doe</h3>
-                  <p className="text-sm text-slate-600">admin@financepilot.com</p>
+                  <h3 className="font-semibold">{displayName}</h3>
+                  <p className="text-sm text-slate-600">{user?.email}</p>
                 </div>
-                <Button className="w-full" variant="outline">
+                <Button className="w-full" variant="outline" onClick={handleProfileRedirect}>
                   Modifier le profil
                 </Button>
-                <Button className="w-full" variant="outline">
+                <Button className="w-full" variant="outline" onClick={handlePasswordChange}>
                   Changer le mot de passe
                 </Button>
               </CardContent>
@@ -89,48 +105,32 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">Notifications par email</p>
-                      <p className="text-sm text-slate-600">Recevez les alertes importantes par email</p>
+                {settings && (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-medium">Notifications par email</p>
+                        <p className="text-sm text-slate-600">Recevez les alertes importantes par email</p>
+                      </div>
+                      <Switch 
+                        checked={settings.notifications_email}
+                        onCheckedChange={(checked) => handleNotificationChange('notifications_email', checked)}
+                        disabled={isUpdating}
+                      />
                     </div>
-                    <Switch 
-                      checked={notifications.email}
-                      onCheckedChange={(checked) => setNotifications({...notifications, email: checked})}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">Notifications push</p>
-                      <p className="text-sm text-slate-600">Notifications dans le navigateur</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-medium">Notifications navigateur</p>
+                        <p className="text-sm text-slate-600">Notifications dans le navigateur</p>
+                      </div>
+                      <Switch 
+                        checked={settings.notifications_browser}
+                        onCheckedChange={(checked) => handleNotificationChange('notifications_browser', checked)}
+                        disabled={isUpdating}
+                      />
                     </div>
-                    <Switch 
-                      checked={notifications.push}
-                      onCheckedChange={(checked) => setNotifications({...notifications, push: checked})}
-                    />
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">SMS d'urgence</p>
-                      <p className="text-sm text-slate-600">SMS pour les alertes critiques</p>
-                    </div>
-                    <Switch 
-                      checked={notifications.sms}
-                      onCheckedChange={(checked) => setNotifications({...notifications, sms: checked})}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">Rapport hebdomadaire</p>
-                      <p className="text-sm text-slate-600">Résumé des performances chaque semaine</p>
-                    </div>
-                    <Switch 
-                      checked={notifications.weekly}
-                      onCheckedChange={(checked) => setNotifications({...notifications, weekly: checked})}
-                    />
-                  </div>
-                </div>
+                )}
               </CardContent>
             </Card>
 
@@ -152,108 +152,9 @@ const Settings = () => {
                 <Button className="w-full" variant="outline">
                   Historique de connexion
                 </Button>
-                <Button className="w-full" variant="destructive">
+                <Button className="w-full" variant="destructive" onClick={handleSignOut}>
                   Déconnecter partout
                 </Button>
-              </CardContent>
-            </Card>
-
-            {/* Confidentialité */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Database className="w-5 h-5" />
-                  <span>Confidentialité des données</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">Partage de données anonymisées</p>
-                      <p className="text-sm text-slate-600">Aide à améliorer nos services</p>
-                    </div>
-                    <Switch 
-                      checked={privacy.dataSharing}
-                      onCheckedChange={(checked) => setPrivacy({...privacy, dataSharing: checked})}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">Analytics d'utilisation</p>
-                      <p className="text-sm text-slate-600">Collecte des statistiques d'usage</p>
-                    </div>
-                    <Switch 
-                      checked={privacy.analytics}
-                      onCheckedChange={(checked) => setPrivacy({...privacy, analytics: checked})}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">Communications marketing</p>
-                      <p className="text-sm text-slate-600">Nouveautés et offres spéciales</p>
-                    </div>
-                    <Switch 
-                      checked={privacy.marketing}
-                      onCheckedChange={(checked) => setPrivacy({...privacy, marketing: checked})}
-                    />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Intégrations */}
-            <Card className="lg:col-span-3">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Link className="w-5 h-5" />
-                  <span>Intégrations</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="border rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="font-semibold">Connexions bancaires</h3>
-                      <Switch 
-                        checked={integrations.banking}
-                        onCheckedChange={(checked) => setIntegrations({...integrations, banking: checked})}
-                      />
-                    </div>
-                    <p className="text-sm text-slate-600 mb-4">Synchronisation automatique avec vos comptes bancaires</p>
-                    <Button className="w-full" variant="outline">
-                      Configurer
-                    </Button>
-                  </div>
-                  
-                  <div className="border rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="font-semibold">Logiciel comptable</h3>
-                      <Switch 
-                        checked={integrations.accounting}
-                        onCheckedChange={(checked) => setIntegrations({...integrations, accounting: checked})}
-                      />
-                    </div>
-                    <p className="text-sm text-slate-600 mb-4">Import des données comptables</p>
-                    <Button className="w-full" variant="outline">
-                      Connecter
-                    </Button>
-                  </div>
-                  
-                  <div className="border rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="font-semibold">CRM</h3>
-                      <Switch 
-                        checked={integrations.crm}
-                        onCheckedChange={(checked) => setIntegrations({...integrations, crm: checked})}
-                      />
-                    </div>
-                    <p className="text-sm text-slate-600 mb-4">Synchronisation des données clients</p>
-                    <Button className="w-full" variant="outline">
-                      Configurer
-                    </Button>
-                  </div>
-                </div>
               </CardContent>
             </Card>
 
@@ -283,7 +184,7 @@ const Settings = () => {
             </Card>
 
             {/* Zone dangereuse */}
-            <Card className="lg:col-span-1 border-red-200">
+            <Card className="lg:col-span-3 border-red-200">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-red-600">
                   <Trash2 className="w-5 h-5" />

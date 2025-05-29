@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { useProfile } from '@/hooks/useProfile';
+import { useAuth } from '@/hooks/useAuth';
 import { 
   User, 
   Camera, 
@@ -19,24 +21,53 @@ import {
 } from 'lucide-react';
 
 const Profile = () => {
+  const { user } = useAuth();
+  const { profile, updateProfile, isUpdating } = useProfile();
   const [isEditing, setIsEditing] = useState(false);
-  const [profile, setProfile] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'admin@financepilot.com',
-    phone: '+33 1 23 45 67 89',
-    position: 'Directeur Financier',
-    company: 'FinancePilot SARL',
-    address: '123 Rue de la Finance, 75001 Paris',
-    bio: 'Directeur financier expérimenté avec plus de 10 ans d\'expérience dans le pilotage financier d\'entreprises de croissance.',
-    joinDate: '15 janvier 2024'
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    position: '',
+    company: '',
+    address: '',
+    bio: '',
   });
 
+  useEffect(() => {
+    if (profile) {
+      setFormData({
+        first_name: profile.first_name || '',
+        last_name: profile.last_name || '',
+        email: profile.email || '',
+        phone: profile.phone || '',
+        position: profile.position || '',
+        company: profile.company || '',
+        address: profile.address || '',
+        bio: profile.bio || '',
+      });
+    }
+  }, [profile]);
+
   const handleSave = () => {
+    updateProfile(formData);
     setIsEditing(false);
-    // Ici on sauvegarderait les données
-    console.log('Profil sauvegardé:', profile);
   };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  if (!profile) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-lg">Chargement du profil...</div>
+      </div>
+    );
+  }
+
+  const joinDate = user?.created_at ? new Date(user.created_at).toLocaleDateString('fr-FR') : 'Non disponible';
 
   return (
     <SidebarProvider>
@@ -53,10 +84,11 @@ const Profile = () => {
             </div>
             <Button 
               onClick={() => isEditing ? handleSave() : setIsEditing(true)}
+              disabled={isUpdating}
               className="flex items-center space-x-2"
             >
               <Edit3 className="w-4 h-4" />
-              <span>{isEditing ? 'Sauvegarder' : 'Modifier'}</span>
+              <span>{isUpdating ? 'Sauvegarde...' : (isEditing ? 'Sauvegarder' : 'Modifier')}</span>
             </Button>
           </div>
 
@@ -70,7 +102,7 @@ const Profile = () => {
                 <div className="relative mx-auto w-32 h-32">
                   <div className="w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center">
                     <span className="text-4xl font-bold text-blue-600">
-                      {profile.firstName[0]}{profile.lastName[0]}
+                      {(formData.first_name?.[0] || 'U')}{(formData.last_name?.[0] || '')}
                     </span>
                   </div>
                   {isEditing && (
@@ -83,13 +115,13 @@ const Profile = () => {
                   )}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">{profile.firstName} {profile.lastName}</h3>
-                  <p className="text-slate-600">{profile.position}</p>
-                  <p className="text-sm text-slate-500">{profile.company}</p>
+                  <h3 className="text-xl font-semibold">{formData.first_name} {formData.last_name}</h3>
+                  <p className="text-slate-600">{formData.position || 'Poste non renseigné'}</p>
+                  <p className="text-sm text-slate-500">{formData.company || 'Entreprise non renseignée'}</p>
                 </div>
                 <div className="flex items-center justify-center space-x-2 text-sm text-slate-500">
                   <Calendar className="w-4 h-4" />
-                  <span>Membre depuis le {profile.joinDate}</span>
+                  <span>Membre depuis le {joinDate}</span>
                 </div>
               </CardContent>
             </Card>
@@ -106,11 +138,11 @@ const Profile = () => {
                     {isEditing ? (
                       <Input
                         id="firstName"
-                        value={profile.firstName}
-                        onChange={(e) => setProfile({...profile, firstName: e.target.value})}
+                        value={formData.first_name}
+                        onChange={(e) => handleInputChange('first_name', e.target.value)}
                       />
                     ) : (
-                      <p className="p-2 bg-slate-50 rounded">{profile.firstName}</p>
+                      <p className="p-2 bg-slate-50 rounded">{formData.first_name || 'Non renseigné'}</p>
                     )}
                   </div>
                   <div className="space-y-2">
@@ -118,11 +150,11 @@ const Profile = () => {
                     {isEditing ? (
                       <Input
                         id="lastName"
-                        value={profile.lastName}
-                        onChange={(e) => setProfile({...profile, lastName: e.target.value})}
+                        value={formData.last_name}
+                        onChange={(e) => handleInputChange('last_name', e.target.value)}
                       />
                     ) : (
-                      <p className="p-2 bg-slate-50 rounded">{profile.lastName}</p>
+                      <p className="p-2 bg-slate-50 rounded">{formData.last_name || 'Non renseigné'}</p>
                     )}
                   </div>
                 </div>
@@ -136,11 +168,11 @@ const Profile = () => {
                     <Input
                       id="email"
                       type="email"
-                      value={profile.email}
-                      onChange={(e) => setProfile({...profile, email: e.target.value})}
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
                     />
                   ) : (
-                    <p className="p-2 bg-slate-50 rounded">{profile.email}</p>
+                    <p className="p-2 bg-slate-50 rounded">{formData.email || 'Non renseigné'}</p>
                   )}
                 </div>
 
@@ -152,11 +184,11 @@ const Profile = () => {
                   {isEditing ? (
                     <Input
                       id="phone"
-                      value={profile.phone}
-                      onChange={(e) => setProfile({...profile, phone: e.target.value})}
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
                     />
                   ) : (
-                    <p className="p-2 bg-slate-50 rounded">{profile.phone}</p>
+                    <p className="p-2 bg-slate-50 rounded">{formData.phone || 'Non renseigné'}</p>
                   )}
                 </div>
 
@@ -168,11 +200,11 @@ const Profile = () => {
                   {isEditing ? (
                     <Input
                       id="position"
-                      value={profile.position}
-                      onChange={(e) => setProfile({...profile, position: e.target.value})}
+                      value={formData.position}
+                      onChange={(e) => handleInputChange('position', e.target.value)}
                     />
                   ) : (
-                    <p className="p-2 bg-slate-50 rounded">{profile.position}</p>
+                    <p className="p-2 bg-slate-50 rounded">{formData.position || 'Non renseigné'}</p>
                   )}
                 </div>
 
@@ -184,11 +216,11 @@ const Profile = () => {
                   {isEditing ? (
                     <Input
                       id="company"
-                      value={profile.company}
-                      onChange={(e) => setProfile({...profile, company: e.target.value})}
+                      value={formData.company}
+                      onChange={(e) => handleInputChange('company', e.target.value)}
                     />
                   ) : (
-                    <p className="p-2 bg-slate-50 rounded">{profile.company}</p>
+                    <p className="p-2 bg-slate-50 rounded">{formData.company || 'Non renseigné'}</p>
                   )}
                 </div>
 
@@ -200,11 +232,11 @@ const Profile = () => {
                   {isEditing ? (
                     <Input
                       id="address"
-                      value={profile.address}
-                      onChange={(e) => setProfile({...profile, address: e.target.value})}
+                      value={formData.address}
+                      onChange={(e) => handleInputChange('address', e.target.value)}
                     />
                   ) : (
-                    <p className="p-2 bg-slate-50 rounded">{profile.address}</p>
+                    <p className="p-2 bg-slate-50 rounded">{formData.address || 'Non renseigné'}</p>
                   )}
                 </div>
 
@@ -214,11 +246,11 @@ const Profile = () => {
                     <Textarea
                       id="bio"
                       rows={4}
-                      value={profile.bio}
-                      onChange={(e) => setProfile({...profile, bio: e.target.value})}
+                      value={formData.bio}
+                      onChange={(e) => handleInputChange('bio', e.target.value)}
                     />
                   ) : (
-                    <p className="p-2 bg-slate-50 rounded">{profile.bio}</p>
+                    <p className="p-2 bg-slate-50 rounded">{formData.bio || 'Non renseigné'}</p>
                   )}
                 </div>
               </CardContent>
