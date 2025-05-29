@@ -57,7 +57,7 @@ const Settings = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-white">
+      <div className="min-h-screen flex w-full bg-gray-50">
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           <div className="flex items-center justify-between">
@@ -72,44 +72,44 @@ const Settings = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Profil Utilisateur */}
-            <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <User className="w-5 h-5" />
+            <Card className="lg:col-span-1 bg-white border-gray-200 shadow-md">
+              <CardHeader className="bg-white">
+                <CardTitle className="flex items-center space-x-2 text-gray-900">
+                  <User className="w-5 h-5 text-blue-600" />
                   <span>Profil Utilisateur</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 bg-white">
                 <div className="text-center">
                   <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-bold text-blue-600">{initials}</span>
                   </div>
-                  <h3 className="font-semibold">{displayName}</h3>
+                  <h3 className="font-semibold text-gray-900">{displayName}</h3>
                   <p className="text-sm text-slate-600">{user?.email}</p>
                 </div>
-                <Button className="w-full" variant="outline" onClick={handleProfileRedirect}>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" variant="outline" onClick={handleProfileRedirect}>
                   Modifier le profil
                 </Button>
-                <Button className="w-full" variant="outline" onClick={handlePasswordChange}>
+                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline" onClick={handlePasswordChange}>
                   Changer le mot de passe
                 </Button>
               </CardContent>
             </Card>
 
             {/* Notifications */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Bell className="w-5 h-5" />
+            <Card className="lg:col-span-2 bg-white border-gray-200 shadow-md">
+              <CardHeader className="bg-white">
+                <CardTitle className="flex items-center space-x-2 text-gray-900">
+                  <Bell className="w-5 h-5 text-blue-600" />
                   <span>Notifications</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 bg-white">
                 {settings && (
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-medium">Notifications par email</p>
+                        <p className="font-medium text-gray-900">Notifications par email</p>
                         <p className="text-sm text-slate-600">Recevez les alertes importantes par email</p>
                       </div>
                       <Switch 
@@ -120,7 +120,7 @@ const Settings = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="font-medium">Notifications navigateur</p>
+                        <p className="font-medium text-gray-900">Notifications navigateur</p>
                         <p className="text-sm text-slate-600">Notifications dans le navigateur</p>
                       </div>
                       <Switch 
@@ -135,44 +135,44 @@ const Settings = () => {
             </Card>
 
             {/* Sécurité */}
-            <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Shield className="w-5 h-5" />
+            <Card className="lg:col-span-1 bg-white border-gray-200 shadow-md">
+              <CardHeader className="bg-white">
+                <CardTitle className="flex items-center space-x-2 text-gray-900">
+                  <Shield className="w-5 h-5 text-blue-600" />
                   <span>Sécurité</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <Button className="w-full" variant="outline">
+              <CardContent className="space-y-4 bg-white">
+                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline">
                   Authentification 2FA
                 </Button>
-                <Button className="w-full" variant="outline">
+                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline">
                   Sessions actives
                 </Button>
-                <Button className="w-full" variant="outline">
+                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline">
                   Historique de connexion
                 </Button>
-                <Button className="w-full" variant="destructive" onClick={handleSignOut}>
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white" variant="destructive" onClick={handleSignOut}>
                   Déconnecter partout
                 </Button>
               </CardContent>
             </Card>
 
             {/* Export et sauvegarde */}
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Download className="w-5 h-5" />
+            <Card className="lg:col-span-2 bg-white border-gray-200 shadow-md">
+              <CardHeader className="bg-white">
+                <CardTitle className="flex items-center space-x-2 text-gray-900">
+                  <Download className="w-5 h-5 text-blue-600" />
                   <span>Export et sauvegarde</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 bg-white">
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="flex items-center space-x-2">
+                  <Button variant="outline" className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
                     <Download className="w-4 h-4" />
                     <span>Exporter les données</span>
                   </Button>
-                  <Button variant="outline" className="flex items-center space-x-2">
+                  <Button variant="outline" className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white border-0">
                     <Database className="w-4 h-4" />
                     <span>Sauvegarde automatique</span>
                   </Button>
@@ -184,15 +184,15 @@ const Settings = () => {
             </Card>
 
             {/* Zone dangereuse */}
-            <Card className="lg:col-span-3 border-red-200">
-              <CardHeader>
+            <Card className="lg:col-span-3 border-red-200 bg-white shadow-md">
+              <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-red-600">
                   <Trash2 className="w-5 h-5" />
                   <span>Zone dangereuse</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <Button variant="destructive" className="w-full">
+              <CardContent className="space-y-4 bg-white">
+                <Button variant="destructive" className="w-full bg-red-600 hover:bg-red-700">
                   Supprimer le compte
                 </Button>
                 <p className="text-xs text-slate-500">

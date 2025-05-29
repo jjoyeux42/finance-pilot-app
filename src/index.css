@@ -101,7 +101,6 @@
     @apply bg-white/10 backdrop-blur-lg border border-white/20;
   }
   
-  /* Suppression complète de toutes les références au jaune */
   .chart-tooltip {
     @apply bg-white/95 border-0 rounded-xl shadow-xl backdrop-blur-sm;
   }
@@ -120,5 +119,13 @@
   
   .gradient-purple {
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  }
+
+  .gradient-gray {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  }
+
+  .gradient-red {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   }
 }
