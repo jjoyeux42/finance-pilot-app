@@ -62,18 +62,18 @@ export function AnalysisModal({ isOpen, onClose }: AnalysisModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-lg bg-white">
         <DialogHeader>
-          <DialogTitle>Analyse poussée</DialogTitle>
+          <DialogTitle className="text-gray-900">Analyse poussée</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label>Type d'analyse</Label>
+            <Label className="text-gray-700">Type d'analyse</Label>
             <Select value={analysisType} onValueChange={setAnalysisType}>
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Sélectionner le type d'analyse" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="profitability">
                   <div className="flex items-center space-x-2">
                     <TrendingUp className="w-4 h-4" />
@@ -98,12 +98,12 @@ export function AnalysisModal({ isOpen, onClose }: AnalysisModalProps) {
 
           {analysisResult && (
             <div className="space-y-2">
-              <Label>Résultats de l'analyse</Label>
+              <Label className="text-gray-700">Résultats de l'analyse</Label>
               <Textarea
                 value={analysisResult}
                 readOnly
                 rows={6}
-                className="bg-slate-50"
+                className="bg-gray-50 border-gray-300"
               />
             </div>
           )}
@@ -115,7 +115,7 @@ export function AnalysisModal({ isOpen, onClose }: AnalysisModalProps) {
             <Button 
               onClick={handleAnalyze} 
               disabled={isAnalyzing}
-              className="bg-purple-600 hover:bg-purple-700"
+              className="bg-purple-600 hover:bg-purple-700 text-white"
             >
               {isAnalyzing ? 'Analyse en cours...' : 'Lancer l\'analyse'}
             </Button>

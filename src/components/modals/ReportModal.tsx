@@ -48,21 +48,21 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white">
         <DialogHeader>
-          <DialogTitle>Générer un rapport</DialogTitle>
+          <DialogTitle className="text-gray-900">Générer un rapport</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label>Type de rapport</Label>
+            <Label className="text-gray-700">Type de rapport</Label>
             <Select 
               value={formData.type} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, type: value }))}
             >
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Sélectionner le type" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="financial">Rapport financier</SelectItem>
                 <SelectItem value="sales">Rapport de ventes</SelectItem>
                 <SelectItem value="expenses">Rapport de dépenses</SelectItem>
@@ -72,15 +72,15 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
           </div>
 
           <div className="space-y-2">
-            <Label>Période</Label>
+            <Label className="text-gray-700">Période</Label>
             <Select 
               value={formData.period} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, period: value }))}
             >
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Sélectionner la période" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="this-month">Ce mois</SelectItem>
                 <SelectItem value="last-month">Mois dernier</SelectItem>
                 <SelectItem value="this-quarter">Ce trimestre</SelectItem>
@@ -93,23 +93,25 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
           {formData.period === 'custom' && (
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="startDate">Date de début</Label>
+                <Label htmlFor="startDate" className="text-gray-700">Date de début</Label>
                 <Input
                   id="startDate"
                   type="date"
                   value={formData.startDate}
                   onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                   required
+                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="endDate">Date de fin</Label>
+                <Label htmlFor="endDate" className="text-gray-700">Date de fin</Label>
                 <Input
                   id="endDate"
                   type="date"
                   value={formData.endDate}
                   onChange={(e) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
                   required
+                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -119,7 +121,7 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
             <Button type="button" variant="outline" onClick={onClose}>
               Annuler
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
               Générer le rapport
             </Button>
           </div>

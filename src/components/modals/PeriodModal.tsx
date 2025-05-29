@@ -45,18 +45,18 @@ export function PeriodModal({ isOpen, onClose }: PeriodModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white">
         <DialogHeader>
-          <DialogTitle>Sélectionner une période</DialogTitle>
+          <DialogTitle className="text-gray-900">Sélectionner une période</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label>Période</Label>
+            <Label className="text-gray-700">Période</Label>
             <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Sélectionner une période" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="this-month">Ce mois</SelectItem>
                 <SelectItem value="last-month">Mois dernier</SelectItem>
                 <SelectItem value="this-quarter">Ce trimestre</SelectItem>
@@ -71,23 +71,25 @@ export function PeriodModal({ isOpen, onClose }: PeriodModalProps) {
           {selectedPeriod === 'custom' && (
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="startDate">Date de début</Label>
+                <Label htmlFor="startDate" className="text-gray-700">Date de début</Label>
                 <Input
                   id="startDate"
                   type="date"
                   value={customStart}
                   onChange={(e) => setCustomStart(e.target.value)}
                   required
+                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="endDate">Date de fin</Label>
+                <Label htmlFor="endDate" className="text-gray-700">Date de fin</Label>
                 <Input
                   id="endDate"
                   type="date"
                   value={customEnd}
                   onChange={(e) => setCustomEnd(e.target.value)}
                   required
+                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -97,7 +99,7 @@ export function PeriodModal({ isOpen, onClose }: PeriodModalProps) {
             <Button type="button" variant="outline" onClick={onClose}>
               Annuler
             </Button>
-            <Button type="submit">
+            <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
               Appliquer
             </Button>
           </div>

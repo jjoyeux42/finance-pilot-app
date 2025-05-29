@@ -77,23 +77,23 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white">
         <DialogHeader>
-          <DialogTitle>Nouvelle transaction</DialogTitle>
+          <DialogTitle className="text-gray-900">Nouvelle transaction</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label>Type</Label>
+            <Label className="text-gray-700">Type</Label>
             <Select 
               value={formData.type} 
               onValueChange={(value: 'income' | 'expense') => {
                 setFormData(prev => ({ ...prev, type: value, category: '' }));
               }}
             >
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="income">Recette</SelectItem>
                 <SelectItem value="expense">Dépense</SelectItem>
               </SelectContent>
@@ -101,15 +101,15 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
           </div>
 
           <div className="space-y-2">
-            <Label>Catégorie</Label>
+            <Label className="text-gray-700">Catégorie</Label>
             <Select 
               value={formData.category} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
             >
-              <SelectTrigger>
+              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Sélectionner une catégorie" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 {categories.map((category) => (
                   <SelectItem key={category} value={category}>
                     {category}
@@ -120,7 +120,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="amount">Montant (€)</Label>
+            <Label htmlFor="amount" className="text-gray-700">Montant (€)</Label>
             <Input
               id="amount"
               type="number"
@@ -128,27 +128,30 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
               value={formData.amount}
               onChange={(e) => setFormData(prev => ({ ...prev, amount: e.target.value }))}
               required
+              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="date">Date</Label>
+            <Label htmlFor="date" className="text-gray-700">Date</Label>
             <Input
               id="date"
               type="date"
               value={formData.date}
               onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
               required
+              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Description (optionnel)</Label>
+            <Label htmlFor="description" className="text-gray-700">Description (optionnel)</Label>
             <Textarea
               id="description"
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
+              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
             />
           </div>
 
@@ -156,7 +159,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
             <Button type="button" variant="outline" onClick={onClose}>
               Annuler
             </Button>
-            <Button type="submit" disabled={isAdding}>
+            <Button type="submit" disabled={isAdding} className="bg-blue-600 hover:bg-blue-700 text-white">
               {isAdding ? 'Ajout...' : 'Ajouter'}
             </Button>
           </div>

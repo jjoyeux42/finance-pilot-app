@@ -48,9 +48,9 @@ export function PlanningModal({ isOpen, onClose }: PlanningModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-lg bg-white">
         <DialogHeader>
-          <DialogTitle>Planning Commercial</DialogTitle>
+          <DialogTitle className="text-gray-900">Planning Commercial</DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
           <div className="flex justify-center">
@@ -58,26 +58,26 @@ export function PlanningModal({ isOpen, onClose }: PlanningModalProps) {
               mode="single"
               selected={selectedDate}
               onSelect={handleDateSelect}
-              className="rounded-md border"
+              className="rounded-md border bg-white"
             />
           </div>
 
           {selectedDate && (
             <div className="space-y-3">
-              <h4 className="font-semibold">
+              <h4 className="font-semibold text-gray-900">
                 Événements du {selectedDate.toLocaleDateString('fr-FR')}
               </h4>
               <div className="space-y-2">
                 {getEventsForDate(selectedDate).map((event, index) => (
-                  <div key={index} className="p-3 bg-slate-50 rounded-lg border">
+                  <div key={index} className="p-3 bg-gray-50 rounded-lg border">
                     <div className="flex items-center justify-between">
-                      <span className="font-medium">{event.title}</span>
-                      <span className="text-sm text-slate-600">{event.time}</span>
+                      <span className="font-medium text-gray-900">{event.title}</span>
+                      <span className="text-sm text-gray-600">{event.time}</span>
                     </div>
                   </div>
                 ))}
                 {getEventsForDate(selectedDate).length === 0 && (
-                  <p className="text-slate-500 text-center py-4">
+                  <p className="text-gray-500 text-center py-4">
                     Aucun événement programmé pour cette date.
                   </p>
                 )}
@@ -86,7 +86,7 @@ export function PlanningModal({ isOpen, onClose }: PlanningModalProps) {
           )}
 
           <div className="flex justify-end">
-            <Button onClick={onClose}>
+            <Button onClick={onClose} className="bg-blue-600 hover:bg-blue-700 text-white">
               Fermer
             </Button>
           </div>

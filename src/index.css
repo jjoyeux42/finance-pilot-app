@@ -128,4 +128,16 @@
   .gradient-red {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   }
+
+  .gradient-orange {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  }
+
+  .gradient-teal {
+    background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+  }
+
+  .gradient-indigo {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  }
 }

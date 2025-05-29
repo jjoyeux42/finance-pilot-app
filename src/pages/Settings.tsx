@@ -17,9 +17,10 @@ import {
   Download,
   Trash2,
   Link,
-  Mail,
-  Phone,
-  Globe
+  Unlink,
+  CreditCard,
+  Building,
+  FileSpreadsheet
 } from 'lucide-react';
 
 const Settings = () => {
@@ -134,6 +135,99 @@ const Settings = () => {
               </CardContent>
             </Card>
 
+            {/* Connexions externes */}
+            <Card className="lg:col-span-3 bg-white border-gray-200 shadow-md">
+              <CardHeader className="bg-white">
+                <CardTitle className="flex items-center space-x-2 text-gray-900">
+                  <Link className="w-5 h-5 text-blue-600" />
+                  <span>Connexions externes</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6 bg-white">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <CreditCard className="w-6 h-6 text-blue-600" />
+                      <div>
+                        <h4 className="font-medium text-gray-900">Banque</h4>
+                        <p className="text-sm text-gray-600">Non connecté</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                      Connecter
+                    </Button>
+                  </div>
+
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Building className="w-6 h-6 text-green-600" />
+                      <div>
+                        <h4 className="font-medium text-gray-900">CRM</h4>
+                        <p className="text-sm text-gray-600">Connecté</p>
+                      </div>
+                    </div>
+                    <Button size="sm" variant="outline" className="w-full">
+                      <Unlink className="w-4 h-4 mr-2" />
+                      Déconnecter
+                    </Button>
+                  </div>
+
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <FileSpreadsheet className="w-6 h-6 text-purple-600" />
+                      <div>
+                        <h4 className="font-medium text-gray-900">ERP</h4>
+                        <p className="text-sm text-gray-600">Non connecté</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                      Connecter
+                    </Button>
+                  </div>
+
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Database className="w-6 h-6 text-orange-600" />
+                      <div>
+                        <h4 className="font-medium text-gray-900">Comptabilité</h4>
+                        <p className="text-sm text-gray-600">Non connecté</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="w-full bg-orange-600 hover:bg-orange-700 text-white">
+                      Connecter
+                    </Button>
+                  </div>
+
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Link className="w-6 h-6 text-indigo-600" />
+                      <div>
+                        <h4 className="font-medium text-gray-900">E-commerce</h4>
+                        <p className="text-sm text-gray-600">Connecté</p>
+                      </div>
+                    </div>
+                    <Button size="sm" variant="outline" className="w-full">
+                      <Unlink className="w-4 h-4 mr-2" />
+                      Déconnecter
+                    </Button>
+                  </div>
+
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Database className="w-6 h-6 text-teal-600" />
+                      <div>
+                        <h4 className="font-medium text-gray-900">Analytics</h4>
+                        <p className="text-sm text-gray-600">Non connecté</p>
+                      </div>
+                    </div>
+                    <Button size="sm" className="w-full bg-teal-600 hover:bg-teal-700 text-white">
+                      Connecter
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Sécurité */}
             <Card className="lg:col-span-1 bg-white border-gray-200 shadow-md">
               <CardHeader className="bg-white">
@@ -200,6 +294,11 @@ const Settings = () => {
                 </p>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Copyright */}
+          <div className="text-center text-sm text-gray-500 mt-8 pt-8 border-t">
+            © 2025 FinancePilot. Tous droits réservés.
           </div>
         </main>
       </div>
