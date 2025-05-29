@@ -14,6 +14,8 @@ import {
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import { TransactionModal } from '@/components/modals/TransactionModal';
 import { PeriodModal } from '@/components/modals/PeriodModal';
+import { TransactionHistory } from '@/components/TransactionHistory';
+import { CashFlowAnalysis } from '@/components/CashFlowAnalysis';
 
 const cashFlowData = [
   { month: 'Jan', entrees: 45000, sorties: 38000, solde: 7000 },
@@ -44,7 +46,7 @@ const Treasury = () => {
             <div className="flex items-center space-x-4">
               <SidebarTrigger className="lg:hidden" />
               <div>
-                <h1 className="text-3xl font-bold text-slate-900">Trésorerie</h1>
+                <h1 className="text-3xl font-bold text-slate-900">💰 Trésorerie</h1>
                 <p className="text-slate-600">Gestion et suivi de votre flux de trésorerie</p>
               </div>
             </div>
@@ -53,12 +55,13 @@ const Treasury = () => {
                 variant="outline" 
                 size="sm"
                 onClick={() => setActiveModal('period')}
+                className="hover:bg-slate-100"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Période
               </Button>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 shadow-lg"
                 onClick={() => setActiveModal('transaction')}
               >
                 <DollarSign className="w-4 h-4 mr-2" />
@@ -69,7 +72,7 @@ const Treasury = () => {
 
           {/* KPIs Trésorerie */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -80,7 +83,9 @@ const Treasury = () => {
                       <span className="text-sm text-emerald-600 ml-1">+12.5%</span>
                     </div>
                   </div>
-                  <Wallet className="w-8 h-8 text-blue-600" />
+                  <div className="p-3 bg-blue-100 rounded-full">
+                    <Wallet className="w-8 h-8 text-blue-600" />
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -134,59 +139,91 @@ const Treasury = () => {
             </Card>
           </div>
 
-          {/* Graphiques */}
+          {/* Graphiques modernisés */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
-                  Évolution de la Trésorerie
+                  📈 Évolution de la Trésorerie
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={cashFlowData}>
+                    <defs>
+                      <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                        <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                    <XAxis dataKey="month" stroke="#64748b" />
-                    <YAxis stroke="#64748b" />
+                    <XAxis dataKey="month" stroke="#64748b" fontSize={12} fontWeight={500} />
+                    <YAxis stroke="#64748b" fontSize={12} />
                     <Tooltip 
                       contentStyle={{
-                        backgroundColor: 'white',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '8px'
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        border: 'none',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.25)',
+                        backdropFilter: 'blur(16px)'
                       }}
                     />
-                    <Line type="monotone" dataKey="solde" stroke="#3b82f6" strokeWidth={3} />
+                    <Line 
+                      type="monotone" 
+                      dataKey="solde" 
+                      stroke="#3b82f6" 
+                      strokeWidth={3} 
+                      dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
+                      activeDot={{ r: 6, stroke: '#3b82f6', strokeWidth: 2 }}
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
-                  Flux Entrants vs Sortants
+                  📊 Flux Entrants vs Sortants
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={cashFlowData}>
+                    <defs>
+                      <linearGradient id="colorIncome" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#10b981" stopOpacity={0.3}/>
+                      </linearGradient>
+                      <linearGradient id="colorExpense" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#ef4444" stopOpacity={0.3}/>
+                      </linearGradient>
+                    </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                    <XAxis dataKey="month" stroke="#64748b" />
-                    <YAxis stroke="#64748b" />
+                    <XAxis dataKey="month" stroke="#64748b" fontSize={12} fontWeight={500} />
+                    <YAxis stroke="#64748b" fontSize={12} />
                     <Tooltip 
                       contentStyle={{
-                        backgroundColor: 'white',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '8px'
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        border: 'none',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.25)'
                       }}
                     />
-                    <Bar dataKey="entrees" fill="#10b981" />
-                    <Bar dataKey="sorties" fill="#ef4444" />
+                    <Bar dataKey="entrees" fill="url(#colorIncome)" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="sorties" fill="url(#colorExpense)" radius={[4, 4, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
           </div>
+
+          {/* Analyse de flux */}
+          <CashFlowAnalysis />
+
+          {/* Historique des transactions */}
+          <TransactionHistory />
 
           {/* Échéances à venir */}
           <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">

@@ -97,11 +97,28 @@
 }
 
 @layer components {
-  .finance-gradient {
-    @apply bg-gradient-to-br from-finance-500 via-finance-600 to-finance-700;
-  }
-  
   .glass-effect {
     @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  /* Suppression complète de toutes les références au jaune */
+  .chart-tooltip {
+    @apply bg-white/95 border-0 rounded-xl shadow-xl backdrop-blur-sm;
+  }
+  
+  .modern-card {
+    @apply bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .gradient-blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  }
+  
+  .gradient-emerald {
+    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  }
+  
+  .gradient-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   }
 }

@@ -14,10 +14,10 @@ const cashFlowData = [
 
 export function CashFlowChart() {
   return (
-    <Card className="col-span-2">
+    <Card className="col-span-2 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-gray-900">
-          Évolution de Trésorerie
+        <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
+          📈 Évolution de Trésorerie
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -26,12 +26,12 @@ export function CashFlowChart() {
             <AreaChart data={cashFlowData}>
               <defs>
                 <linearGradient id="colorSolde" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#525cff" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#525cff" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
                 </linearGradient>
                 <linearGradient id="colorPrevision" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
@@ -39,6 +39,7 @@ export function CashFlowChart() {
                 dataKey="month" 
                 stroke="#64748b"
                 fontSize={12}
+                fontWeight={500}
               />
               <YAxis 
                 stroke="#64748b"
@@ -47,10 +48,11 @@ export function CashFlowChart() {
               />
               <Tooltip 
                 contentStyle={{
-                  backgroundColor: 'white',
-                  border: '1px solid #e2e8f0',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.25)',
+                  backdropFilter: 'blur(16px)'
                 }}
                 formatter={(value: number, name) => [
                   `${value.toLocaleString()}€`,
@@ -60,7 +62,7 @@ export function CashFlowChart() {
               <Area
                 type="monotone"
                 dataKey="solde"
-                stroke="#525cff"
+                stroke="#3b82f6"
                 strokeWidth={3}
                 fillOpacity={1}
                 fill="url(#colorSolde)"
@@ -68,7 +70,7 @@ export function CashFlowChart() {
               <Area
                 type="monotone"
                 dataKey="prevision"
-                stroke="#22c55e"
+                stroke="#10b981"
                 strokeWidth={2}
                 strokeDasharray="8 8"
                 fillOpacity={1}
@@ -77,14 +79,14 @@ export function CashFlowChart() {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-        <div className="flex items-center justify-center space-x-6 mt-4">
+        <div className="flex items-center justify-center space-x-6 mt-6">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-finance-500 rounded-full"></div>
-            <span className="text-sm text-gray-600">Solde réel</span>
+            <div className="w-4 h-4 bg-blue-500 rounded-full shadow-sm"></div>
+            <span className="text-sm font-medium text-slate-600">Solde réel</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-success-500 rounded-full opacity-60"></div>
-            <span className="text-sm text-gray-600">Prévision</span>
+            <div className="w-4 h-4 bg-emerald-500 rounded-full shadow-sm"></div>
+            <span className="text-sm font-medium text-slate-600">Prévision</span>
           </div>
         </div>
       </CardContent>
