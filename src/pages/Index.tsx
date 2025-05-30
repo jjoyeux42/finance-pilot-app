@@ -1,12 +1,24 @@
 
+<<<<<<< HEAD
 import React from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+=======
+import React, { useState } from 'react';
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 import { AppSidebar } from "@/components/AppSidebar";
 import { KPICard } from "@/components/KPICard";
 import { CashFlowChart } from "@/components/CashFlowChart";
 import { AlertPanel } from "@/components/AlertPanel";
+<<<<<<< HEAD
 import { QuickActions } from "@/components/QuickActions";
 import { TopPerformers } from "@/components/TopPerformers";
+=======
+import { NotificationCenter } from "@/components/NotificationCenter";
+import { QuickActions } from "@/components/QuickActions";
+import TopPerformers from "@/components/TopPerformers";
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 import { 
   DollarSign, 
   TrendingUp, 
@@ -17,12 +29,19 @@ import {
 } from 'lucide-react';
 
 const Index = () => {
+<<<<<<< HEAD
+=======
+  const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false);
+  const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
+  const [isNotificationCenterOpen, setIsNotificationCenterOpen] = useState(false);
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-gray-100">
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           {/* Header */}
+<<<<<<< HEAD
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <SidebarTrigger className="lg:hidden" />
@@ -37,6 +56,24 @@ const Index = () => {
                 <p className="text-sm font-medium text-slate-900">Aujourd'hui, 14:30</p>
               </div>
               <Bell className="w-6 h-6 text-slate-400" />
+=======
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Tableau de Bord</h1>
+              <p className="text-gray-600 mt-1">Vue d'ensemble de votre situation financière</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setIsNotificationCenterOpen(true)}
+                className="relative"
+              >
+                <Bell className="h-4 w-4" />
+                <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
+              </Button>
+              <SidebarTrigger className="md:hidden" />
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
             </div>
           </div>
 
@@ -67,7 +104,11 @@ const Index = () => {
               changeLabel="vs mois dernier"
               icon={<Users className="w-5 h-5" />}
               trend="down"
+<<<<<<< HEAD
               color="warning"
+=======
+              color="default"
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
             />
             <KPICard
               title="Objectif Mensuel"
@@ -95,6 +136,7 @@ const Index = () => {
           {/* Footer */}
           <div className="text-center py-6 border-t border-slate-200">
             <p className="text-sm text-slate-500">
+<<<<<<< HEAD
               FinancePilot © 2024 - Pilotage financier intelligent
             </p>
           </div>
@@ -105,3 +147,21 @@ const Index = () => {
 };
 
 export default Index;
+=======
+              FinancePilot © 2025 - Pilotage financier intelligent
+            </p>
+          </div>
+        </main>
+        </div>
+        
+        {/* Notification Center */}
+        <NotificationCenter 
+          isOpen={isNotificationCenterOpen}
+          onClose={() => setIsNotificationCenterOpen(false)}
+        />
+      </SidebarProvider>
+    );
+  };
+  
+  export default Index;
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)

@@ -32,9 +32,15 @@ const analysisData = [
     title: 'Pic de Dépenses',
     value: '15 Mars',
     description: 'Salaires + charges trimestrielles',
+<<<<<<< HEAD
     trend: 'warning',
     icon: TrendingDown,
     color: 'text-orange-600 bg-orange-100'
+=======
+    trend: 'info',
+    icon: TrendingDown,
+    color: 'text-indigo-600 bg-indigo-100'
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   }
 ];
 

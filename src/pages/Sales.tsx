@@ -162,16 +162,28 @@ const Sales = () => {
           </div>
 
           {/* Graphiques */}
+<<<<<<< HEAD
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   Performance Commerciale
+=======
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-emerald-50/30 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
+                  <div className="p-2 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-white">
+                    📊
+                  </div>
+                  <span>Performance Commerciale</span>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={salesData}>
+<<<<<<< HEAD
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="month" stroke="#64748b" />
                     <YAxis stroke="#64748b" />
@@ -184,20 +196,49 @@ const Sales = () => {
                     />
                     <Line type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={3} name="CA" />
                     <Line type="monotone" dataKey="converted" stroke="#3b82f6" strokeWidth={2} name="Conversions" />
+=======
+                    <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
+                    <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={600} />
+                    <YAxis stroke="#475569" fontSize={12} fontWeight={600} />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        border: 'none',
+                        borderRadius: '16px',
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        backdropFilter: 'blur(10px)',
+                        fontSize: '14px',
+                        fontWeight: '500'
+                      }}
+                    />
+                    <Line type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={4} name="CA" dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: '#ffffff' }} />
+                    <Line type="monotone" dataKey="converted" stroke="#3b82f6" strokeWidth={4} name="Conversions" dot={{ fill: '#3b82f6', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#3b82f6', strokeWidth: 2, fill: '#ffffff' }} />
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
 
+<<<<<<< HEAD
             <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   Leads vs Conversions
+=======
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
+                  <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
+                    📈
+                  </div>
+                  <span>Leads vs Conversions</span>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={salesData}>
+<<<<<<< HEAD
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="month" stroke="#64748b" />
                     <YAxis stroke="#64748b" />
@@ -206,6 +247,20 @@ const Sales = () => {
                         backgroundColor: 'white',
                         border: '1px solid #e2e8f0',
                         borderRadius: '8px'
+=======
+                    <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
+                    <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={600} />
+                    <YAxis stroke="#475569" fontSize={12} fontWeight={600} />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        border: 'none',
+                        borderRadius: '16px',
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        backdropFilter: 'blur(10px)',
+                        fontSize: '14px',
+                        fontWeight: '500'
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       }}
                     />
                     <Bar dataKey="leads" fill="#94a3b8" name="Leads" />

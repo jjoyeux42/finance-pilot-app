@@ -146,16 +146,28 @@ const Profitability = () => {
           </div>
 
           {/* Graphiques */}
+<<<<<<< HEAD
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   Évolution CA vs Marge
+=======
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
+                  <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
+                    📊
+                  </div>
+                  <span>Évolution CA vs Marge</span>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={profitabilityData}>
+<<<<<<< HEAD
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="month" stroke="#64748b" />
                     <YAxis stroke="#64748b" />
@@ -168,15 +180,53 @@ const Profitability = () => {
                     />
                     <Bar dataKey="ca" fill="#3b82f6" name="Chiffre d'Affaires" />
                     <Bar dataKey="marge" fill="#10b981" name="Marge" />
+=======
+                    <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
+                    <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={600} />
+                    <YAxis stroke="#475569" fontSize={12} fontWeight={600} />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        border: 'none',
+                        borderRadius: '16px',
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        backdropFilter: 'blur(10px)',
+                        fontSize: '14px',
+                        fontWeight: '500'
+                      }}
+                    />
+                    <Bar dataKey="ca" fill="url(#colorCA)" name="Chiffre d'Affaires" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="marge" fill="url(#colorMarge)" name="Marge" radius={[4, 4, 0, 0]} />
+                    <defs>
+                      <linearGradient id="colorCA" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#3b82f6" stopOpacity={1}/>
+                        <stop offset="100%" stopColor="#1d4ed8" stopOpacity={0.8}/>
+                      </linearGradient>
+                      <linearGradient id="colorMarge" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10b981" stopOpacity={1}/>
+                        <stop offset="100%" stopColor="#059669" stopOpacity={0.8}/>
+                      </linearGradient>
+                    </defs>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
 
+<<<<<<< HEAD
             <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   Répartition CA par Client
+=======
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-purple-50/30 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
+                  <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
+                    🥧
+                  </div>
+                  <span>Répartition CA par Client</span>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>

@@ -12,6 +12,16 @@ import Sales from "./pages/Sales";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
+<<<<<<< HEAD
+=======
+import Customers from "./pages/Customers";
+import Invoices from "./pages/Invoices";
+import Budget from "./pages/Budget";
+import ExecutiveDashboard from "./pages/ExecutiveDashboard";
+import OperationalDashboard from "./pages/OperationalDashboard";
+import RiskDashboard from "./pages/RiskDashboard";
+import Reports from "./pages/Reports";
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
@@ -41,6 +51,16 @@ function AuthenticatedApp() {
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/profile" element={<Profile />} />
+<<<<<<< HEAD
+=======
+      <Route path="/customers" element={<Customers />} />
+      <Route path="/invoices" element={<Invoices />} />
+      <Route path="/budget" element={<Budget />} />
+      <Route path="/executive" element={<ExecutiveDashboard />} />
+      <Route path="/operational" element={<OperationalDashboard />} />
+      <Route path="/risk" element={<RiskDashboard />} />
+      <Route path="/reports" element={<Reports />} />
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

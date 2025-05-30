@@ -140,11 +140,22 @@ const Treasury = () => {
           </div>
 
           {/* Graphiques modernisés */}
+<<<<<<< HEAD
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   📈 Évolution de la Trésorerie
+=======
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
+                  <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
+                    📈
+                  </div>
+                  <span>Évolution de la Trésorerie</span>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -156,26 +167,57 @@ const Treasury = () => {
                         <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
+<<<<<<< HEAD
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="month" stroke="#64748b" fontSize={12} fontWeight={500} />
                     <YAxis stroke="#64748b" fontSize={12} />
+=======
+                    <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
+                    <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={600} />
+                    <YAxis stroke="#475569" fontSize={12} fontWeight={600} />
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                     <Tooltip 
                       contentStyle={{
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',
                         border: 'none',
+<<<<<<< HEAD
                         borderRadius: '12px',
                         boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.25)',
                         backdropFilter: 'blur(16px)'
+=======
+                        borderRadius: '16px',
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                        backdropFilter: 'blur(10px)',
+                        fontSize: '14px',
+                        fontWeight: '500'
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="solde" 
                       stroke="#3b82f6" 
+<<<<<<< HEAD
                       strokeWidth={3} 
                       dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
                       activeDot={{ r: 6, stroke: '#3b82f6', strokeWidth: 2 }}
                     />
+=======
+                      strokeWidth={4} 
+                      dot={{ fill: '#3b82f6', strokeWidth: 2, r: 6 }}
+                      activeDot={{ r: 8, stroke: '#3b82f6', strokeWidth: 2, fill: '#ffffff' }}
+                      filter="url(#glow)"
+                    />
+                    <defs>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge> 
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -200,9 +242,15 @@ const Treasury = () => {
                         <stop offset="95%" stopColor="#ef4444" stopOpacity={0.3}/>
                       </linearGradient>
                     </defs>
+<<<<<<< HEAD
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="month" stroke="#64748b" fontSize={12} fontWeight={500} />
                     <YAxis stroke="#64748b" fontSize={12} />
+=======
+                    <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
+                    <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={600} />
+                    <YAxis stroke="#475569" fontSize={12} fontWeight={600} />
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                     <Tooltip 
                       contentStyle={{
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',

@@ -62,6 +62,7 @@ export function QuickActions() {
 
   return (
     <>
+<<<<<<< HEAD
       <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="text-lg font-semibold text-slate-900">
@@ -70,10 +71,24 @@ export function QuickActions() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-3">
+=======
+      <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-slate-50/50 backdrop-blur-sm rounded-2xl">
+        <CardHeader className="pb-6">
+          <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
+            <div className="p-2 bg-blue-100 rounded-xl">
+              ⚡
+            </div>
+            <span>Actions Rapides</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4">
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
             {quickActions.map((action, index) => (
               <Button
                 key={index}
                 variant="outline"
+<<<<<<< HEAD
                 className="h-auto p-4 flex flex-col items-center space-y-2 hover:shadow-md transition-all duration-200"
                 onClick={() => handleActionClick(action.action)}
               >
@@ -83,6 +98,17 @@ export function QuickActions() {
                 <div className="text-center">
                   <p className="text-sm font-medium text-slate-900">{action.title}</p>
                   <p className="text-xs text-slate-500 mt-1">{action.description}</p>
+=======
+                className="h-auto p-6 flex flex-col items-center space-y-3 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-0 bg-gradient-to-br from-white to-slate-50/80 rounded-2xl group"
+                onClick={() => handleActionClick(action.action)}
+              >
+                <div className={`p-4 rounded-2xl ${action.color} text-white transition-all duration-300 group-hover:scale-110 shadow-lg`}>
+                  <action.icon className="w-6 h-6" />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">{action.title}</p>
+                  <p className="text-xs text-slate-600 mt-1">{action.description}</p>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </div>
               </Button>
             ))}

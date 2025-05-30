@@ -9,11 +9,44 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+<<<<<<< HEAD
     "noImplicitAny": false,
     "noUnusedParameters": false,
     "skipLibCheck": true,
     "allowJs": true,
     "noUnusedLocals": false,
     "strictNullChecks": false
+=======
+    // Configuration sécurisée TypeScript
+    "strict": true,                           // Active toutes les vérifications strictes
+    "noImplicitAny": true,                   // Interdit les types 'any' implicites
+    "strictNullChecks": true,                // Vérifications strictes des valeurs null/undefined
+    "strictFunctionTypes": true,             // Vérifications strictes des types de fonctions
+    "strictBindCallApply": true,             // Vérifications strictes pour bind, call, apply
+    "strictPropertyInitialization": true,    // Vérifications strictes d'initialisation des propriétés
+    "noImplicitReturns": true,               // Erreur si toutes les branches ne retournent pas une valeur
+    "noFallthroughCasesInSwitch": true,      // Erreur pour les cases switch sans break
+    "noUncheckedIndexedAccess": true,        // Vérifications strictes pour l'accès aux index
+    "noImplicitOverride": true,              // Exige le mot-clé override
+    "exactOptionalPropertyTypes": true,      // Types exacts pour les propriétés optionnelles
+    "noPropertyAccessFromIndexSignature": true, // Interdit l'accès aux propriétés via index
+    
+    // Détection de code non utilisé (sécurité)
+    "noUnusedLocals": true,                  // Erreur pour les variables locales non utilisées
+    "noUnusedParameters": true,              // Erreur pour les paramètres non utilisés
+    "allowUnusedLabels": false,              // Interdit les labels non utilisés
+    "allowUnreachableCode": false,           // Interdit le code inaccessible
+    
+    // Autres options de sécurité
+    "skipLibCheck": true,                    // Garde pour les performances
+    "allowJs": false,                        // Interdit JavaScript pour forcer TypeScript
+    "checkJs": false,                        // Pas de vérification JS puisqu'on l'interdit
+    "declaration": true,                     // Génère les fichiers .d.ts
+    "declarationMap": true,                  // Génère les source maps pour les déclarations
+    "sourceMap": true,                       // Génère les source maps
+    "removeComments": true,                  // Supprime les commentaires en production
+    "noEmitOnError": true,                   // N'émet pas de fichiers en cas d'erreur
+    "forceConsistentCasingInFileNames": true // Force la cohérence de la casse des noms de fichiers
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   }
 }

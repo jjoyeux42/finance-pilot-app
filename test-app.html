@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Pilot - Test</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #3b82f6;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background-color: #2563eb;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function App() {
+            const [user, setUser] = useState(null);
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                // Simulation de chargement
+                setTimeout(() => {
+                    setLoading(false);
+                    // Simulation d'un utilisateur connecté
+                    setUser({ name: 'Utilisateur Test', email: 'test@example.com' });
+                }, 1000);
+            }, []);
+
+            if (loading) {
+                return (
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                        <div>Chargement de Finance Pilot...</div>
+                    </div>
+                );
+            }
+
+            if (!user) {
+                return <LoginForm onLogin={setUser} />;
+            }
+
+            return <Dashboard user={user} />;
+        }
+
+        function LoginForm({ onLogin }) {
+            const [email, setEmail] = useState('');
+            const [password, setPassword] = useState('');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                // Simulation de connexion
+                onLogin({ name: 'Utilisateur Test', email });
+            };
+
+            return (
+                <div className="container">
+                    <div className="header">
+                        <h1 style={{ fontSize: '2.5rem', margin: 0 }}>Finance Pilot</h1>
+                        <p style={{ fontSize: '1.2rem', margin: '10px 0 0 0', opacity: 0.9 }}>Votre tableau de bord financier intelligent</p>
+                    </div>
+                    <div style={{ maxWidth: '400px', margin: '40px auto' }}>
+                        <div className="card">
+                            <h2 style={{ marginTop: 0 }}>Connexion</h2>
+                            <form onSubmit={handleSubmit}>
+                                <div style={{ marginBottom: '16px' }}>
+                                    <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>Email</label>
+                                    <input 
+                                        type="email" 
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        style={{ width: '100%', padding: '8px 12px', border: '1px solid #d1d5db', borderRadius: '6px' }}
+                                        placeholder="votre@email.com"
+                                        required
+                                    />
+                                </div>
+                                <div style={{ marginBottom: '20px' }}>
+                                    <label style={{ display: 'block', marginBottom: '4px', fontWeight: '500' }}>Mot de passe</label>
+                                    <input 
+                                        type="password" 
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        style={{ width: '100%', padding: '8px 12px', border: '1px solid #d1d5db', borderRadius: '6px' }}
+                                        placeholder="••••••••"
+                                        required
+                                    />
+                                </div>
+                                <button type="submit" className="btn" style={{ width: '100%' }}>
+                                    Se connecter
+                                </button>
+                            </form>
+                            <p style={{ textAlign: 'center', marginTop: '16px', color: '#6b7280', fontSize: '0.9rem' }}>
+                                Version de test - Utilisez n'importe quel email/mot de passe
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function Dashboard({ user }) {
+            const [activeTab, setActiveTab] = useState('dashboard');
+
+            const kpis = [
+                { title: 'Chiffre d\'affaires', value: '€125,430', change: '+12.5%', positive: true },
+                { title: 'Bénéfices', value: '€23,890', change: '+8.2%', positive: true },
+                { title: 'Trésorerie', value: '€45,670', change: '-2.1%', positive: false },
+                { title: 'Créances', value: '€12,340', change: '+5.7%', positive: true }
+            ];
+
+            const transactions = [
+                { date: '2024-01-15', description: 'Vente produit A', amount: '+€1,250' },
+                { date: '2024-01-14', description: 'Facture fournisseur', amount: '-€890' },
+                { date: '2024-01-13', description: 'Virement client', amount: '+€2,100' },
+                { date: '2024-01-12', description: 'Charges sociales', amount: '-€1,450' }
+            ];
+
+            return (
+                <div>
+                    <div className="header">
+                        <div className="container">
+                            <h1 style={{ fontSize: '2rem', margin: 0 }}>Finance Pilot</h1>
+                            <p style={{ margin: '8px 0 0 0', opacity: 0.9 }}>Bienvenue, {user.name}</p>
+                        </div>
+                    </div>
+                    
+                    <div className="container">
+                        <div style={{ marginBottom: '20px' }}>
+                            <nav style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                {[
+                                    { id: 'dashboard', label: 'Tableau de bord' },
+                                    { id: 'treasury', label: 'Trésorerie' },
+                                    { id: 'sales', label: 'Ventes' },
+                                    { id: 'analytics', label: 'Analytics' },
+                                    { id: 'settings', label: 'Paramètres' }
+                                ].map(tab => (
+                                    <button 
+                                        key={tab.id}
+                                        onClick={() => setActiveTab(tab.id)}
+                                        className="btn"
+                                        style={{ 
+                                            backgroundColor: activeTab === tab.id ? '#3b82f6' : '#e5e7eb',
+                                            color: activeTab === tab.id ? 'white' : '#374151'
+                                        }}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                ))}
+                            </nav>
+                        </div>
+
+                        {activeTab === 'dashboard' && (
+                            <div>
+                                <h2>Indicateurs clés</h2>
+                                <div className="grid">
+                                    {kpis.map((kpi, index) => (
+                                        <div key={index} className="card">
+                                            <h3 style={{ margin: '0 0 8px 0', fontSize: '1rem', color: '#6b7280' }}>{kpi.title}</h3>
+                                            <div style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: '8px 0' }}>{kpi.value}</div>
+                                            <div style={{ color: kpi.positive ? '#10b981' : '#ef4444', fontSize: '0.9rem' }}>
+                                                {kpi.change}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="card" style={{ marginTop: '30px' }}>
+                                    <h3 style={{ marginTop: 0 }}>Transactions récentes</h3>
+                                    <div>
+                                        {transactions.map((transaction, index) => (
+                                            <div key={index} style={{ 
+                                                display: 'flex', 
+                                                justifyContent: 'space-between', 
+                                                alignItems: 'center',
+                                                padding: '12px 0',
+                                                borderBottom: index < transactions.length - 1 ? '1px solid #e5e7eb' : 'none'
+                                            }}>
+                                                <div>
+                                                    <div style={{ fontWeight: '500' }}>{transaction.description}</div>
+                                                    <div style={{ fontSize: '0.9rem', color: '#6b7280' }}>{transaction.date}</div>
+                                                </div>
+                                                <div style={{ 
+                                                    fontWeight: 'bold',
+                                                    color: transaction.amount.startsWith('+') ? '#10b981' : '#ef4444'
+                                                }}>
+                                                    {transaction.amount}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'treasury' && (
+                            <div className="card">
+                                <h2 style={{ marginTop: 0 }}>Gestion de Trésorerie</h2>
+                                <p>Module de gestion de trésorerie en cours de développement...</p>
+                                <div style={{ marginTop: '20px' }}>
+                                    <h3>Soldes des comptes</h3>
+                                    <div style={{ marginTop: '10px' }}>
+                                        <div style={{ padding: '10px', backgroundColor: '#f3f4f6', borderRadius: '6px', marginBottom: '8px' }}>
+                                            <strong>Compte principal:</strong> €45,670
+                                        </div>
+                                        <div style={{ padding: '10px', backgroundColor: '#f3f4f6', borderRadius: '6px', marginBottom: '8px' }}>
+                                            <strong>Compte épargne:</strong> €12,340
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'sales' && (
+                            <div className="card">
+                                <h2 style={{ marginTop: 0 }}>Analyse des Ventes</h2>
+                                <p>Module d'analyse des ventes en cours de développement...</p>
+                                <div style={{ marginTop: '20px' }}>
+                                    <h3>Ventes du mois</h3>
+                                    <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#3b82f6' }}>€125,430</div>
+                                    <p style={{ color: '#10b981' }}>+12.5% par rapport au mois dernier</p>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'analytics' && (
+                            <div className="card">
+                                <h2 style={{ marginTop: 0 }}>Analytics</h2>
+                                <p>Module d'analytics avancé en cours de développement...</p>
+                                <div style={{ marginTop: '20px' }}>
+                                    <h3>Métriques importantes</h3>
+                                    <ul>
+                                        <li>Taux de conversion: 3.2%</li>
+                                        <li>Panier moyen: €89</li>
+                                        <li>Clients actifs: 1,247</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'settings' && (
+                            <div className="card">
+                                <h2 style={{ marginTop: 0 }}>Paramètres</h2>
+                                <div style={{ marginTop: '20px' }}>
+                                    <h3>Profil utilisateur</h3>
+                                    <p><strong>Nom:</strong> {user.name}</p>
+                                    <p><strong>Email:</strong> {user.email}</p>
+                                    <button className="btn" style={{ marginTop: '10px' }}>
+                                        Modifier le profil
+                                    </button>
+                                </div>
+                                <div style={{ marginTop: '30px' }}>
+                                    <h3>Sécurité</h3>
+                                    <button className="btn">
+                                        Changer le mot de passe
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

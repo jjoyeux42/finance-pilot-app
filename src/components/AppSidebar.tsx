@@ -10,7 +10,17 @@ import {
   Wallet,
   PieChart,
   User,
+<<<<<<< HEAD
   LogOut
+=======
+  LogOut,
+  FileText,
+  PiggyBank,
+  Target,
+  Activity,
+  AlertTriangle,
+  FileBarChart
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 } from "lucide-react";
 import {
   Sidebar,
@@ -28,12 +38,20 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/useProfile";
 
+<<<<<<< HEAD
 const menuItems = [
   {
     title: "Dashboard",
     icon: LayoutDashboard,
     url: "/",
     isActive: true,
+=======
+const mainItems = [
+  {
+    title: "Tableau de bord",
+    icon: LayoutDashboard,
+    url: "/",
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   },
   {
     title: "Trésorerie",
@@ -41,6 +59,7 @@ const menuItems = [
     url: "/treasury",
   },
   {
+<<<<<<< HEAD
     title: "Rentabilité",
     icon: PieChart,
     url: "/profitability",
@@ -49,6 +68,16 @@ const menuItems = [
     title: "Commercial",
     icon: Users,
     url: "/sales",
+=======
+    title: "Commercial",
+    icon: TrendingUp,
+    url: "/sales",
+  },
+  {
+    title: "Rentabilité",
+    icon: DollarSign,
+    url: "/profitability",
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   },
   {
     title: "Analytics",
@@ -57,7 +86,55 @@ const menuItems = [
   },
 ];
 
+<<<<<<< HEAD
 const secondaryItems = [
+=======
+const managementItems = [
+  {
+    title: "Clients",
+    icon: Users,
+    url: "/customers",
+  },
+  {
+    title: "Factures",
+    icon: FileText,
+    url: "/invoices",
+  },
+  {
+    title: "Budget",
+    icon: PiggyBank,
+    url: "/budget",
+  },
+];
+
+const dashboardItems = [
+  {
+    title: "Vue Exécutive",
+    icon: Target,
+    url: "/executive",
+  },
+  {
+    title: "Vue Opérationnelle",
+    icon: Activity,
+    url: "/operational",
+  },
+  {
+    title: "Risques",
+    icon: AlertTriangle,
+    url: "/risk",
+  },
+];
+
+const reportItems = [
+  {
+    title: "Rapports",
+    icon: FileBarChart,
+    url: "/reports",
+  },
+];
+
+const settingsItems = [
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   {
     title: "Paramètres",
     icon: Settings,
@@ -103,7 +180,104 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
+<<<<<<< HEAD
               {menuItems.map((item) => {
+=======
+              {mainItems.map((item) => {
+                const isActive = currentPath === item.url || 
+                  (item.url !== "/" && currentPath.startsWith(item.url));
+                
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton 
+                      asChild 
+                      className={`
+                        transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                      `}
+                    >
+                      <a href={item.url} className="flex items-center space-x-3">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-slate-700 font-semibold">
+            Gestion
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {managementItems.map((item) => {
+                const isActive = currentPath === item.url || 
+                  (item.url !== "/" && currentPath.startsWith(item.url));
+                
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton 
+                      asChild 
+                      className={`
+                        transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                      `}
+                    >
+                      <a href={item.url} className="flex items-center space-x-3">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-slate-700 font-semibold">
+            Tableaux de Bord
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {dashboardItems.map((item) => {
+                const isActive = currentPath === item.url || 
+                  (item.url !== "/" && currentPath.startsWith(item.url));
+                
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton 
+                      asChild 
+                      className={`
+                        transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                      `}
+                    >
+                      <a href={item.url} className="flex items-center space-x-3">
+                        <item.icon className="w-5 h-5" />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-slate-700 font-semibold">
+            Rapports
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {reportItems.map((item) => {
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 const isActive = currentPath === item.url || 
                   (item.url !== "/" && currentPath.startsWith(item.url));
                 
@@ -134,7 +308,11 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
+<<<<<<< HEAD
               {secondaryItems.map((item) => (
+=======
+              {settingsItems.map((item) => (
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 

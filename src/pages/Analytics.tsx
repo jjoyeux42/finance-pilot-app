@@ -77,16 +77,27 @@ const Analytics = () => {
           </div>
 
           {/* Vue d'ensemble Performance */}
+<<<<<<< HEAD
           <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-xl font-bold text-slate-900 flex items-center">
                 <BarChart3 className="w-6 h-6 mr-3" />
                 Vue d'Ensemble Performance
+=======
+          <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+            <CardHeader className="pb-6">
+              <CardTitle className="text-2xl font-bold text-slate-900 flex items-center space-x-3">
+                <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
+                  <BarChart3 className="w-6 h-6" />
+                </div>
+                <span>Vue d'Ensemble Performance</span>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={400}>
                 <ComposedChart data={performanceData}>
+<<<<<<< HEAD
                   <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                   <XAxis dataKey="month" stroke="#64748b" />
                   <YAxis yAxisId="left" stroke="#64748b" />
@@ -102,6 +113,36 @@ const Analytics = () => {
                   <Bar yAxisId="left" dataKey="ca" fill="#3b82f6" name="CA Réalisé" />
                   <Bar yAxisId="left" dataKey="objectif" fill="#94a3b8" name="Objectif" />
                   <Line yAxisId="right" type="monotone" dataKey="clients" stroke="#10b981" strokeWidth={3} name="Nb Clients" />
+=======
+                  <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
+                  <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={500} />
+                  <YAxis yAxisId="left" stroke="#475569" fontSize={12} fontWeight={500} />
+                  <YAxis yAxisId="right" orientation="right" stroke="#475569" fontSize={12} fontWeight={500} />
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      border: 'none',
+                      borderRadius: '16px',
+                      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                      backdropFilter: 'blur(10px)',
+                      fontSize: '14px',
+                      fontWeight: '500'
+                    }}
+                  />
+                  <Bar yAxisId="left" dataKey="ca" fill="url(#colorCA)" name="CA Réalisé" radius={[4, 4, 0, 0]} />
+                  <Bar yAxisId="left" dataKey="objectif" fill="url(#colorObjectif)" name="Objectif" radius={[4, 4, 0, 0]} />
+                  <Line yAxisId="right" type="monotone" dataKey="clients" stroke="#10b981" strokeWidth={4} name="Nb Clients" dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: '#ffffff' }} />
+                  <defs>
+                    <linearGradient id="colorCA" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#3b82f6" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#1d4ed8" stopOpacity={0.8}/>
+                    </linearGradient>
+                    <linearGradient id="colorObjectif" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#94a3b8" stopOpacity={1}/>
+                      <stop offset="100%" stopColor="#64748b" stopOpacity={0.8}/>
+                    </linearGradient>
+                  </defs>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </ComposedChart>
               </ResponsiveContainer>
             </CardContent>
@@ -110,6 +151,7 @@ const Analytics = () => {
           {/* KPIs Résumé */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {kpiSummary.map((kpi, index) => (
+<<<<<<< HEAD
               <Card key={index} className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -118,6 +160,20 @@ const Analytics = () => {
                       <TrendingUp className="w-4 h-4 text-emerald-600" /> : 
                       <TrendingDown className="w-4 h-4 text-red-500" />
                     }
+=======
+              <Card key={index} className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-slate-50/30 backdrop-blur-sm rounded-2xl hover:shadow-2xl transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-sm font-semibold text-slate-700">{kpi.name}</h3>
+                    <div className={`p-2 rounded-xl ${
+                      kpi.trend === 'up' ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-500'
+                    }`}>
+                      {kpi.trend === 'up' ? 
+                        <TrendingUp className="w-4 h-4" /> : 
+                        <TrendingDown className="w-4 h-4" />
+                      }
+                    </div>
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">

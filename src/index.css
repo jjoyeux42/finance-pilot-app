@@ -93,6 +93,23 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+<<<<<<< HEAD
+=======
+    /* Empêcher les fonds jaunes pendant les transitions */
+    background-color: hsl(var(--background)) !important;
+  }
+  
+  /* Empêcher les fonds jaunes pendant les transitions de page */
+  html, body, #root {
+    background-color: hsl(var(--background)) !important;
+  }
+  
+  /* Empêcher spécifiquement les couleurs jaunes sur les éléments de transition */
+  [style*="yellow"], [style*="#ff"], [style*="#fe"], [style*="#fd"],
+  [style*="#FFF"], [style*="#FEF"], [style*="#FDF"] {
+    background-color: hsl(var(--background)) !important;
+    background: hsl(var(--background)) !important;
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   }
 }
 
@@ -140,4 +157,51 @@
   .gradient-indigo {
     background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   }
+<<<<<<< HEAD
+=======
+
+  /* Suppression complète des fonds jaunes des graphiques Recharts */
+  .recharts-wrapper,
+  .recharts-surface,
+  .recharts-cartesian-grid,
+  .recharts-responsive-container,
+  [class*="recharts"],
+  svg.recharts-surface {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+  
+  /* Forcer tous les éléments avec des styles inline à être transparents */
+  .recharts-wrapper[style],
+  .recharts-surface[style],
+  .recharts-responsive-container[style] {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+  
+  /* Supprimer spécifiquement les couleurs jaunes (#FFFF**, #FEF**, #FDF**) */
+  [style*="#FFF"],
+  [style*="#FEF"],
+  [style*="#FDF"],
+  [style*="yellow"],
+  [style*="#f59e0b"],
+  [style*="#fbbf24"],
+  [style*="#facc15"] {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+  
+  /* Règles globales pour tous les SVG dans les graphiques */
+  .recharts-wrapper svg,
+  .recharts-responsive-container svg {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+  
+  /* Forcer la transparence sur tous les conteneurs de graphiques */
+  div[class*="recharts"] {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+>>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 }
