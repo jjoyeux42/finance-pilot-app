@@ -174,16 +174,23 @@
     background-color: transparent !important;
   }
   
-  /* Supprimer spécifiquement les couleurs jaunes (#FFFF**, #FEF**, #FDF**) */
+  /* Supprimer spécifiquement les couleurs jaunes et blanches dans les graphiques */
   [style*="#FFF"],
+  [style*="#fff"],
+  [style*="#FFFFFF"],
+  [style*="#ffffff"],
   [style*="#FEF"],
   [style*="#FDF"],
   [style*="yellow"],
   [style*="#f59e0b"],
   [style*="#fbbf24"],
-  [style*="#facc15"] {
+  [style*="#facc15"],
+  [fill="#ffffff"],
+  [fill="#FFF"],
+  [fill="white"] {
     background: transparent !important;
     background-color: transparent !important;
+    fill: transparent !important;
   }
   
   /* Règles globales pour tous les SVG dans les graphiques */
@@ -197,5 +204,51 @@
   div[class*="recharts"] {
     background: transparent !important;
     background-color: transparent !important;
+  }
+  
+  /* Règles de responsivité globales */
+  .responsive-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .responsive-grid-2 {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  
+  .responsive-grid-3 {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .responsive-grid-4 {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  /* Amélioration de la responsivité des graphiques */
+  .chart-container {
+    width: 100%;
+    height: 300px;
+    min-height: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    .chart-container {
+      height: 250px;
+      min-height: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chart-container {
+      height: 200px;
+      min-height: 180px;
+    }
   }
 }

@@ -189,8 +189,8 @@ const Sales = () => {
                         fontWeight: '500'
                       }}
                     />
-                    <Line type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={4} name="CA" dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: '#ffffff' }} />
-                    <Line type="monotone" dataKey="converted" stroke="#3b82f6" strokeWidth={4} name="Conversions" dot={{ fill: '#3b82f6', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#3b82f6', strokeWidth: 2, fill: '#ffffff' }} />
+                    <Line type="monotone" dataKey="revenue" stroke="#10b981" strokeWidth={4} name="CA" dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: 'transparent' }} />
+                <Line type="monotone" dataKey="converted" stroke="#3b82f6" strokeWidth={4} name="Conversions" dot={{ fill: '#3b82f6', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#3b82f6', strokeWidth: 2, fill: 'transparent' }} />
                   </LineChart>
                 </ResponsiveContainer>
               </CardContent>

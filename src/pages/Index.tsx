@@ -28,12 +28,12 @@ const Index = () => {
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Tableau de Bord</h1>
-              <p className="text-gray-600 mt-1">Vue d'ensemble de votre situation financière</p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+            <div className="flex-1">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Tableau de Bord</h1>
+              <p className="text-gray-600 mt-1 text-sm sm:text-base">Vue d'ensemble de votre situation financière</p>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 w-full sm:w-auto justify-end">
               <Button
                 variant="outline"
                 size="icon"
@@ -48,7 +48,7 @@ const Index = () => {
           </div>
 
           {/* KPIs Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="responsive-grid-4">
             <KPICard
               title="Chiffre d'Affaires"
               value="245 680€"
@@ -89,8 +89,12 @@ const Index = () => {
 
           {/* Main Charts and Alerts */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <CashFlowChart />
-            <AlertPanel />
+            <div className="lg:col-span-2">
+              <CashFlowChart />
+            </div>
+            <div className="lg:col-span-1">
+              <AlertPanel />
+            </div>
           </div>
 
           {/* Quick Actions */}

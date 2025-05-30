@@ -132,15 +132,15 @@ export function AppSidebar() {
     : user?.email?.[0]?.toUpperCase() || 'U';
 
   return (
-    <Sidebar className="border-r border-slate-200 bg-white">
-      <SidebarHeader className="border-b border-slate-200 p-4 bg-white">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
-            <DollarSign className="w-6 h-6 text-white" />
+    <Sidebar className="border-r-0 bg-gradient-to-b from-white to-slate-50/50 backdrop-blur-xl shadow-2xl">
+      <SidebarHeader className="border-b border-slate-200/50 bg-white/80 backdrop-blur-sm">
+        <div className="flex items-center space-x-3 px-3 sm:px-4 py-4 sm:py-6">
+          <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+            <span className="text-white font-bold text-sm sm:text-lg">FP</span>
           </div>
-          <div>
-            <h1 className="font-bold text-lg text-slate-900">FinancePilot</h1>
-            <p className="text-sm text-slate-600">Pilotage financier</p>
+          <div className="min-w-0 flex-1">
+            <h2 className="font-bold text-slate-900 text-base sm:text-lg truncate">Finance Pilot</h2>
+            <p className="text-xs text-slate-500 truncate">Tableau de bord</p>
           </div>
         </div>
       </SidebarHeader>

@@ -48,16 +48,16 @@ const Analytics = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-indigo-50">
+      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-blue-50">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">Analytics</h1>
-                <p className="text-slate-600">Analyses avancées et business intelligence</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">📊 Analytics</h1>
+                <p className="text-slate-600 text-sm sm:text-base">Analyse détaillée de vos performances</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -106,7 +106,7 @@ const Analytics = () => {
                   />
                   <Bar yAxisId="left" dataKey="ca" fill="url(#colorCA)" name="CA Réalisé" radius={[4, 4, 0, 0]} />
                   <Bar yAxisId="left" dataKey="objectif" fill="url(#colorObjectif)" name="Objectif" radius={[4, 4, 0, 0]} />
-                  <Line yAxisId="right" type="monotone" dataKey="clients" stroke="#10b981" strokeWidth={4} name="Nb Clients" dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: '#ffffff' }} />
+                  <Line yAxisId="right" type="monotone" dataKey="clients" stroke="#10b981" strokeWidth={4} name="Nb Clients" dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }} activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: 'transparent' }} />
                   <defs>
                     <linearGradient id="colorCA" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#3b82f6" stopOpacity={1}/>
@@ -123,7 +123,7 @@ const Analytics = () => {
           </Card>
 
           {/* KPIs Résumé */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="responsive-grid-4">
             {kpiSummary.map((kpi, index) => (
               <Card key={index} className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-slate-50/30 backdrop-blur-sm rounded-2xl hover:shadow-2xl transition-all duration-300">
                 <CardContent className="p-6">
@@ -159,7 +159,7 @@ const Analytics = () => {
           </div>
 
           {/* Graphiques Avancés */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="responsive-grid-2">
             <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">

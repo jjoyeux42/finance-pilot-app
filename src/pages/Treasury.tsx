@@ -40,14 +40,14 @@ const Treasury = () => {
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-blue-50">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">💰 Trésorerie</h1>
-                <p className="text-slate-600">Gestion et suivi de votre flux de trésorerie</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">💰 Trésorerie</h1>
+                <p className="text-slate-600 text-sm sm:text-base">Gestion et suivi de votre flux de trésorerie</p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -71,7 +71,7 @@ const Treasury = () => {
           </div>
 
           {/* KPIs Trésorerie */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="responsive-grid-4">
             <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
@@ -140,7 +140,7 @@ const Treasury = () => {
           </div>
 
           {/* Graphiques modernisés */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="responsive-grid-2">
             <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
@@ -179,7 +179,7 @@ const Treasury = () => {
                       stroke="#3b82f6" 
                       strokeWidth={4} 
                       dot={{ fill: '#3b82f6', strokeWidth: 2, r: 6 }}
-                      activeDot={{ r: 8, stroke: '#3b82f6', strokeWidth: 2, fill: '#ffffff' }}
+                      activeDot={{ r: 8, stroke: '#3b82f6', strokeWidth: 2, fill: 'transparent' }}
                       filter="url(#glow)"
                     />
                     <defs>

@@ -217,9 +217,9 @@ export function NotificationCenter({ isOpen, onClose }: NotificationCenterProps)
 
   return (
     <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm" onClick={onClose}>
-      <div 
-        className="fixed right-4 top-4 w-96 max-h-[80vh] bg-white rounded-lg shadow-xl border"
-        onClick={(e) => e.stopPropagation()}
+        <div 
+          className="fixed right-2 sm:right-4 top-2 sm:top-4 w-[calc(100vw-1rem)] sm:w-96 max-w-md max-h-[90vh] sm:max-h-[80vh] bg-white rounded-lg shadow-xl border"
+          onClick={(e) => e.stopPropagation()}
       >
         <Card className="border-0 shadow-none">
           <CardHeader className="pb-3">

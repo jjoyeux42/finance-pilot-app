@@ -14,17 +14,17 @@ const cashFlowData = [
 
 export function CashFlowChart() {
   return (
-    <Card className="col-span-2 border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl overflow-hidden">
-      <CardHeader className="pb-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-        <CardTitle className="text-xl font-bold flex items-center space-x-3">
+    <Card className="w-full border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl overflow-hidden">
+      <CardHeader className="pb-4 sm:pb-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <CardTitle className="text-lg sm:text-xl font-bold flex items-center space-x-3">
           <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
             📈
           </div>
-          <span>Évolution de Trésorerie</span>
+          <span className="truncate">Évolution de Trésorerie</span>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="h-80 p-6">
+      <CardContent className="p-3 sm:p-6">
+        <div className="chart-container">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={cashFlowData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
               <defs>
@@ -89,7 +89,7 @@ export function CashFlowChart() {
                 fill="url(#colorSolde)"
                 name="Solde Actuel"
                 dot={{ fill: '#6366f1', strokeWidth: 3, r: 6, filter: 'url(#glow)' }}
-                activeDot={{ r: 10, stroke: '#6366f1', strokeWidth: 3, fill: '#ffffff', filter: 'url(#glow)' }}
+                activeDot={{ r: 10, stroke: '#6366f1', strokeWidth: 3, fill: 'transparent', filter: 'url(#glow)' }}
                 filter="url(#glow)"
               />
               <Area
@@ -101,7 +101,7 @@ export function CashFlowChart() {
                 fill="url(#colorPrevision)"
                 name="Prévision"
                 dot={{ fill: '#10b981', strokeWidth: 2, r: 5 }}
-                activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: '#ffffff' }}
+                activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: 'transparent' }}
               />
             </AreaChart>
           </ResponsiveContainer>
