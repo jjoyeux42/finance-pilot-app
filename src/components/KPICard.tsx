@@ -47,15 +47,6 @@ export function KPICard({
   const getColorClasses = () => {
     switch (color) {
       case 'success':
-<<<<<<< HEAD
-        return 'border-l-4 border-emerald-500 bg-white/70 backdrop-blur-sm shadow-md';
-      case 'warning':
-        return 'border-l-4 border-orange-500 bg-white/70 backdrop-blur-sm shadow-md';
-      case 'danger':
-        return 'border-l-4 border-red-500 bg-white/70 backdrop-blur-sm shadow-md';
-      default:
-        return 'border-l-4 border-blue-500 bg-white/70 backdrop-blur-sm shadow-md';
-=======
         return 'border-l-4 border-emerald-500 bg-gradient-to-br from-white/90 to-emerald-50/30 backdrop-blur-sm shadow-lg';
       case 'warning':
         return 'border-l-4 border-indigo-500 bg-gradient-to-br from-white/90 to-indigo-50/30 backdrop-blur-sm shadow-lg';
@@ -63,22 +54,10 @@ export function KPICard({
         return 'border-l-4 border-red-500 bg-gradient-to-br from-white/90 to-red-50/30 backdrop-blur-sm shadow-lg';
       default:
         return 'border-l-4 border-blue-500 bg-gradient-to-br from-white/90 to-blue-50/30 backdrop-blur-sm shadow-lg';
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
     }
   };
 
   return (
-<<<<<<< HEAD
-    <Card className={`transition-all duration-200 hover:shadow-lg hover:-translate-y-1 border-0 ${getColorClasses()}`}>
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <div className="flex items-center space-x-2 mb-2">
-              {icon && <div className="text-blue-600">{icon}</div>}
-              <h3 className="text-sm font-medium text-slate-600">{title}</h3>
-            </div>
-            <p className="text-2xl font-bold text-slate-900 mb-2">{value}</p>
-=======
     <Card className={`transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-0 rounded-2xl ${getColorClasses()}`}>
       <CardContent className="p-7">
         <div className="flex items-start justify-between">
@@ -88,7 +67,6 @@ export function KPICard({
               <h3 className="text-sm font-semibold text-slate-700 tracking-wide">{title}</h3>
             </div>
             <p className="text-3xl font-bold text-slate-900 mb-3 tracking-tight">{value}</p>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
             {change !== undefined && (
               <div className="flex items-center space-x-1">
                 {getTrendIcon()}

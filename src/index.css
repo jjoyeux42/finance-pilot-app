@@ -93,8 +93,6 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-<<<<<<< HEAD
-=======
     /* Empêcher les fonds jaunes pendant les transitions */
     background-color: hsl(var(--background)) !important;
   }
@@ -109,7 +107,6 @@
   [style*="#FFF"], [style*="#FEF"], [style*="#FDF"] {
     background-color: hsl(var(--background)) !important;
     background: hsl(var(--background)) !important;
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   }
 }
 
@@ -157,8 +154,6 @@
   .gradient-indigo {
     background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   }
-<<<<<<< HEAD
-=======
 
   /* Suppression complète des fonds jaunes des graphiques Recharts */
   .recharts-wrapper,
@@ -203,5 +198,4 @@
     background: transparent !important;
     background-color: transparent !important;
   }
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 }

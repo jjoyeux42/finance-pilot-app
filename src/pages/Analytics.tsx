@@ -77,13 +77,6 @@ const Analytics = () => {
           </div>
 
           {/* Vue d'ensemble Performance */}
-<<<<<<< HEAD
-          <Card className="border-0 shadow-lg bg-white/70 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-xl font-bold text-slate-900 flex items-center">
-                <BarChart3 className="w-6 h-6 mr-3" />
-                Vue d'Ensemble Performance
-=======
           <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
             <CardHeader className="pb-6">
               <CardTitle className="text-2xl font-bold text-slate-900 flex items-center space-x-3">
@@ -91,29 +84,11 @@ const Analytics = () => {
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <span>Vue d'Ensemble Performance</span>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               </CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={400}>
                 <ComposedChart data={performanceData}>
-<<<<<<< HEAD
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis dataKey="month" stroke="#64748b" />
-                  <YAxis yAxisId="left" stroke="#64748b" />
-                  <YAxis yAxisId="right" orientation="right" stroke="#64748b" />
-                  <Tooltip 
-                    contentStyle={{
-                      backgroundColor: 'white',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '12px',
-                      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
-                    }}
-                  />
-                  <Bar yAxisId="left" dataKey="ca" fill="#3b82f6" name="CA Réalisé" />
-                  <Bar yAxisId="left" dataKey="objectif" fill="#94a3b8" name="Objectif" />
-                  <Line yAxisId="right" type="monotone" dataKey="clients" stroke="#10b981" strokeWidth={3} name="Nb Clients" />
-=======
                   <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
                   <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={500} />
                   <YAxis yAxisId="left" stroke="#475569" fontSize={12} fontWeight={500} />
@@ -142,7 +117,6 @@ const Analytics = () => {
                       <stop offset="100%" stopColor="#64748b" stopOpacity={0.8}/>
                     </linearGradient>
                   </defs>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </ComposedChart>
               </ResponsiveContainer>
             </CardContent>
@@ -151,16 +125,6 @@ const Analytics = () => {
           {/* KPIs Résumé */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {kpiSummary.map((kpi, index) => (
-<<<<<<< HEAD
-              <Card key={index} className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-medium text-slate-600">{kpi.name}</h3>
-                    {kpi.trend === 'up' ? 
-                      <TrendingUp className="w-4 h-4 text-emerald-600" /> : 
-                      <TrendingDown className="w-4 h-4 text-red-500" />
-                    }
-=======
               <Card key={index} className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-slate-50/30 backdrop-blur-sm rounded-2xl hover:shadow-2xl transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -173,7 +137,6 @@ const Analytics = () => {
                         <TrendingDown className="w-4 h-4" />
                       }
                     </div>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">

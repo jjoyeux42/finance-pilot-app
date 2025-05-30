@@ -7,14 +7,11 @@ import { Label } from '@/components/ui/label';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { DollarSign } from 'lucide-react';
-<<<<<<< HEAD
-=======
 import { 
   validateLoginData, 
   validateRegistrationData, 
   sanitizeString 
 } from '@/lib/validation';
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -30,11 +27,6 @@ export default function Auth() {
     setLoading(true);
 
     try {
-<<<<<<< HEAD
-      if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-=======
       // Validation côté client avant envoi
       if (isLogin) {
         const loginValidation = validateLoginData({ email, password });
@@ -49,7 +41,6 @@ export default function Auth() {
 
         const { error } = await supabase.auth.signInWithPassword({
           email: email.trim().toLowerCase(),
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
           password,
         });
         if (error) throw error;
@@ -58,15 +49,6 @@ export default function Auth() {
           description: "Vous êtes maintenant connecté.",
         });
       } else {
-<<<<<<< HEAD
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              first_name: firstName,
-              last_name: lastName,
-=======
         // Validation complète pour l'inscription
         const registrationValidation = validateRegistrationData({
           email,
@@ -94,24 +76,12 @@ export default function Auth() {
             data: {
               first_name: cleanFirstName,
               last_name: cleanLastName,
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
             },
           },
         });
         if (error) throw error;
         toast({
           title: "Inscription réussie",
-<<<<<<< HEAD
-          description: "Votre compte a été créé avec succès.",
-        });
-      }
-    } catch (error: any) {
-      toast({
-        title: "Erreur",
-        description: error.message,
-        variant: "destructive",
-      });
-=======
           description: "Votre compte a été créé avec succès. Vérifiez votre email pour confirmer votre compte.",
         });
       }
@@ -141,7 +111,6 @@ export default function Auth() {
         timestamp: new Date().toISOString(),
         // Ne pas logger les détails de l'erreur en production
       });
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
     } finally {
       setLoading(false);
     }

@@ -14,47 +14,6 @@ const cashFlowData = [
 
 export function CashFlowChart() {
   return (
-<<<<<<< HEAD
-    <Card className="col-span-2 border-0 shadow-lg bg-white/80 backdrop-blur-sm">
-      <CardHeader>
-        <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
-          📈 Évolution de Trésorerie
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="h-80">
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={cashFlowData}>
-              <defs>
-                <linearGradient id="colorSolde" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                </linearGradient>
-                <linearGradient id="colorPrevision" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                  <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis 
-                dataKey="month" 
-                stroke="#64748b"
-                fontSize={12}
-                fontWeight={500}
-              />
-              <YAxis 
-                stroke="#64748b"
-                fontSize={12}
-                tickFormatter={(value) => `${value / 1000}k€`}
-              />
-              <Tooltip 
-                contentStyle={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                  border: 'none',
-                  borderRadius: '12px',
-                  boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.25)',
-                  backdropFilter: 'blur(16px)'
-=======
     <Card className="col-span-2 border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl overflow-hidden">
       <CardHeader className="pb-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
         <CardTitle className="text-xl font-bold flex items-center space-x-3">
@@ -116,7 +75,6 @@ export function CashFlowChart() {
                   boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
                   fontSize: '14px',
                   fontWeight: '500'
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 }}
                 formatter={(value: number, name) => [
                   `${value.toLocaleString()}€`,
@@ -126,12 +84,6 @@ export function CashFlowChart() {
               <Area
                 type="monotone"
                 dataKey="solde"
-<<<<<<< HEAD
-                stroke="#3b82f6"
-                strokeWidth={3}
-                fillOpacity={1}
-                fill="url(#colorSolde)"
-=======
                 stroke="#6366f1"
                 strokeWidth={4}
                 fill="url(#colorSolde)"
@@ -139,25 +91,17 @@ export function CashFlowChart() {
                 dot={{ fill: '#6366f1', strokeWidth: 3, r: 6, filter: 'url(#glow)' }}
                 activeDot={{ r: 10, stroke: '#6366f1', strokeWidth: 3, fill: '#ffffff', filter: 'url(#glow)' }}
                 filter="url(#glow)"
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               />
               <Area
                 type="monotone"
                 dataKey="prevision"
                 stroke="#10b981"
-<<<<<<< HEAD
-                strokeWidth={2}
-                strokeDasharray="8 8"
-                fillOpacity={1}
-                fill="url(#colorPrevision)"
-=======
                 strokeWidth={3}
                 strokeDasharray="8 6"
                 fill="url(#colorPrevision)"
                 name="Prévision"
                 dot={{ fill: '#10b981', strokeWidth: 2, r: 5 }}
                 activeDot={{ r: 8, stroke: '#10b981', strokeWidth: 2, fill: '#ffffff' }}
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               />
             </AreaChart>
           </ResponsiveContainer>

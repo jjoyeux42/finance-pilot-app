@@ -52,15 +52,6 @@ export function AlertPanel() {
   const getAlertColor = (type: string) => {
     switch (type) {
       case 'warning':
-<<<<<<< HEAD
-        return 'text-orange-600 bg-orange-100';
-      case 'danger':
-        return 'text-red-500 bg-red-100';
-      case 'success':
-        return 'text-emerald-600 bg-emerald-100';
-      default:
-        return 'text-blue-600 bg-blue-100';
-=======
         return 'text-indigo-600 bg-indigo-50 border-indigo-200';
       case 'danger':
         return 'text-red-500 bg-red-50 border-red-200';
@@ -68,7 +59,6 @@ export function AlertPanel() {
         return 'text-emerald-600 bg-emerald-50 border-emerald-200';
       default:
         return 'text-blue-600 bg-blue-50 border-blue-200';
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
     }
   };
 
@@ -76,11 +66,7 @@ export function AlertPanel() {
     <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="text-lg font-semibold text-slate-900 flex items-center space-x-2">
-<<<<<<< HEAD
-          <AlertTriangle className="w-5 h-5 text-orange-600" />
-=======
           <AlertTriangle className="w-5 h-5 text-indigo-600" />
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
           <span>Alertes et Notifications</span>
         </CardTitle>
       </CardHeader>
@@ -88,15 +74,9 @@ export function AlertPanel() {
         {alerts.map((alert) => (
           <div
             key={alert.id}
-<<<<<<< HEAD
-            className="flex items-start space-x-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors"
-          >
-            <div className={`p-2 rounded-full ${getAlertColor(alert.type)}`}>
-=======
             className="flex items-start space-x-3 p-4 rounded-xl border hover:bg-slate-50/80 transition-all duration-200 hover:shadow-md backdrop-blur-sm"
           >
             <div className={`p-2.5 rounded-xl border ${getAlertColor(alert.type)}`}>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               {getAlertIcon(alert.type)}
             </div>
             <div className="flex-1 min-w-0">

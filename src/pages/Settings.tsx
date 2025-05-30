@@ -8,10 +8,7 @@ import { Switch } from '@/components/ui/switch';
 import { useSettings } from '@/hooks/useSettings';
 import { useProfile } from '@/hooks/useProfile';
 import { useAuth } from '@/hooks/useAuth';
-<<<<<<< HEAD
-=======
 import { ChangePasswordModal } from '@/components/modals/ChangePasswordModal';
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 import { 
   Settings as SettingsIcon, 
   User, 
@@ -44,13 +41,8 @@ const Settings = () => {
   };
 
   const handlePasswordChange = () => {
-<<<<<<< HEAD
-    // Redirect to change password functionality
-    console.log('Redirection vers changement de mot de passe');
-=======
     // La fonctionnalité est maintenant gérée par le modal ChangePasswordModal
     // Pas besoin d'action supplémentaire ici
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   };
 
   const handleSignOut = async () => {
@@ -97,14 +89,6 @@ const Settings = () => {
                   <h3 className="font-semibold text-gray-900">{displayName}</h3>
                   <p className="text-sm text-slate-600">{user?.email}</p>
                 </div>
-<<<<<<< HEAD
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" variant="outline" onClick={handleProfileRedirect}>
-                  Modifier le profil
-                </Button>
-                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline" onClick={handlePasswordChange}>
-                  Changer le mot de passe
-                </Button>
-=======
                 <Button className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg transition-all duration-200 transform hover:scale-[1.02]" variant="outline" onClick={handleProfileRedirect}>
                   Modifier le profil
                 </Button>
@@ -113,7 +97,6 @@ const Settings = () => {
                     Changer le mot de passe
                   </Button>
                 </ChangePasswordModal>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               </CardContent>
             </Card>
 
@@ -173,11 +156,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-=======
                     <Button size="sm" className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       Connecter
                     </Button>
                   </div>
@@ -190,11 +169,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Connecté</p>
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <Button size="sm" variant="outline" className="w-full">
-=======
                     <Button size="sm" variant="outline" className="w-full border-2 border-rose-300 text-rose-600 hover:bg-rose-50 hover:border-rose-400 transition-all duration-200">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       <Unlink className="w-4 h-4 mr-2" />
                       Déconnecter
                     </Button>
@@ -208,11 +183,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <Button size="sm" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-=======
                     <Button size="sm" className="w-full bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       Connecter
                     </Button>
                   </div>
@@ -225,11 +196,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <Button size="sm" className="w-full bg-orange-600 hover:bg-orange-700 text-white">
-=======
                     <Button size="sm" className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       Connecter
                     </Button>
                   </div>
@@ -242,11 +209,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Connecté</p>
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <Button size="sm" variant="outline" className="w-full">
-=======
                     <Button size="sm" variant="outline" className="w-full border-2 border-rose-300 text-rose-600 hover:bg-rose-50 hover:border-rose-400 transition-all duration-200">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       <Unlink className="w-4 h-4 mr-2" />
                       Déconnecter
                     </Button>
@@ -260,11 +223,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-<<<<<<< HEAD
-                    <Button size="sm" className="w-full bg-teal-600 hover:bg-teal-700 text-white">
-=======
                     <Button size="sm" className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                       Connecter
                     </Button>
                   </div>
@@ -281,18 +240,6 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 bg-white">
-<<<<<<< HEAD
-                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline">
-                  Authentification 2FA
-                </Button>
-                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline">
-                  Sessions actives
-                </Button>
-                <Button className="w-full bg-gray-600 hover:bg-gray-700 text-white" variant="outline">
-                  Historique de connexion
-                </Button>
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white" variant="destructive" onClick={handleSignOut}>
-=======
                 <Button className="w-full bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]" variant="outline">
                   Authentification 2FA
                 </Button>
@@ -303,7 +250,6 @@ const Settings = () => {
                   Historique de connexion
                 </Button>
                 <Button className="w-full bg-gradient-to-r from-rose-500 to-red-500 hover:from-rose-600 hover:to-red-600 text-white shadow-lg transition-all duration-200 transform hover:scale-[1.02]" variant="destructive" onClick={handleSignOut}>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   Déconnecter partout
                 </Button>
               </CardContent>
@@ -319,19 +265,11 @@ const Settings = () => {
               </CardHeader>
               <CardContent className="space-y-4 bg-white">
                 <div className="grid grid-cols-2 gap-4">
-<<<<<<< HEAD
-                  <Button variant="outline" className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white border-0">
-                    <Download className="w-4 h-4" />
-                    <span>Exporter les données</span>
-                  </Button>
-                  <Button variant="outline" className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white border-0">
-=======
                   <Button variant="outline" className="flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0 shadow-md transition-all duration-200 transform hover:scale-[1.02]">
                     <Download className="w-4 h-4" />
                     <span>Exporter les données</span>
                   </Button>
                   <Button variant="outline" className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white border-0 shadow-md transition-all duration-200 transform hover:scale-[1.02]">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                     <Database className="w-4 h-4" />
                     <span>Sauvegarde automatique</span>
                   </Button>
@@ -343,25 +281,15 @@ const Settings = () => {
             </Card>
 
             {/* Zone dangereuse */}
-<<<<<<< HEAD
-            <Card className="lg:col-span-3 border-red-200 bg-white shadow-md">
-              <CardHeader className="bg-white">
-                <CardTitle className="flex items-center space-x-2 text-red-600">
-=======
             <Card className="lg:col-span-3 border-rose-200 bg-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-rose-600">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   <Trash2 className="w-5 h-5" />
                   <span>Zone dangereuse</span>
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 bg-white">
-<<<<<<< HEAD
-                <Button variant="destructive" className="w-full bg-red-600 hover:bg-red-700">
-=======
                 <Button variant="destructive" className="w-full bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 shadow-lg transition-all duration-200 transform hover:scale-[1.02] border-2 border-red-300">
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   Supprimer le compte
                 </Button>
                 <p className="text-xs text-slate-500">

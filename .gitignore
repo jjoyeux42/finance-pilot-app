@@ -12,8 +12,6 @@ dist
 dist-ssr
 *.local
 
-<<<<<<< HEAD
-=======
 # Environment variables
 .env
 .env.local
@@ -28,7 +26,6 @@ dist-ssr
 .env.test.local
 .env.production.local
 
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

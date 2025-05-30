@@ -9,14 +9,6 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-<<<<<<< HEAD
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false
-=======
     // Configuration sécurisée TypeScript
     "strict": true,                           // Active toutes les vérifications strictes
     "noImplicitAny": true,                   // Interdit les types 'any' implicites
@@ -47,6 +39,5 @@
     "removeComments": true,                  // Supprime les commentaires en production
     "noEmitOnError": true,                   // N'émet pas de fichiers en cas d'erreur
     "forceConsistentCasingInFileNames": true // Force la cohérence de la casse des noms de fichiers
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   }
 }

@@ -17,27 +17,6 @@ const TopPerformers = () => {
   ];
 
   return (
-<<<<<<< HEAD
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Top Clients */}
-      <Card className="bg-white border-gray-200 shadow-lg">
-        <CardHeader className="bg-white pb-3">
-          <CardTitle className="flex items-center space-x-2 text-gray-900">
-            <Users className="w-5 h-5 text-blue-600" />
-            <span>Top Clients</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="bg-white space-y-4">
-          {topClients.map((client, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-              <div>
-                <p className="font-medium text-gray-900">{client.name}</p>
-                <p className="text-sm text-gray-600">{client.revenue}</p>
-              </div>
-              <div className="flex items-center space-x-1 text-green-600">
-                <TrendingUp className="w-4 h-4" />
-                <span className="text-sm font-medium">{client.growth}</span>
-=======
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* Top Clients */}
       <Card className="bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm border-0 shadow-xl rounded-2xl">
@@ -68,7 +47,6 @@ const TopPerformers = () => {
               <div className="flex items-center space-x-2 text-emerald-600">
                 <TrendingUp className="w-4 h-4" />
                 <span className="text-sm font-bold">{client.growth}</span>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               </div>
             </div>
           ))}
@@ -76,25 +54,6 @@ const TopPerformers = () => {
       </Card>
 
       {/* Top Produits */}
-<<<<<<< HEAD
-      <Card className="bg-white border-gray-200 shadow-lg">
-        <CardHeader className="bg-white pb-3">
-          <CardTitle className="flex items-center space-x-2 text-gray-900">
-            <Package className="w-5 h-5 text-blue-600" />
-            <span>Top Produits</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="bg-white space-y-4">
-          {topProducts.map((product, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-              <div>
-                <p className="font-medium text-gray-900">{product.name}</p>
-                <p className="text-sm text-gray-600">{product.revenue}</p>
-              </div>
-              <div className="flex items-center space-x-1 text-green-600">
-                <TrendingUp className="w-4 h-4" />
-                <span className="text-sm font-medium">{product.growth}</span>
-=======
       <Card className="bg-gradient-to-br from-white/95 to-purple-50/30 backdrop-blur-sm border-0 shadow-xl rounded-2xl">
         <CardHeader className="pb-6">
           <CardTitle className="flex items-center space-x-3 text-slate-900">
@@ -119,7 +78,6 @@ const TopPerformers = () => {
               <div className="flex items-center space-x-2 text-emerald-600">
                 <TrendingUp className="w-4 h-4" />
                 <span className="text-sm font-bold">{product.growth}</span>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
               </div>
             </div>
           ))}

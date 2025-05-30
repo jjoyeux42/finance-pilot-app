@@ -146,13 +146,6 @@ const Profitability = () => {
           </div>
 
           {/* Graphiques */}
-<<<<<<< HEAD
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold text-slate-900">
-                  Évolution CA vs Marge
-=======
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-6">
@@ -161,26 +154,11 @@ const Profitability = () => {
                     📊
                   </div>
                   <span>Évolution CA vs Marge</span>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={profitabilityData}>
-<<<<<<< HEAD
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                    <XAxis dataKey="month" stroke="#64748b" />
-                    <YAxis stroke="#64748b" />
-                    <Tooltip 
-                      contentStyle={{
-                        backgroundColor: 'white',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '8px'
-                      }}
-                    />
-                    <Bar dataKey="ca" fill="#3b82f6" name="Chiffre d'Affaires" />
-                    <Bar dataKey="marge" fill="#10b981" name="Marge" />
-=======
                     <CartesianGrid strokeDasharray="5 5" stroke="#e2e8f0" opacity={0.6} />
                     <XAxis dataKey="month" stroke="#475569" fontSize={12} fontWeight={600} />
                     <YAxis stroke="#475569" fontSize={12} fontWeight={600} />
@@ -207,18 +185,11 @@ const Profitability = () => {
                         <stop offset="100%" stopColor="#059669" stopOpacity={0.8}/>
                       </linearGradient>
                     </defs>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
 
-<<<<<<< HEAD
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-lg font-semibold text-slate-900">
-                  Répartition CA par Client
-=======
             <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-purple-50/30 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
@@ -226,7 +197,6 @@ const Profitability = () => {
                     🥧
                   </div>
                   <span>Répartition CA par Client</span>
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 </CardTitle>
               </CardHeader>
               <CardContent>

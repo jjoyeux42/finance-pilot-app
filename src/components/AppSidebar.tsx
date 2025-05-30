@@ -10,9 +10,6 @@ import {
   Wallet,
   PieChart,
   User,
-<<<<<<< HEAD
-  LogOut
-=======
   LogOut,
   FileText,
   PiggyBank,
@@ -20,7 +17,6 @@ import {
   Activity,
   AlertTriangle,
   FileBarChart
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
 } from "lucide-react";
 import {
   Sidebar,
@@ -38,20 +34,11 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/useProfile";
 
-<<<<<<< HEAD
-const menuItems = [
-  {
-    title: "Dashboard",
-    icon: LayoutDashboard,
-    url: "/",
-    isActive: true,
-=======
 const mainItems = [
   {
     title: "Tableau de bord",
     icon: LayoutDashboard,
     url: "/",
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   },
   {
     title: "Trésorerie",
@@ -59,16 +46,6 @@ const mainItems = [
     url: "/treasury",
   },
   {
-<<<<<<< HEAD
-    title: "Rentabilité",
-    icon: PieChart,
-    url: "/profitability",
-  },
-  {
-    title: "Commercial",
-    icon: Users,
-    url: "/sales",
-=======
     title: "Commercial",
     icon: TrendingUp,
     url: "/sales",
@@ -77,7 +54,6 @@ const mainItems = [
     title: "Rentabilité",
     icon: DollarSign,
     url: "/profitability",
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   },
   {
     title: "Analytics",
@@ -86,9 +62,6 @@ const mainItems = [
   },
 ];
 
-<<<<<<< HEAD
-const secondaryItems = [
-=======
 const managementItems = [
   {
     title: "Clients",
@@ -134,7 +107,6 @@ const reportItems = [
 ];
 
 const settingsItems = [
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
   {
     title: "Paramètres",
     icon: Settings,
@@ -180,9 +152,6 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-<<<<<<< HEAD
-              {menuItems.map((item) => {
-=======
               {mainItems.map((item) => {
                 const isActive = currentPath === item.url || 
                   (item.url !== "/" && currentPath.startsWith(item.url));
@@ -277,7 +246,6 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {reportItems.map((item) => {
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 const isActive = currentPath === item.url || 
                   (item.url !== "/" && currentPath.startsWith(item.url));
                 
@@ -308,11 +276,7 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-<<<<<<< HEAD
-              {secondaryItems.map((item) => (
-=======
               {settingsItems.map((item) => (
->>>>>>> 764e393 (feat: Secure Supabase configuration and protect environment variables)
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton 
                     asChild 
