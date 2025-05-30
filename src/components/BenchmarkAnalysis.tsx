@@ -285,7 +285,7 @@ export default function BenchmarkAnalysis() {
       case 'average':
         return 'text-blue-600 bg-blue-50';
       case 'below_average':
-        return 'text-orange-600 bg-orange-50';
+        return 'text-indigo-600 bg-indigo-50';
       case 'poor':
         return 'text-red-600 bg-red-50';
       default:
@@ -433,9 +433,9 @@ export default function BenchmarkAnalysis() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-slate-600">À Améliorer</p>
-                    <p className="text-2xl font-bold text-orange-600">2/8</p>
+                    <p className="text-2xl font-bold text-indigo-600">2/8</p>
                   </div>
-                  <AlertTriangle className="w-8 h-8 text-orange-600" />
+                  <AlertTriangle className="w-8 h-8 text-indigo-600" />
                 </div>
                 <p className="text-xs text-slate-500 mt-2">Axes de progrès</p>
               </CardContent>
@@ -507,7 +507,7 @@ export default function BenchmarkAnalysis() {
                         </div>
                         <div className="h-2 bg-slate-200 rounded-full relative">
                           <div 
-                            className="h-2 bg-gradient-to-r from-red-400 via-orange-400 to-emerald-400 rounded-full"
+                            className="h-2 bg-gradient-to-r from-red-400 via-indigo-400 to-emerald-400 rounded-full"
                             style={{ width: '100%' }}
                           />
                           <div 

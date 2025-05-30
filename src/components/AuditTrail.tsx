@@ -240,7 +240,7 @@ export function AuditTrail({
       case 'login':
         return <User className="w-4 h-4 text-green-600" />;
       case 'logout':
-        return <User className="w-4 h-4 text-orange-600" />;
+        return <User className="w-4 h-4 text-indigo-600" />;
       default:
         return <Info className="w-4 h-4 text-slate-600" />;
     }
@@ -274,7 +274,7 @@ export function AuditTrail({
       case 'medium':
         return 'bg-blue-100 text-blue-800';
       case 'high':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-indigo-100 text-indigo-800';
       case 'critical':
         return 'bg-red-100 text-red-800';
       default:

@@ -117,7 +117,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-white">
       <Card className="w-full max-w-md bg-white shadow-xl border-0">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">

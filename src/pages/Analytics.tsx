@@ -148,11 +148,11 @@ const Analytics = () => {
                     </div>
                     <div className="w-full bg-slate-200 rounded-full h-2">
                       <div 
-                        className={`h-2 rounded-full ${kpi.progress >= 100 ? 'bg-emerald-500' : kpi.progress >= 80 ? 'bg-blue-500' : 'bg-orange-500'}`}
+                        className={`h-2 rounded-full ${kpi.progress >= 100 ? 'bg-emerald-500' : kpi.progress >= 80 ? 'bg-blue-500' : 'bg-indigo-500'}`}
                         style={{ width: `${Math.min(kpi.progress, 100)}%` }}
                       ></div>
                     </div>
-                    <span className={`text-sm font-medium ${kpi.progress >= 100 ? 'text-emerald-600' : kpi.progress >= 80 ? 'text-blue-600' : 'text-orange-600'}`}>
+                    <span className={`text-sm font-medium ${kpi.progress >= 100 ? 'text-emerald-600' : kpi.progress >= 80 ? 'text-blue-600' : 'text-indigo-600'}`}>
                       {kpi.progress}% de l'objectif
                     </span>
                   </div>
@@ -275,9 +275,9 @@ const Analytics = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="p-4 rounded-lg border-l-4 border-orange-500 bg-orange-50">
-                    <h4 className="font-semibold text-orange-800 mb-2">⚠️ Alerte Tendance</h4>
-                    <p className="text-sm text-orange-700">
+                  <div className="p-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50">
+              <h4 className="font-semibold text-indigo-800 mb-2">⚠️ Alerte Tendance</h4>
+              <p className="text-sm text-indigo-700">
                       Ralentissement détecté sur le produit "Service C" (-8% ce mois). 
                       Recommandation : Réévaluer la stratégie pricing ou communication.
                     </p>

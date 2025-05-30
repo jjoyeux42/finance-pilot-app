@@ -111,14 +111,14 @@ const Budget = () => {
   const getBudgetStatus = (category: BudgetCategory) => {
     const percentage = (category.spent / category.budgeted) * 100;
     if (percentage > 100) return { status: 'over', color: 'text-red-600', bgColor: 'bg-red-100' };
-    if (percentage > 90) return { status: 'warning', color: 'text-orange-600', bgColor: 'bg-orange-100' };
+    if (percentage > 90) return { status: 'warning', color: 'text-indigo-600', bgColor: 'bg-indigo-100' };
     return { status: 'good', color: 'text-emerald-600', bgColor: 'bg-emerald-100' };
   };
 
   const getProgressColor = (spent: number, budgeted: number) => {
     const percentage = (spent / budgeted) * 100;
     if (percentage > 100) return 'bg-red-500';
-    if (percentage > 90) return 'bg-orange-500';
+    if (percentage > 90) return 'bg-indigo-500';
     return 'bg-emerald-500';
   };
 

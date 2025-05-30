@@ -231,7 +231,7 @@ export default function Reports() {
       case 'sales':
         return 'bg-emerald-100 text-emerald-800';
       case 'operational':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-indigo-100 text-indigo-800';
       case 'custom':
         return 'bg-purple-100 text-purple-800';
       default:
@@ -411,7 +411,7 @@ export default function Reports() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-white">
       <AppSidebar />
       
       <div className="flex-1 flex flex-col overflow-hidden">

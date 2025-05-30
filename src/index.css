@@ -14,11 +14,11 @@
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
 
-    --primary: 82 92 255;
-    --primary-foreground: 255 255 255;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 241 245 249;
-    --secondary-foreground: 51 65 85;
+    --secondary: 239 84% 95%;
+    --secondary-foreground: 239 84% 20%;
 
     --muted: 248 250 252;
     --muted-foreground: 100 116 139;
@@ -55,8 +55,8 @@
     --popover: 15 23 42;
     --popover-foreground: 226 232 240;
 
-    --primary: 82 92 255;
-    --primary-foreground: 255 255 255;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 30 41 59;
     --secondary-foreground: 226 232 240;
@@ -93,8 +93,8 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    /* Empêcher les fonds jaunes pendant les transitions */
-    background-color: hsl(var(--background)) !important;
+    /* Modern white background for all pages */
+    background-color: #ffffff !important;
   }
   
   /* Empêcher les fonds jaunes pendant les transitions de page */

@@ -152,7 +152,7 @@ export default function ExecutiveDashboard() {
         return 'text-emerald-600 bg-emerald-50';
       case 'warning':
       case 'at-risk':
-        return 'text-orange-600 bg-orange-50';
+        return 'text-indigo-600 bg-indigo-50';
       case 'danger':
       case 'delayed':
         return 'text-red-600 bg-red-50';
@@ -178,7 +178,7 @@ export default function ExecutiveDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-white">
       <AppSidebar />
       
       <div className="flex-1 flex flex-col overflow-hidden">

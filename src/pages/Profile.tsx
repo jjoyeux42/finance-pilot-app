@@ -32,7 +32,7 @@ const Profile = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           <div className="flex items-center justify-between">

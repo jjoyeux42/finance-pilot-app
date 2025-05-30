@@ -318,7 +318,7 @@ export default function ActivityLogger() {
       case 'export':
         return <Download className="w-4 h-4 text-purple-600" />;
       case 'import':
-        return <Upload className="w-4 h-4 text-orange-600" />;
+        return <Upload className="w-4 h-4 text-indigo-600" />;
       case 'login':
         return <LogIn className="w-4 h-4 text-emerald-600" />;
       case 'logout':
@@ -327,7 +327,7 @@ export default function ActivityLogger() {
         return <Archive className="w-4 h-4 text-blue-600" />;
       case 'restore':
       case 'restored':
-        return <RefreshCw className="w-4 h-4 text-orange-600" />;
+        return <RefreshCw className="w-4 h-4 text-indigo-600" />;
       default:
         return <Info className="w-4 h-4 text-slate-600" />;
     }
@@ -340,7 +340,7 @@ export default function ActivityLogger() {
       case 'medium':
         return 'bg-blue-100 text-blue-800';
       case 'high':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-indigo-100 text-indigo-800';
       case 'critical':
         return 'bg-red-100 text-red-800';
       default:

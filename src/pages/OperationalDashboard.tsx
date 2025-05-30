@@ -198,7 +198,7 @@ export default function OperationalDashboard() {
       case 'meeting':
         return 'bg-blue-100 text-blue-800';
       case 'away':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-indigo-100 text-indigo-800';
       case 'offline':
         return 'bg-slate-100 text-slate-800';
       default:
@@ -222,7 +222,7 @@ export default function OperationalDashboard() {
   const getAlertIcon = (type: string) => {
     switch (type) {
       case 'warning':
-        return <AlertTriangle className="w-4 h-4 text-orange-600" />;
+        return <AlertTriangle className="w-4 h-4 text-indigo-600" />;
       case 'success':
         return <CheckCircle className="w-4 h-4 text-emerald-600" />;
       case 'info':
@@ -240,7 +240,7 @@ export default function OperationalDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-white">
       <AppSidebar />
       
       <div className="flex-1 flex flex-col overflow-hidden">

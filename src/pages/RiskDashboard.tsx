@@ -245,7 +245,7 @@ export default function RiskDashboard() {
       case 'medium':
         return 'text-blue-600 bg-blue-50 border-blue-200';
       case 'high':
-        return 'text-orange-600 bg-orange-50 border-orange-200';
+        return 'text-indigo-600 bg-indigo-50 border-indigo-200';
       case 'critical':
         return 'text-red-600 bg-red-50 border-red-200';
       default:
@@ -280,7 +280,7 @@ export default function RiskDashboard() {
       case 'good':
         return 'text-emerald-600';
       case 'warning':
-        return 'text-orange-600';
+        return 'text-indigo-600';
       case 'critical':
         return 'text-red-600';
       default:
@@ -302,7 +302,7 @@ export default function RiskDashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-50">
+    <div className="flex h-screen bg-white">
       <AppSidebar />
       
       <div className="flex-1 flex flex-col overflow-hidden">
@@ -371,11 +371,11 @@ export default function RiskDashboard() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span>Risques élevés</span>
-                        <span className="font-medium text-orange-600">{riskOverview.highRisks}</span>
+                        <span className="font-medium text-indigo-600">{riskOverview.highRisks}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span>Risques moyens</span>
-                        <span className="font-medium text-orange-600">{riskOverview.mediumRisks}</span>
+                        <span className="font-medium text-indigo-600">{riskOverview.mediumRisks}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span>Risques faibles</span>

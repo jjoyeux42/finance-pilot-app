@@ -59,7 +59,7 @@ const Settings = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gray-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
         <main className="flex-1 p-6 space-y-6">
           <div className="flex items-center justify-between">
@@ -190,7 +190,7 @@ const Settings = () => {
 
                   <div className="p-4 border rounded-lg space-y-3">
                     <div className="flex items-center space-x-3">
-                      <Database className="w-6 h-6 text-orange-600" />
+                      <Database className="w-6 h-6 text-indigo-600" />
                       <div>
                         <h4 className="font-medium text-gray-900">Comptabilité</h4>
                         <p className="text-sm text-gray-600">Non connecté</p>

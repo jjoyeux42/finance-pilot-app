@@ -131,7 +131,7 @@ export function NotificationCenter({ isOpen, onClose }: NotificationCenterProps)
     
     switch (type) {
       case 'warning':
-        return 'border-orange-500 bg-orange-50';
+        return 'border-indigo-500 bg-indigo-50';
       case 'success':
         return 'border-emerald-500 bg-emerald-50';
       case 'error':
@@ -146,7 +146,7 @@ export function NotificationCenter({ isOpen, onClose }: NotificationCenterProps)
     
     switch (type) {
       case 'warning':
-        return 'text-orange-600';
+        return 'text-indigo-600';
       case 'success':
         return 'text-emerald-600';
       case 'error':
@@ -161,7 +161,7 @@ export function NotificationCenter({ isOpen, onClose }: NotificationCenterProps)
       case 'urgent':
         return <Badge className="bg-red-100 text-red-800">Urgent</Badge>;
       case 'high':
-        return <Badge className="bg-orange-100 text-orange-800">Élevée</Badge>;
+        return <Badge className="bg-indigo-100 text-indigo-800">Élevée</Badge>;
       case 'medium':
         return <Badge className="bg-blue-100 text-blue-800">Moyenne</Badge>;
       default:
