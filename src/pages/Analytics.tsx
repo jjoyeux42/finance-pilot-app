@@ -48,36 +48,39 @@ const Analytics = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
               <div className="flex-1">
-                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">📊 Analytics</h1>
-                <p className="text-slate-600 text-sm sm:text-base">Analyse détaillée de vos performances</p>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">📊 Analytics</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Analyse détaillée de vos performances</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 <Filter className="w-4 h-4 mr-2" />
-                Filtres
+                <span className="hidden sm:inline">Filtres</span>
+                <span className="sm:hidden">Filtrer</span>
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 <Download className="w-4 h-4 mr-2" />
-                Export
+                <span className="hidden sm:inline">Export</span>
+                <span className="sm:hidden">Exporter</span>
               </Button>
-              <Button className="bg-indigo-600 hover:bg-indigo-700">
+              <Button className="bg-indigo-600 hover:bg-indigo-700 w-full sm:w-auto">
                 <Eye className="w-4 h-4 mr-2" />
-                Dashboard Exec
+                <span className="hidden sm:inline">Dashboard Exec</span>
+                <span className="sm:hidden">Dashboard</span>
               </Button>
             </div>
           </div>
 
           {/* Vue d'ensemble Performance */}
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+          <Card className="border-0 shadow-xl bg-white rounded-2xl">
             <CardHeader className="pb-6">
               <CardTitle className="text-2xl font-bold text-slate-900 flex items-center space-x-3">
                 <div className="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
@@ -123,9 +126,9 @@ const Analytics = () => {
           </Card>
 
           {/* KPIs Résumé */}
-          <div className="responsive-grid-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {kpiSummary.map((kpi, index) => (
-              <Card key={index} className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-slate-50/30 backdrop-blur-sm rounded-2xl hover:shadow-2xl transition-all duration-300">
+              <Card key={index} className="border-0 shadow-xl bg-white rounded-2xl hover:shadow-2xl transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-sm font-semibold text-slate-700">{kpi.name}</h3>
@@ -159,8 +162,8 @@ const Analytics = () => {
           </div>
 
           {/* Graphiques Avancés */}
-          <div className="responsive-grid-2">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   Radar Performance Globale
@@ -189,7 +192,7 @@ const Analytics = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900">
                   Métriques Clés Temps Réel
@@ -244,7 +247,7 @@ const Analytics = () => {
           </div>
 
           {/* Insights et Recommandations */}
-          <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <Card className="border-0 shadow-md bg-white">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
                 <Target className="w-5 h-5 mr-2" />

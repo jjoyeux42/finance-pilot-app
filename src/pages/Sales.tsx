@@ -63,40 +63,43 @@ const Sales = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-emerald-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">Commercial</h1>
-                <p className="text-slate-600">Gestion des ventes et relation client</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">📈 Commercial</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Gestion des ventes et relation client</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
               <Button 
                 variant="outline" 
                 size="sm"
                 onClick={() => setActiveModal('planning')}
+                className="w-full sm:w-auto"
               >
                 <Calendar className="w-4 h-4 mr-2" />
-                Planning
+                <span className="hidden sm:inline">Planning</span>
+                <span className="sm:hidden">Voir planning</span>
               </Button>
               <Button 
-                className="bg-emerald-600 hover:bg-emerald-700"
+                className="bg-emerald-600 hover:bg-emerald-700 w-full sm:w-auto"
                 onClick={() => setActiveModal('prospect')}
               >
                 <Users className="w-4 h-4 mr-2" />
-                Nouveau Prospect
+                <span className="hidden sm:inline">Nouveau Prospect</span>
+                <span className="sm:hidden">Ajouter</span>
               </Button>
             </div>
           </div>
 
           {/* KPIs Commercial */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -112,7 +115,7 @@ const Sales = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -128,7 +131,7 @@ const Sales = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -144,7 +147,7 @@ const Sales = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -162,8 +165,8 @@ const Sales = () => {
           </div>
 
           {/* Graphiques */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-emerald-50/30 backdrop-blur-sm rounded-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+            <Card className="border-0 shadow-xl bg-white rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
                   <div className="p-2 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-white">
@@ -196,7 +199,7 @@ const Sales = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+            <Card className="border-0 shadow-xl bg-white rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
                   <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
@@ -231,8 +234,8 @@ const Sales = () => {
           </div>
 
           {/* Pipeline et Top Clients */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
                   <Target className="w-5 h-5 mr-2" />
@@ -262,7 +265,7 @@ const Sales = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardHeader>
                 <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
                   <Star className="w-5 h-5 mr-2" />

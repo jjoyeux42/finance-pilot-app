@@ -47,40 +47,43 @@ const Profitability = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-purple-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">Rentabilité</h1>
-                <p className="text-slate-600">Analyse de la performance et des marges</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">📊 Rentabilité</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Analyse de la performance et des marges</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
               <Button 
                 variant="outline" 
                 size="sm"
                 onClick={() => setActiveModal('report')}
+                className="w-full sm:w-auto"
               >
                 <BarChart3 className="w-4 h-4 mr-2" />
-                Rapport
+                <span className="hidden sm:inline">Rapport</span>
+                <span className="sm:hidden">Voir rapport</span>
               </Button>
               <Button 
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto"
                 onClick={() => setActiveModal('analysis')}
               >
                 <PieChartIcon className="w-4 h-4 mr-2" />
-                Analyser
+                <span className="hidden sm:inline">Analyser</span>
+                <span className="sm:hidden">Analyser</span>
               </Button>
             </div>
           </div>
 
           {/* KPIs Rentabilité */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -96,7 +99,7 @@ const Profitability = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -112,7 +115,7 @@ const Profitability = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -128,7 +131,7 @@ const Profitability = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -146,8 +149,8 @@ const Profitability = () => {
           </div>
 
           {/* Graphiques */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+            <Card className="border-0 shadow-xl bg-white rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
                   <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
@@ -190,7 +193,7 @@ const Profitability = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-purple-50/30 backdrop-blur-sm rounded-2xl">
+            <Card className="border-0 shadow-xl bg-white rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
                   <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white">
@@ -224,7 +227,7 @@ const Profitability = () => {
           </div>
 
           {/* Tableau Rentabilité Produits */}
-          <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <Card className="border-0 shadow-md bg-white">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
                 <Package className="w-5 h-5 mr-2" />

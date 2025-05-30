@@ -38,41 +38,43 @@ const Treasury = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-3 sm:p-6 space-y-4 sm:space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
               <div className="flex-1">
-                <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">💰 Trésorerie</h1>
-                <p className="text-slate-600 text-sm sm:text-base">Gestion et suivi de votre flux de trésorerie</p>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">💰 Trésorerie</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Gestion et suivi de votre flux de trésorerie</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
               <Button 
                 variant="outline" 
                 size="sm"
                 onClick={() => setActiveModal('period')}
-                className="hover:bg-slate-100"
+                className="hover:bg-slate-100 w-full sm:w-auto"
               >
                 <Calendar className="w-4 h-4 mr-2" />
-                Période
+                <span className="hidden sm:inline">Période</span>
+                <span className="sm:hidden">Sélectionner période</span>
               </Button>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 shadow-lg"
+                className="bg-blue-600 hover:bg-blue-700 shadow-lg w-full sm:w-auto"
                 onClick={() => setActiveModal('transaction')}
               >
                 <DollarSign className="w-4 h-4 mr-2" />
-                Nouvelle Transaction
+                <span className="hidden sm:inline">Nouvelle Transaction</span>
+                <span className="sm:hidden">Ajouter</span>
               </Button>
             </div>
           </div>
 
           {/* KPIs Trésorerie */}
-          <div className="responsive-grid-4">
-            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-lg bg-white hover:shadow-xl transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -90,7 +92,7 @@ const Treasury = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -106,7 +108,7 @@ const Treasury = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -122,7 +124,7 @@ const Treasury = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -140,7 +142,7 @@ const Treasury = () => {
           </div>
 
           {/* Graphiques modernisés */}
-          <div className="responsive-grid-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-blue-50/30 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
@@ -241,7 +243,7 @@ const Treasury = () => {
           <TransactionHistory />
 
           {/* Échéances à venir */}
-          <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <Card className="border-0 shadow-md bg-white">
             <CardHeader>
               <CardTitle className="text-lg font-semibold text-slate-900 flex items-center">
                 <Calendar className="w-5 h-5 mr-2" />

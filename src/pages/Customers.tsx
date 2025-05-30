@@ -162,39 +162,42 @@ const Customers = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">Gestion des Clients</h1>
-                <p className="text-slate-600">Suivi et gestion de la relation client</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">👥 Gestion des Clients</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Gérez vos relations clients et prospects</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 w-full sm:w-auto">
               <Button 
                 variant="outline" 
                 size="sm"
+                className="flex-1 sm:flex-none"
               >
                 <FileText className="w-4 h-4 mr-2" />
-                Exporter
+                <span className="hidden sm:inline">Exporter</span>
+                <span className="sm:hidden">Export</span>
               </Button>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-blue-600 hover:bg-blue-700 flex-1 sm:flex-none"
                 onClick={() => setIsProspectModalOpen(true)}
               >
                 <Plus className="w-4 h-4 mr-2" />
-                Nouveau Client
+                <span className="hidden sm:inline">Nouveau Client</span>
+                <span className="sm:hidden">Ajouter</span>
               </Button>
             </div>
           </div>
 
           {/* Statistiques */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -206,7 +209,7 @@ const Customers = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -220,7 +223,7 @@ const Customers = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -234,7 +237,7 @@ const Customers = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -250,9 +253,9 @@ const Customers = () => {
           </div>
 
           {/* Filtres et recherche */}
-          <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <Card className="border-0 shadow-md bg-white">
             <CardContent className="p-6">
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
@@ -298,10 +301,10 @@ const Customers = () => {
             </CardContent>
           </Card>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Liste des clients */}
             <div className="lg:col-span-2">
-              <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+              <Card className="border-0 shadow-md bg-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Users className="w-5 h-5" />
@@ -365,10 +368,10 @@ const Customers = () => {
             {/* Détails du client sélectionné */}
             <div>
               {selectedCustomer ? (
-                <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+                <Card className="border-0 shadow-md bg-white">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <User className="w-5 h-5" />
+                      <Users className="w-5 h-5" />
                       Détails Client
                     </CardTitle>
                   </CardHeader>
@@ -446,7 +449,7 @@ const Customers = () => {
                   </CardContent>
                 </Card>
               ) : (
-                <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+                <Card className="border-0 shadow-md bg-white">
                   <CardContent className="p-6 text-center">
                     <Users className="w-12 h-12 text-slate-400 mx-auto mb-4" />
                     <p className="text-slate-600">Sélectionnez un client pour voir ses détails</p>

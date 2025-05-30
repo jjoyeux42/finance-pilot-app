@@ -181,36 +181,38 @@ const Invoices = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-green-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">Gestion des Factures</h1>
-                <p className="text-slate-600">Suivi des factures et créances</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">📄 Gestion des Factures</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Suivi et gestion de la facturation</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
+            <div className="flex items-center space-x-3 w-full sm:w-auto">
+              <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                 <Download className="w-4 h-4 mr-2" />
-                Exporter
+                <span className="hidden sm:inline">Exporter</span>
+                <span className="sm:hidden">Export</span>
               </Button>
               <Button 
-                className="bg-green-600 hover:bg-green-700"
+                className="bg-green-600 hover:bg-green-700 flex-1 sm:flex-none"
                 onClick={() => setIsInvoiceModalOpen(true)}
               >
                 <Plus className="w-4 h-4 mr-2" />
-                Nouvelle Facture
+                <span className="hidden sm:inline">Nouvelle Facture</span>
+                <span className="sm:hidden">Ajouter</span>
               </Button>
             </div>
           </div>
 
           {/* Statistiques */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -224,7 +226,7 @@ const Invoices = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -238,7 +240,7 @@ const Invoices = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -252,7 +254,7 @@ const Invoices = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -268,10 +270,10 @@ const Invoices = () => {
           </div>
 
           {/* Onglets et filtres */}
-          <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <Card className="border-0 shadow-md bg-white">
             <CardContent className="p-6">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                   <TabsList className="grid w-full md:w-auto grid-cols-4">
                     <TabsTrigger value="all">Toutes</TabsTrigger>
                     <TabsTrigger value="pending">En Attente</TabsTrigger>
@@ -279,18 +281,18 @@ const Invoices = () => {
                     <TabsTrigger value="paid">Payées</TabsTrigger>
                   </TabsList>
                   
-                  <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
+                  <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
                       <Input
                         placeholder="Rechercher une facture..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="pl-10 w-full md:w-64"
+                        className="pl-10 w-full sm:w-64"
                       />
                     </div>
                     <Select value={statusFilter} onValueChange={setStatusFilter}>
-                      <SelectTrigger className="w-full md:w-40">
+                      <SelectTrigger className="w-full sm:w-40">
                         <SelectValue placeholder="Statut" />
                       </SelectTrigger>
                       <SelectContent>
@@ -370,7 +372,7 @@ const Invoices = () => {
                     {/* Détails de la facture sélectionnée */}
                     <div>
                       {selectedInvoice ? (
-                        <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+                        <Card className="border-0 shadow-md bg-white">
                           <CardHeader>
                             <CardTitle className="flex items-center gap-2">
                               <FileText className="w-5 h-5" />
@@ -444,7 +446,7 @@ const Invoices = () => {
                           </CardContent>
                         </Card>
                       ) : (
-                        <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+                        <Card className="border-0 shadow-md bg-white">
                           <CardContent className="p-6 text-center">
                             <FileText className="w-12 h-12 text-slate-400 mx-auto mb-4" />
                             <p className="text-slate-600">Sélectionnez une facture pour voir ses détails</p>

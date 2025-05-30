@@ -102,12 +102,7 @@
     background-color: hsl(var(--background)) !important;
   }
   
-  /* Empêcher spécifiquement les couleurs jaunes sur les éléments de transition */
-  [style*="yellow"], [style*="#ff"], [style*="#fe"], [style*="#fd"],
-  [style*="#FFF"], [style*="#FEF"], [style*="#FDF"] {
-    background-color: hsl(var(--background)) !important;
-    background: hsl(var(--background)) !important;
-  }
+
 }
 
 @layer components {
@@ -155,15 +150,9 @@
     background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   }
 
-  /* Suppression complète des fonds jaunes des graphiques Recharts */
-  .recharts-wrapper,
-  .recharts-surface,
-  .recharts-cartesian-grid,
-  .recharts-responsive-container,
-  [class*="recharts"],
-  svg.recharts-surface {
+  /* Make Recharts elements transparent */
+  .recharts-wrapper {
     background: transparent !important;
-    background-color: transparent !important;
   }
   
   /* Forcer tous les éléments avec des styles inline à être transparents */
@@ -174,24 +163,7 @@
     background-color: transparent !important;
   }
   
-  /* Supprimer spécifiquement les couleurs jaunes et blanches dans les graphiques */
-  [style*="#FFF"],
-  [style*="#fff"],
-  [style*="#FFFFFF"],
-  [style*="#ffffff"],
-  [style*="#FEF"],
-  [style*="#FDF"],
-  [style*="yellow"],
-  [style*="#f59e0b"],
-  [style*="#fbbf24"],
-  [style*="#facc15"],
-  [fill="#ffffff"],
-  [fill="#FFF"],
-  [fill="white"] {
-    background: transparent !important;
-    background-color: transparent !important;
-    fill: transparent !important;
-  }
+
   
   /* Règles globales pour tous les SVG dans les graphiques */
   .recharts-wrapper svg,

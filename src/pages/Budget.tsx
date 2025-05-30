@@ -124,21 +124,21 @@ const Budget = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-slate-50 to-purple-50">
+      <div className="min-h-screen flex w-full bg-white">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-3 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center space-x-4 w-full sm:w-auto">
               <SidebarTrigger className="lg:hidden" />
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900">Gestion Budgétaire</h1>
-                <p className="text-slate-600">Planification et suivi des budgets</p>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">💰 Gestion Budgétaire</h1>
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg">Planification et suivi budgétaire</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
               <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
-                <SelectTrigger className="w-40">
+                <SelectTrigger className="w-full sm:w-40">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -148,18 +148,19 @@ const Budget = () => {
                 </SelectContent>
               </Select>
               <Button 
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto"
                 onClick={() => setIsAddingBudget(true)}
               >
                 <Plus className="w-4 h-4 mr-2" />
-                Nouveau Budget
+                <span className="hidden sm:inline">Nouveau Budget</span>
+                <span className="sm:hidden">Ajouter</span>
               </Button>
             </div>
           </div>
 
           {/* Statistiques globales */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -173,7 +174,7 @@ const Budget = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -187,7 +188,7 @@ const Budget = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -207,7 +208,7 @@ const Budget = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+            <Card className="border-0 shadow-md bg-white">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -222,10 +223,10 @@ const Budget = () => {
             </Card>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {/* Liste des catégories budgétaires */}
             <div className="lg:col-span-2">
-              <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+              <Card className="border-0 shadow-md bg-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <PieChart className="w-5 h-5" />
@@ -312,7 +313,7 @@ const Budget = () => {
             {/* Détails de la catégorie sélectionnée */}
             <div>
               {selectedCategory ? (
-                <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+                <Card className="border-0 shadow-md bg-white">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <div 
@@ -374,7 +375,7 @@ const Budget = () => {
                   </CardContent>
                 </Card>
               ) : (
-                <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+                <Card className="border-0 shadow-md bg-white">
                   <CardContent className="p-6 text-center">
                     <Target className="w-12 h-12 text-slate-400 mx-auto mb-4" />
                     <p className="text-slate-600">Sélectionnez une catégorie pour voir ses détails</p>
@@ -385,7 +386,7 @@ const Budget = () => {
           </div>
 
           {/* Graphique de prévisions */}
-          <Card className="border-0 shadow-md bg-white/70 backdrop-blur-sm">
+          <Card className="border-0 shadow-md bg-white">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <TrendingUp className="w-5 h-5" />
