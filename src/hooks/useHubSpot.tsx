@@ -118,15 +118,15 @@ export function HubSpotProvider({ children }: { children: React.ReactNode }) {
   // Connect with API key
   const connectWithApiKey = useCallback(async (apiKey: string): Promise<boolean> => {
     try {
-      const hubspotClient = createHubSpotClient({
+      const client = createHubSpotClient({
         apiKey,
-        baseUrl: 'https://api.hubapi.com',
+        baseUrl: 'https://api-eu1.hubapi.com',
       });
 
-      const isValid = await hubspotClient.testConnection();
+      const isValid = await client.testConnection();
       
       if (isValid) {
-        setClient(hubspotClient);
+        setClient(client);
         setIsConnected(true);
         return true;
       } else {
