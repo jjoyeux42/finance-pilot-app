@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/hooks/useAuth";
+import { HubSpotProvider } from "@/hooks/useHubSpot";
 import Index from "./pages/Index";
 import Treasury from "./pages/Treasury";
 import Profitability from "./pages/Profitability";
@@ -63,13 +64,15 @@ function AuthenticatedApp() {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AuthenticatedApp />
-        </BrowserRouter>
-      </TooltipProvider>
+      <HubSpotProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AuthenticatedApp />
+          </BrowserRouter>
+        </TooltipProvider>
+      </HubSpotProvider>
     </AuthProvider>
   </QueryClientProvider>
 );

@@ -1,14 +1,22 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { useToast } from '@/hooks/use-toast';
 import { useSettings } from '@/hooks/useSettings';
 import { useProfile } from '@/hooks/useProfile';
 import { useAuth } from '@/hooks/useAuth';
+import { useHubSpot } from '@/hooks/useHubSpot';
 import { ChangePasswordModal } from '@/components/modals/ChangePasswordModal';
+import { HubSpotConfigModal } from '@/components/modals/HubSpotConfigModal';
 import { 
   Settings as SettingsIcon, 
   User, 
@@ -19,6 +27,12 @@ import {
   Trash2,
   Link,
   Unlink,
+  Save,
+  Eye,
+  EyeOff,
+  Users,
+  CheckCircle,
+  XCircle,
   CreditCard,
   Building,
   FileSpreadsheet
@@ -28,6 +42,9 @@ const Settings = () => {
   const { user, signOut } = useAuth();
   const { profile } = useProfile();
   const { settings, updateSettings, isUpdating } = useSettings();
+  const { isConnected: isHubSpotConnected } = useHubSpot();
+
+  const [isHubSpotModalOpen, setIsHubSpotModalOpen] = useState(false);
 
   const handleNotificationChange = (key: string, value: boolean) => {
     if (settings) {
@@ -163,15 +180,44 @@ const Settings = () => {
 
                   <div className="p-4 border rounded-lg space-y-3">
                     <div className="flex items-center space-x-3">
-                      <Building className="w-6 h-6 text-green-600" />
+                      <Users className="w-6 h-6 text-orange-600" />
                       <div>
-                        <h4 className="font-medium text-gray-900">CRM</h4>
-                        <p className="text-sm text-gray-600">Connecté</p>
+                        <h4 className="font-medium text-gray-900">HubSpot CRM</h4>
+                        <div className="flex items-center space-x-2">
+                          {isHubSpotConnected ? (
+                            <>
+                              <CheckCircle className="w-3 h-3 text-green-600" />
+                              <p className="text-sm text-green-600">Connecté</p>
+                            </>
+                          ) : (
+                            <>
+                              <XCircle className="w-3 h-3 text-red-600" />
+                              <p className="text-sm text-red-600">Non connecté</p>
+                            </>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <Button size="sm" variant="outline" className="w-full border-2 border-rose-300 text-rose-600 hover:bg-rose-50 hover:border-rose-400 transition-all duration-200">
-                      <Unlink className="w-4 h-4 mr-2" />
-                      Déconnecter
+                    <Button 
+                      size="sm" 
+                      onClick={() => setIsHubSpotModalOpen(true)}
+                      className={isHubSpotConnected 
+                        ? "w-full border-2 border-orange-300 text-orange-600 hover:bg-orange-50 hover:border-orange-400 transition-all duration-200" 
+                        : "w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]"
+                      }
+                      variant={isHubSpotConnected ? "outline" : "default"}
+                    >
+                      {isHubSpotConnected ? (
+                        <>
+                          <SettingsIcon className="w-4 h-4 mr-2" />
+                          Configurer
+                        </>
+                      ) : (
+                        <>
+                          <Link className="w-4 h-4 mr-2" />
+                          Connecter
+                        </>
+                      )}
                     </Button>
                   </div>
 
@@ -305,6 +351,13 @@ const Settings = () => {
           </div>
         </main>
       </div>
+      
+
+      
+      <HubSpotConfigModal 
+        isOpen={isHubSpotModalOpen} 
+        onClose={() => setIsHubSpotModalOpen(false)} 
+      />
     </SidebarProvider>
   );
 };

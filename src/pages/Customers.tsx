@@ -23,6 +23,8 @@ import {
   AlertTriangle
 } from 'lucide-react';
 import { ProspectModal } from '@/components/modals/ProspectModal';
+import { useHubSpot } from '@/hooks/useHubSpot';
+import { HubSpotConfigModal } from '@/components/modals/HubSpotConfigModal';
 
 interface Customer {
   id: string;
@@ -117,8 +119,12 @@ const mockInteractions: Interaction[] = [
 const Customers = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSegment, setSelectedSegment] = useState<string>('all');
+  const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [isProspectModalOpen, setIsProspectModalOpen] = useState(false);
+  const [isHubSpotModalOpen, setIsHubSpotModalOpen] = useState(false);
+  
+  const { isConnected: isHubSpotConnected, syncContacts, isLoading: isHubSpotLoading } = useHubSpot();
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -175,6 +181,35 @@ const Customers = () => {
               </div>
             </div>
             <div className="flex items-center space-x-3 w-full sm:w-auto">
+              {isHubSpotConnected && (
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => syncContacts()}
+                  disabled={isHubSpotLoading}
+                  className="flex-1 sm:flex-none border-orange-300 text-orange-600 hover:bg-orange-50"
+                >
+                  {isHubSpotLoading ? (
+                    <div className="w-4 h-4 mr-2 animate-spin rounded-full border-2 border-orange-600 border-t-transparent" />
+                  ) : (
+                    <Users className="w-4 h-4 mr-2" />
+                  )}
+                  <span className="hidden sm:inline">Sync HubSpot</span>
+                  <span className="sm:hidden">Sync</span>
+                </Button>
+              )}
+              {!isHubSpotConnected && (
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => setIsHubSpotModalOpen(true)}
+                  className="flex-1 sm:flex-none border-orange-300 text-orange-600 hover:bg-orange-50"
+                >
+                  <Users className="w-4 h-4 mr-2" />
+                  <span className="hidden sm:inline">Connecter HubSpot</span>
+                  <span className="sm:hidden">HubSpot</span>
+                </Button>
+              )}
               <Button 
                 variant="outline" 
                 size="sm"
@@ -464,6 +499,11 @@ const Customers = () => {
       <ProspectModal 
         isOpen={isProspectModalOpen} 
         onClose={() => setIsProspectModalOpen(false)} 
+      />
+      
+      <HubSpotConfigModal 
+        isOpen={isHubSpotModalOpen} 
+        onClose={() => setIsHubSpotModalOpen(false)} 
       />
     </SidebarProvider>
   );

@@ -45,6 +45,36 @@ export type Database = {
         }
         Relationships: []
       }
+      integration_settings: {
+        Row: {
+          id: string
+          user_id: string
+          integration_type: string
+          settings: Json
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          integration_type: string
+          settings?: Json
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          integration_type?: string
+          settings?: Json
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       invoices: {
         Row: {
           amount: number

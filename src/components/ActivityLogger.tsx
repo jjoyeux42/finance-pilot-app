@@ -6,6 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Progress } from "@/components/ui/progress";
 import { 
   Clock, 
   User, 
@@ -581,7 +583,7 @@ export default function ActivityLogger() {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             <h4 className="font-semibold text-slate-900">{log.description}</h4>
-                            <Badge className={getSeverityColor(log.severity)} size="sm">
+                            <Badge className={getSeverityColor(log.severity)}>
                               {log.severity}
                             </Badge>
                           </div>
@@ -663,7 +665,7 @@ export default function ActivityLogger() {
                           <h4 className="font-semibold text-slate-900">{version.entityName}</h4>
                           <p className="text-sm text-slate-600">Version {version.version}</p>
                         </div>
-                        <Badge className={getChangeTypeColor(version.action)} size="sm">
+                        <Badge className={getChangeTypeColor(version.action)}>
                           {version.action}
                         </Badge>
                       </div>
@@ -738,7 +740,7 @@ export default function ActivityLogger() {
                         {selectedVersion.changes.map((change, index) => (
                           <div key={index} className="border rounded p-3">
                             <div className="flex items-center gap-2 mb-2">
-                              <Badge className={getChangeTypeColor(change.type)} size="sm">
+                              <Badge className={getChangeTypeColor(change.type)}>
                                 {change.type === 'added' ? 'Ajouté' : 
                                  change.type === 'modified' ? 'Modifié' : 'Supprimé'}
                               </Badge>
@@ -812,7 +814,7 @@ export default function ActivityLogger() {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             <h4 className="font-semibold text-red-900">{log.description}</h4>
-                            <Badge className={getSeverityColor(log.severity)} size="sm">
+                            <Badge className={getSeverityColor(log.severity)}>
                               {log.severity}
                             </Badge>
                           </div>
