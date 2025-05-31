@@ -16,21 +16,28 @@ class HubSpotClient {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `${this.config.baseUrl}${endpoint}`;
+    // Utiliser la fonction proxy Netlify au lieu de l'API directe
+    const proxyUrl = `/.netlify/functions/hubspot-proxy?path=${encodeURIComponent(endpoint)}`;
     
-    const response = await fetch(url, {
+    const response = await fetch(proxyUrl, {
       ...options,
       headers: {
         ...this.baseHeaders,
         ...options.headers,
       },
     });
-
+  
     if (!response.ok) {
-      const errorData: HubSpotError = await response.json();
-      throw new Error(`HubSpot API Error: ${errorData.message || response.statusText}`);
+      let errorMessage = `HubSpot API Error: ${response.statusText}`;
+      try {
+        const errorData: HubSpotError = await response.json();
+        errorMessage = `HubSpot API Error: ${errorData.message || errorData.errors || response.statusText}`;
+      } catch {
+        // Si on ne peut pas parser le JSON d'erreur, utiliser le message par défaut
+      }
+      throw new Error(errorMessage);
     }
-
+  
     return response.json();
   }
 
