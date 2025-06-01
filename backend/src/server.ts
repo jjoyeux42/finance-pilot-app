@@ -58,7 +58,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Route proxy HubSpot (sans authentification)
+// Route proxy HubSpot (sans authentification) - DOIT être avant les routes API
 app.use('/api/integrations/hubspot/proxy', (req, res, next) => {
   // Rediriger vers le handler du proxy dans integrationRoutes
   req.url = req.url.replace('/api/integrations/hubspot/proxy', '/hubspot/proxy');
@@ -66,7 +66,7 @@ app.use('/api/integrations/hubspot/proxy', (req, res, next) => {
   next();
 }, integrationRoutes);
 
-// Routes API avec authentification
+// Routes API avec authentification (après le proxy HubSpot)
 app.use('/api', authMiddleware, routes);
 
 // Health check
