@@ -79,7 +79,7 @@ const teamActivity = [
     performance: 92
   },
   {
-    name: 'Pierre Martin',
+    name: 'Contact Example',
     role: 'Comptable',
     status: 'active',
     tasksToday: 12,
@@ -88,7 +88,7 @@ const teamActivity = [
     performance: 88
   },
   {
-    name: 'Sophie Laurent',
+    name: 'User Example',
     role: 'Manager',
     status: 'meeting',
     tasksToday: 6,
@@ -127,7 +127,7 @@ const urgentTasks = [
   {
     id: 3,
     title: 'Validation budget Q2',
-    assignee: 'Sophie Laurent',
+    assignee: 'User Example',
     priority: 'high',
     dueTime: '14:00',
     category: 'management'
@@ -135,7 +135,7 @@ const urgentTasks = [
   {
     id: 4,
     title: 'Réconciliation bancaire',
-    assignee: 'Pierre Martin',
+    assignee: 'Contact Example',
     priority: 'medium',
     dueTime: '16:00',
     category: 'finance'

@@ -100,7 +100,7 @@ const reportTemplates: ReportTemplate[] = [
       groupBy: ['month'],
       metrics: ['revenue', 'profit', 'expenses', 'cash_flow']
     },
-    recipients: ['direction@company.com', 'comptabilite@company.com']
+    recipients: ['direction@example-company.com', 'accounting@example-company.com']
   },
   {
     id: '2',
@@ -156,7 +156,7 @@ const customReports: CustomReport[] = [
     id: 'custom-1',
     name: 'Analyse ROI par Canal',
     description: 'Retour sur investissement par canal d\'acquisition',
-    createdBy: 'Sophie Laurent',
+    createdBy: 'User Example',
     createdAt: '2024-01-10T14:30:00Z',
     lastModified: '2024-01-15T16:45:00Z',
     isPublic: true,

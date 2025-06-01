@@ -85,7 +85,7 @@ const activityLogs: ActivityLog[] = [
     id: '1',
     timestamp: '2024-01-20T14:30:00Z',
     userId: 'user-123',
-    userName: 'Sophie Laurent',
+    userName: 'User Example',
     userRole: 'Manager',
     action: 'create',
     entityType: 'invoice',
@@ -106,7 +106,7 @@ const activityLogs: ActivityLog[] = [
     id: '2',
     timestamp: '2024-01-20T14:25:00Z',
     userId: 'user-456',
-    userName: 'Marc Dubois',
+    userName: 'User Example',
     userRole: 'Accountant',
     action: 'update',
     entityType: 'transaction',
@@ -127,7 +127,7 @@ const activityLogs: ActivityLog[] = [
     id: '3',
     timestamp: '2024-01-20T14:20:00Z',
     userId: 'user-789',
-    userName: 'Julie Martin',
+    userName: 'User Example',
     userRole: 'Sales',
     action: 'view',
     entityType: 'customer',
@@ -147,7 +147,7 @@ const activityLogs: ActivityLog[] = [
     id: '4',
     timestamp: '2024-01-20T14:15:00Z',
     userId: 'user-123',
-    userName: 'Sophie Laurent',
+    userName: 'User Example',
     userRole: 'Manager',
     action: 'export',
     entityType: 'report',
@@ -211,7 +211,7 @@ const versionHistory: VersionHistory[] = [
     version: 3,
     timestamp: '2024-01-20T14:30:00Z',
     userId: 'user-123',
-    userName: 'Sophie Laurent',
+    userName: 'User Example',
     action: 'updated',
     changes: [
       {
@@ -239,19 +239,19 @@ const versionHistory: VersionHistory[] = [
     version: 2,
     timestamp: '2024-01-20T13:15:00Z',
     userId: 'user-456',
-    userName: 'Marc Dubois',
+    userName: 'User Example',
     action: 'updated',
     changes: [
       {
         field: 'email',
-        oldValue: 'contact@datasys.com',
-        newValue: 'info@datasys.com',
+        oldValue: 'old@example-company.com',
+        newValue: 'new@example-company.com',
         type: 'modified'
       },
       {
         field: 'phone',
-        oldValue: '+33 1 23 45 67 89',
-        newValue: '+33 1 23 45 67 90',
+        oldValue: '+33 1 XX XX XX XX',
+        newValue: '+33 1 XX XX XX XX',
         type: 'modified'
       },
       {
@@ -273,7 +273,7 @@ const versionHistory: VersionHistory[] = [
     version: 1,
     timestamp: '2024-01-20T10:00:00Z',
     userId: 'user-789',
-    userName: 'Julie Martin',
+    userName: 'User Example',
     action: 'created',
     changes: [
       {
@@ -518,9 +518,9 @@ export default function ActivityLogger() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="all">Tous</SelectItem>
-                      <SelectItem value="user-123">Sophie Laurent</SelectItem>
-                      <SelectItem value="user-456">Marc Dubois</SelectItem>
-                      <SelectItem value="user-789">Julie Martin</SelectItem>
+                      <SelectItem value="user-123">User Example</SelectItem>
+                <SelectItem value="user-456">User Example</SelectItem>
+                      <SelectItem value="user-789">User Example</SelectItem>
                       <SelectItem value="system">Système</SelectItem>
                     </SelectContent>
                   </Select>

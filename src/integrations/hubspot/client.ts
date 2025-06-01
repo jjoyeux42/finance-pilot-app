@@ -16,10 +16,9 @@ class HubSpotClient {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    // Utiliser la fonction proxy Netlify au lieu de l'API directe
-    const proxyUrl = `/.netlify/functions/hubspot-proxy?path=${encodeURIComponent(endpoint)}`;
+    const url = `${this.config.baseUrl}${endpoint}`;
     
-    const response = await fetch(proxyUrl, {
+    const response = await fetch(url, {
       ...options,
       headers: {
         ...this.baseHeaders,

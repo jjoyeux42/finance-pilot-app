@@ -33,10 +33,10 @@ const topClients = [
 ];
 
 const pipeline = [
-  { id: 1, prospect: 'Tech Innovations', value: 45000, probability: 75, stage: 'Négociation', contact: 'Marie Dupont' },
-  { id: 2, prospect: 'Digital Partners', value: 32000, probability: 60, stage: 'Proposition', contact: 'Pierre Martin' },
-  { id: 3, prospect: 'Future Systems', value: 67000, probability: 40, stage: 'Qualification', contact: 'Sophie Bernard' },
-  { id: 4, prospect: 'Smart Business', value: 23000, probability: 85, stage: 'Closing', contact: 'Lucas Moreau' },
+  { id: 1, prospect: 'Tech Innovations', value: 45000, probability: 75, stage: 'Négociation', contact: 'Contact Example' },
+  { id: 2, prospect: 'Digital Partners', value: 32000, probability: 60, stage: 'Proposition', contact: 'Contact Example' },
+  { id: 3, prospect: 'Future Systems', value: 67000, probability: 40, stage: 'Qualification', contact: 'Contact Example' },
+  { id: 4, prospect: 'Example Business', value: 23000, probability: 85, stage: 'Closing', contact: 'Contact Example' },
 ];
 
 const Sales = () => {

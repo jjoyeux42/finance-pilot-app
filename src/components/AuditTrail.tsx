@@ -91,7 +91,7 @@ const mockAuditEntries: AuditEntry[] = [
     id: '3',
     timestamp: '2024-01-20T13:45:00Z',
     userId: 'user-789',
-    userName: 'Sophie Laurent',
+    userName: 'User Example',
     userRole: 'Manager',
     action: 'delete',
     entityType: 'transaction',

@@ -70,7 +70,7 @@ const mockNotifications: Notification[] = [
     type: 'info',
     category: 'customer',
     title: 'Nouveau prospect',
-    message: 'Un nouveau prospect Smart Business a été ajouté',
+    message: 'Un nouveau prospect Example Business a été ajouté',
     timestamp: '2024-01-19T16:20:00Z',
     isRead: true,
     priority: 'low',
