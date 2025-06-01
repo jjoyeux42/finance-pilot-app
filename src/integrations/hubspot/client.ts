@@ -16,9 +16,10 @@ class HubSpotClient {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `${this.config.baseUrl}${endpoint}`;
+    // Utiliser le proxy backend pour éviter les problèmes CORS
+    const proxyUrl = `/api/integrations/hubspot/proxy${endpoint}`;
     
-    const response = await fetch(url, {
+    const response = await fetch(proxyUrl, {
       ...options,
       headers: {
         ...this.baseHeaders,
@@ -156,7 +157,7 @@ class HubSpotClient {
   // Test connection
   async testConnection(): Promise<boolean> {
     try {
-      console.log('Testing HubSpot connection with URL:', `${this.config.baseUrl}/crm/v3/objects/contacts?limit=1`);
+      console.log('Testing HubSpot connection via proxy:', `/api/integrations/hubspot/proxy/crm/v3/objects/contacts?limit=1`);
       console.log('Using API key format:', this.config.apiKey.substring(0, 10) + '...');
       
       await this.makeRequest('/crm/v3/objects/contacts?limit=1');
@@ -164,7 +165,7 @@ class HubSpotClient {
       return true;
     } catch (error) {
       console.error('HubSpot connection test failed:', error);
-      console.error('Request URL was:', `${this.config.baseUrl}/crm/v3/objects/contacts?limit=1`);
+      console.error('Proxy URL was:', `/api/integrations/hubspot/proxy/crm/v3/objects/contacts?limit=1`);
       return false;
     }
   }
