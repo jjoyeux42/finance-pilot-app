@@ -70,26 +70,50 @@ export function HubSpotConfigModal({ isOpen, onClose }: HubSpotConfigModalProps)
       return;
     }
 
+    // Validation du format de la clé API
+    const validation = (await import('@/integrations/hubspot/client')).HubSpotClient.validateApiKey(apiKey);
+    if (!validation.isValid) {
+      toast({
+        title: "Format de clé API invalide",
+        description: validation.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsTestingConnection(true);
     setConnectionTestResult(null);
 
     try {
+      console.log('🔍 Début du test de connexion HubSpot...');
       const result = await connect(apiKey);
       setConnectionTestResult(result);
       
-      if (!result) {
+      if (result) {
+        toast({
+          title: "Connexion réussie ✅",
+          description: "Votre clé API HubSpot fonctionne correctement.",
+          variant: "default",
+        });
+      } else {
         toast({
           title: "Test de connexion échoué",
-          description: "Vérifiez que votre clé API est valide et que votre application privée a les bonnes permissions (contacts.read). Si votre clé commence par 'pat-eu', contactez le support.",
+          description: "Vérifiez que votre clé API est valide et que votre application privée a les bonnes permissions (contacts.read). Consultez la console pour plus de détails.",
           variant: "destructive",
         });
       }
     } catch (error) {
-      console.error('Erreur détaillée de connexion HubSpot:', error);
+      console.error('❌ Erreur détaillée de connexion HubSpot:', error);
       setConnectionTestResult(false);
+      
+      let errorMessage = 'Erreur inconnue';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       toast({
         title: "Erreur de connexion",
-        description: `Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}. Vérifiez votre clé API et les permissions de votre application privée.`,
+        description: `${errorMessage}. Consultez la console du navigateur pour plus de détails.`,
         variant: "destructive",
       });
     } finally {

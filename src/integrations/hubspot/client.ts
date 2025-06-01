@@ -19,6 +19,12 @@ class HubSpotClient {
     // Utiliser le proxy backend pour éviter les problèmes CORS
     const proxyUrl = `/api/integrations/hubspot/proxy${endpoint}`;
     
+    console.log('🔍 HubSpot Request:', {
+      url: proxyUrl,
+      method: options.method || 'GET',
+      headers: { ...this.baseHeaders, ...options.headers }
+    });
+    
     const response = await fetch(proxyUrl, {
       ...options,
       headers: {
@@ -27,14 +33,46 @@ class HubSpotClient {
       },
     });
   
+    console.log('📡 HubSpot Response:', {
+      status: response.status,
+      statusText: response.statusText,
+      url: proxyUrl
+    });
+
     if (!response.ok) {
       let errorMessage = `HubSpot API Error: ${response.statusText}`;
+      let errorDetails = null;
+      
       try {
         const errorData: HubSpotError = await response.json();
-        errorMessage = `HubSpot API Error: ${errorData.message || errorData.errors || response.statusText}`;
-      } catch {
-        // Si on ne peut pas parser le JSON d'erreur, utiliser le message par défaut
+        errorDetails = errorData;
+        
+        if (errorData.message) {
+          errorMessage = `HubSpot API Error: ${errorData.message}`;
+        } else if (errorData.errors && Array.isArray(errorData.errors)) {
+          errorMessage = `HubSpot API Error: ${errorData.errors.map(e => e.message).join(', ')}`;
+        }
+        
+        // Messages d'erreur spécifiques
+        if (response.status === 401) {
+          errorMessage = 'Clé API HubSpot invalide ou permissions insuffisantes. Vérifiez que votre application privée a les permissions "contacts.read".';
+        } else if (response.status === 403) {
+          errorMessage = 'Accès refusé. Vérifiez les permissions de votre application privée HubSpot.';
+        } else if (response.status === 429) {
+          errorMessage = 'Limite de taux dépassée. Veuillez réessayer dans quelques minutes.';
+        }
+        
+      } catch (parseError) {
+        console.error('Erreur lors du parsing de la réponse d\'erreur:', parseError);
       }
+      
+      console.error('❌ Erreur HubSpot détaillée:', {
+        status: response.status,
+        message: errorMessage,
+        details: errorDetails,
+        url: proxyUrl
+      });
+      
       throw new Error(errorMessage);
     }
   
@@ -157,17 +195,69 @@ class HubSpotClient {
   // Test connection
   async testConnection(): Promise<boolean> {
     try {
-      console.log('Testing HubSpot connection via proxy:', `/api/integrations/hubspot/proxy/crm/v3/objects/contacts?limit=1`);
-      console.log('Using API key format:', this.config.apiKey.substring(0, 10) + '...');
+      console.log('🔍 Test de connexion HubSpot...');
+      console.log('📋 Configuration:', {
+        apiKeyFormat: this.config.apiKey.substring(0, 10) + '...',
+        baseUrl: this.config.baseUrl,
+        proxyUrl: '/api/integrations/hubspot/proxy/crm/v3/objects/contacts?limit=1'
+      });
       
-      await this.makeRequest('/crm/v3/objects/contacts?limit=1');
-      console.log('HubSpot connection test successful');
+      // Validation du format de la clé API
+      const validation = HubSpotClient.validateApiKey(this.config.apiKey);
+      if (!validation.isValid) {
+        console.error('❌ Format de clé API invalide:', validation.message);
+        throw new Error(validation.message);
+      }
+      
+      const response = await this.makeRequest<HubSpotApiResponse<HubSpotContact>>('/crm/v3/objects/contacts?limit=1');
+      
+      console.log('✅ Test de connexion HubSpot réussi');
+      console.log('📊 Données reçues:', {
+        total: response.total || 0,
+        resultsCount: response.results?.length || 0
+      });
+      
       return true;
     } catch (error) {
-      console.error('HubSpot connection test failed:', error);
-      console.error('Proxy URL was:', `/api/integrations/hubspot/proxy/crm/v3/objects/contacts?limit=1`);
+      console.error('❌ Test de connexion HubSpot échoué:', error);
+      
+      // Diagnostic supplémentaire
+      if (error instanceof Error) {
+        if (error.message.includes('401')) {
+          console.error('🔑 Problème d\'authentification: Vérifiez votre clé API');
+        } else if (error.message.includes('403')) {
+          console.error('🚫 Problème de permissions: Vérifiez les scopes de votre application privée');
+        } else if (error.message.includes('CORS')) {
+          console.error('🌐 Problème CORS: Vérifiez que le proxy backend fonctionne');
+        } else if (error.message.includes('fetch')) {
+          console.error('🔌 Problème de réseau: Vérifiez que le backend est accessible');
+        }
+      }
+      
       return false;
     }
+  }
+
+  // Validation de la clé API
+  static validateApiKey(apiKey: string): { isValid: boolean; message: string } {
+    if (!apiKey || apiKey.trim() === '') {
+      return { isValid: false, message: 'Clé API manquante' };
+    }
+    
+    // Vérification du format des clés API HubSpot
+    if (apiKey.startsWith('pat-na1-') || apiKey.startsWith('pat-eu1-')) {
+      return { isValid: true, message: 'Format de clé API valide (Private App Token)' };
+    }
+    
+    // Format legacy
+    if (apiKey.length >= 30 && apiKey.includes('-')) {
+      return { isValid: true, message: 'Format de clé API valide (Legacy)' };
+    }
+    
+    return { 
+      isValid: false, 
+      message: 'Format de clé API invalide. Utilisez une clé d\'application privée commençant par "pat-na1-" ou "pat-eu1-"' 
+    };
   }
 
   // Search contacts by email
