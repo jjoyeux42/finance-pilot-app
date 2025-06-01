@@ -8,6 +8,7 @@ import { logger } from '@/utils/logger.js';
 import { errorHandler } from '@/middleware/errorHandler.js';
 import { authMiddleware } from '@/middleware/auth.js';
 import { routes } from '@/routes/index.js';
+import { integrationRoutes } from '@/routes/integrations.js';
 
 const app = express();
 
@@ -57,7 +58,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes API
+// Route proxy HubSpot (sans authentification)
+app.use('/api/integrations/hubspot/proxy', (req, res, next) => {
+  // Rediriger vers le handler du proxy dans integrationRoutes
+  req.url = req.url.replace('/api/integrations/hubspot/proxy', '/hubspot/proxy');
+  req.originalUrl = req.originalUrl.replace('/api/integrations/hubspot/proxy', '/hubspot/proxy');
+  next();
+}, integrationRoutes);
+
+// Routes API avec authentification
 app.use('/api', authMiddleware, routes);
 
 // Health check
