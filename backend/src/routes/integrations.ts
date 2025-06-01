@@ -3,16 +3,8 @@ import { authMiddleware } from '@/middleware/auth.js';
 
 const router = Router();
 
-// Appliquer l'authentification à toutes les routes
-router.use(authMiddleware);
-
-// Routes pour les intégrations
-router.get('/', async (req: Request, res: Response) => {
-  // TODO: Récupérer les intégrations de l'utilisateur
-  res.json({ integrations: [] });
-});
-
 // Proxy pour les requêtes HubSpot afin d'éviter les problèmes CORS
+// IMPORTANT: Cette route doit être définie AVANT le middleware d'authentification
 router.all('/hubspot/proxy/*', async (req: Request, res: Response) => {
   try {
     const { authorization } = req.headers;
@@ -59,6 +51,21 @@ router.all('/hubspot/proxy/*', async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : 'Erreur inconnue'
     });
   }
+});
+
+// Appliquer l'authentification à toutes les autres routes
+router.use(authMiddleware);
+
+// Routes pour les intégrations
+router.get('/', async (req: Request, res: Response) => {
+  // TODO: Récupérer les intégrations de l'utilisateur
+  res.json({ integrations: [] });
+});
+
+// Routes HubSpot protégées par authentification
+router.post('/hubspot', async (req: Request, res: Response) => {
+  // TODO: Configurer l'intégration HubSpot
+  res.json({ message: 'Intégration HubSpot configurée' });
 });
 
 router.post('/hubspot', async (req: Request, res: Response) => {
