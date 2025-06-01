@@ -120,7 +120,7 @@ export function HubSpotProvider({ children }: { children: React.ReactNode }) {
     try {
       const client = createHubSpotClient({
         apiKey,
-        baseUrl: 'https://api-eu1.hubapi.com',
+        baseUrl: 'https://api.hubapi.com',
       });
 
       const isValid = await client.testConnection();

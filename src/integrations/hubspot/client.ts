@@ -156,10 +156,15 @@ class HubSpotClient {
   // Test connection
   async testConnection(): Promise<boolean> {
     try {
+      console.log('Testing HubSpot connection with URL:', `${this.config.baseUrl}/crm/v3/objects/contacts?limit=1`);
+      console.log('Using API key format:', this.config.apiKey.substring(0, 10) + '...');
+      
       await this.makeRequest('/crm/v3/objects/contacts?limit=1');
+      console.log('HubSpot connection test successful');
       return true;
     } catch (error) {
       console.error('HubSpot connection test failed:', error);
+      console.error('Request URL was:', `${this.config.baseUrl}/crm/v3/objects/contacts?limit=1`);
       return false;
     }
   }

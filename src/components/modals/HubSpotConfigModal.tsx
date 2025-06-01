@@ -80,15 +80,16 @@ export function HubSpotConfigModal({ isOpen, onClose }: HubSpotConfigModalProps)
       if (!result) {
         toast({
           title: "Test de connexion échoué",
-          description: "Vérifiez votre clé API et réessayez.",
+          description: "Vérifiez que votre clé API est valide et que votre application privée a les bonnes permissions (contacts.read). Si votre clé commence par 'pat-eu', contactez le support.",
           variant: "destructive",
         });
       }
     } catch (error) {
+      console.error('Erreur détaillée de connexion HubSpot:', error);
       setConnectionTestResult(false);
       toast({
         title: "Erreur de connexion",
-        description: "Une erreur est survenue lors du test de connexion.",
+        description: `Erreur: ${error instanceof Error ? error.message : 'Erreur inconnue'}. Vérifiez votre clé API et les permissions de votre application privée.`,
         variant: "destructive",
       });
     } finally {
