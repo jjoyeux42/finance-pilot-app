@@ -40,7 +40,7 @@ const productProfitability = [
   { product: 'Service D', revenue: 43000, margin: 45, growth: 15 },
 ];
 
-const COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#ef4444', '#f59e0b'];
+const COLORS = ['#3b82f6', '#10b981', '#8b5cf6', '#ef4444', '#ffffff'];
 
 const Profitability = () => {
   const [activeModal, setActiveModal] = useState<string | null>(null);
@@ -238,7 +238,7 @@ const Profitability = () => {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-slate-200">
+                    <tr className="border-b border-white">
                       <th className="text-left py-3 px-4 font-semibold text-slate-700">Produit/Service</th>
                       <th className="text-right py-3 px-4 font-semibold text-slate-700">Chiffre d'Affaires</th>
                       <th className="text-right py-3 px-4 font-semibold text-slate-700">Marge (%)</th>
@@ -247,7 +247,7 @@ const Profitability = () => {
                   </thead>
                   <tbody>
                     {productProfitability.map((product, index) => (
-                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50">
+                      <tr key={index} className="border-b border-white hover:bg-slate-50">
                         <td className="py-3 px-4 font-medium text-slate-900">{product.product}</td>
                         <td className="py-3 px-4 text-right text-slate-700">{product.revenue.toLocaleString()}€</td>
                         <td className="py-3 px-4 text-right">

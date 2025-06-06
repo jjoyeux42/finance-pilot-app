@@ -57,7 +57,7 @@ CREATE TRIGGER trigger_update_integration_settings_updated_at
   EXECUTE FUNCTION update_integration_settings_updated_at();
 
 -- Add comments for documentation
-COMMENT ON TABLE integration_settings IS 'Stores configuration settings for third-party integrations like HubSpot, Salesforce, etc.';
-COMMENT ON COLUMN integration_settings.integration_type IS 'Type of integration (e.g., hubspot, salesforce, mailchimp)';
+COMMENT ON TABLE integration_settings IS 'Stores configuration settings for third-party integrations like Salesforce, Mailchimp, etc.';
+COMMENT ON COLUMN integration_settings.integration_type IS 'Type of integration (e.g., salesforce, mailchimp, stripe)';
 COMMENT ON COLUMN integration_settings.settings IS 'JSON configuration specific to the integration type';
 COMMENT ON COLUMN integration_settings.is_active IS 'Whether the integration is currently active/enabled';

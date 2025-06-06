@@ -47,13 +47,13 @@ export function KPICard({
   const getColorClasses = () => {
     switch (color) {
       case 'success':
-        return 'border-l-4 border-emerald-500 bg-gradient-to-br from-white/90 to-emerald-50/30 backdrop-blur-sm shadow-lg';
+        return 'border-l-4 border-white bg-gradient-to-br from-white/90 to-blue-50/30 backdrop-blur-sm shadow-lg';
       case 'warning':
-        return 'border-l-4 border-indigo-500 bg-gradient-to-br from-white/90 to-indigo-50/30 backdrop-blur-sm shadow-lg';
+        return 'border-l-4 border-white bg-gradient-to-br from-white/90 to-indigo-50/30 backdrop-blur-sm shadow-lg';
       case 'danger':
-        return 'border-l-4 border-red-500 bg-gradient-to-br from-white/90 to-red-50/30 backdrop-blur-sm shadow-lg';
+        return 'border-l-4 border-white bg-gradient-to-br from-white/90 to-red-50/30 backdrop-blur-sm shadow-lg';
       default:
-        return 'border-l-4 border-blue-500 bg-gradient-to-br from-white/90 to-blue-50/30 backdrop-blur-sm shadow-lg';
+        return 'border-l-4 border-white bg-gradient-to-br from-white/90 to-blue-50/30 backdrop-blur-sm shadow-lg';
     }
   };
 

@@ -656,7 +656,7 @@ export default function ActivityLogger() {
                     <div 
                       key={version.id} 
                       className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-                        selectedVersion?.id === version.id ? 'bg-blue-50 border-blue-200' : 'hover:bg-slate-50'
+                        selectedVersion?.id === version.id ? 'bg-blue-50 border-white' : 'hover:bg-slate-50'
                       }`}
                       onClick={() => setSelectedVersion(version)}
                     >
@@ -750,7 +750,7 @@ export default function ActivityLogger() {
                             {change.type !== 'added' && (
                               <div className="mb-2">
                                 <span className="text-xs text-slate-500">Ancienne valeur:</span>
-                                <div className="bg-red-50 border border-red-200 rounded p-2 mt-1">
+                                <div className="bg-red-50 border border-white rounded p-2 mt-1">
                                   <code className="text-sm text-red-800">
                                     {JSON.stringify(change.oldValue)}
                                   </code>
@@ -761,7 +761,7 @@ export default function ActivityLogger() {
                             {change.type !== 'removed' && (
                               <div>
                                 <span className="text-xs text-slate-500">Nouvelle valeur:</span>
-                                <div className="bg-emerald-50 border border-emerald-200 rounded p-2 mt-1">
+                                <div className="bg-emerald-50 border border-white rounded p-2 mt-1">
                                   <code className="text-sm text-emerald-800">
                                     {JSON.stringify(change.newValue)}
                                   </code>
@@ -808,7 +808,7 @@ export default function ActivityLogger() {
                 {activityLogs
                   .filter(log => log.severity === 'high' || log.severity === 'critical' || !log.success)
                   .map((log) => (
-                    <div key={log.id} className="border border-red-200 rounded-lg p-4 bg-red-50">
+                    <div key={log.id} className="border border-white rounded-lg p-4 bg-red-50">
                       <div className="flex items-start gap-3">
                         <AlertTriangle className="w-5 h-5 text-red-600 mt-1" />
                         <div className="flex-1">

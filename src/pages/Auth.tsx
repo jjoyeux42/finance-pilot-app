@@ -31,9 +31,10 @@ export default function Auth() {
       if (isLogin) {
         const loginValidation = validateLoginData({ email, password });
         if (!loginValidation.isValid) {
+          const errorMessages = Object.values(loginValidation.errors).join(', ');
           toast({
             title: "Erreur de validation",
-            description: loginValidation.error,
+            description: errorMessages,
             variant: "destructive",
           });
           return;
@@ -57,9 +58,10 @@ export default function Auth() {
           lastName
         });
         if (!registrationValidation.isValid) {
+          const errorMessages = Object.values(registrationValidation.errors).join(', ');
           toast({
             title: "Erreur de validation",
-            description: registrationValidation.error,
+            description: errorMessages,
             variant: "destructive",
           });
           return;
@@ -140,7 +142,7 @@ export default function Auth() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="bg-white border-white focus:border-white focus:ring-white"
                   />
                 </div>
                 <div>
@@ -150,7 +152,7 @@ export default function Auth() {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
-                    className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="bg-white border-white focus:border-white focus:ring-white"
                   />
                 </div>
               </div>
@@ -158,24 +160,24 @@ export default function Auth() {
             <div>
               <Label htmlFor="email" className="text-gray-700">Email</Label>
               <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-              />
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-white border-white focus:border-white focus:ring-white"
+            />
             </div>
             <div>
               <Label htmlFor="password" className="text-gray-700">Mot de passe</Label>
               <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-              />
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="bg-white border-white focus:border-white focus:ring-white"
+            />
             </div>
             <Button 
               type="submit" 

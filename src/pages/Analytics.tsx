@@ -214,7 +214,7 @@ const Analytics = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100">
+                  <div className="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100">
                     <div className="flex items-center space-x-3">
                       <Target className="w-8 h-8 text-emerald-600" />
                       <div>
@@ -257,7 +257,7 @@ const Analytics = () => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <div className="p-4 rounded-lg border-l-4 border-emerald-500 bg-emerald-50">
+                  <div className="p-4 rounded-lg border-l-4 border-white bg-emerald-50">
                     <h4 className="font-semibold text-emerald-800 mb-2">📈 Opportunité Détectée</h4>
                     <p className="text-sm text-emerald-700">
                       Votre taux de conversion sur le segment "Enterprise" est 23% supérieur à la moyenne. 
@@ -265,7 +265,7 @@ const Analytics = () => {
                     </p>
                   </div>
                   
-                  <div className="p-4 rounded-lg border-l-4 border-blue-500 bg-blue-50">
+                  <div className="p-4 rounded-lg border-l-4 border-white bg-blue-50">
                     <h4 className="font-semibold text-blue-800 mb-2">💡 Insight Performance</h4>
                     <p className="text-sm text-blue-700">
                       Les clients acquis en Q1 montrent une rétention 15% supérieure. 
@@ -275,7 +275,7 @@ const Analytics = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="p-4 rounded-lg border-l-4 border-indigo-500 bg-indigo-50">
+                  <div className="p-4 rounded-lg border-l-4 border-white bg-indigo-50">
               <h4 className="font-semibold text-indigo-800 mb-2">⚠️ Alerte Tendance</h4>
               <p className="text-sm text-indigo-700">
                       Ralentissement détecté sur le produit "Service C" (-8% ce mois). 
@@ -283,7 +283,7 @@ const Analytics = () => {
                     </p>
                   </div>
                   
-                  <div className="p-4 rounded-lg border-l-4 border-purple-500 bg-purple-50">
+                  <div className="p-4 rounded-lg border-l-4 border-white bg-purple-50">
                     <h4 className="font-semibold text-purple-800 mb-2">🎯 Prédiction</h4>
                     <p className="text-sm text-purple-700">
                       Basé sur les tendances actuelles, probabilité de 87% d'atteindre 

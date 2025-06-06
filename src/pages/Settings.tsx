@@ -14,9 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useSettings } from '@/hooks/useSettings';
 import { useProfile } from '@/hooks/useProfile';
 import { useAuth } from '@/hooks/useAuth';
-import { useHubSpot } from '@/hooks/useHubSpot';
 import { ChangePasswordModal } from '@/components/modals/ChangePasswordModal';
-import { HubSpotConfigModal } from '@/components/modals/HubSpotConfigModal';
 import { 
   Settings as SettingsIcon, 
   User, 
@@ -42,9 +40,7 @@ const Settings = () => {
   const { user, signOut } = useAuth();
   const { profile } = useProfile();
   const { settings, updateSettings, isUpdating } = useSettings();
-  const { isConnected: isHubSpotConnected } = useHubSpot();
 
-  const [isHubSpotModalOpen, setIsHubSpotModalOpen] = useState(false);
 
   const handleNotificationChange = (key: string, value: boolean) => {
     if (settings) {
@@ -91,7 +87,7 @@ const Settings = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Profil Utilisateur */}
-            <Card className="lg:col-span-1 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-1 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <User className="w-5 h-5 text-blue-600" />
@@ -118,7 +114,7 @@ const Settings = () => {
             </Card>
 
             {/* Notifications */}
-            <Card className="lg:col-span-2 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-2 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <Bell className="w-5 h-5 text-blue-600" />
@@ -156,7 +152,7 @@ const Settings = () => {
             </Card>
 
             {/* Connexions externes */}
-            <Card className="lg:col-span-3 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-3 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <Link className="w-5 h-5 text-blue-600" />
@@ -173,51 +169,30 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-                    <Button size="sm" className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
+                    <Button size="sm" className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
                       Connecter
                     </Button>
                   </div>
 
                   <div className="p-4 border rounded-lg space-y-3">
                     <div className="flex items-center space-x-3">
-                      <Users className="w-6 h-6 text-orange-600" />
+                      <Users className="w-6 h-6 text-blue-600" />
                       <div>
-                        <h4 className="font-medium text-gray-900">HubSpot CRM</h4>
+                        <h4 className="font-medium text-gray-900">Intégrations CRM</h4>
                         <div className="flex items-center space-x-2">
-                          {isHubSpotConnected ? (
-                            <>
-                              <CheckCircle className="w-3 h-3 text-green-600" />
-                              <p className="text-sm text-green-600">Connecté</p>
-                            </>
-                          ) : (
-                            <>
-                              <XCircle className="w-3 h-3 text-red-600" />
-                              <p className="text-sm text-red-600">Non connecté</p>
-                            </>
-                          )}
+                          <XCircle className="w-3 h-3 text-red-600" />
+                          <p className="text-sm text-red-600">Aucune intégration configurée</p>
                         </div>
                       </div>
                     </div>
                     <Button 
                       size="sm" 
-                      onClick={() => setIsHubSpotModalOpen(true)}
-                      className={isHubSpotConnected 
-                        ? "w-full border-2 border-orange-300 text-orange-600 hover:bg-orange-50 hover:border-orange-400 transition-all duration-200" 
-                        : "w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]"
-                      }
-                      variant={isHubSpotConnected ? "outline" : "default"}
+                      disabled
+                      className="w-full bg-gray-100 text-gray-400 border-white"
+                      variant="outline"
                     >
-                      {isHubSpotConnected ? (
-                        <>
-                          <SettingsIcon className="w-4 h-4 mr-2" />
-                          Configurer
-                        </>
-                      ) : (
-                        <>
-                          <Link className="w-4 h-4 mr-2" />
-                          Connecter
-                        </>
-                      )}
+                      <Link className="w-4 h-4 mr-2" />
+                      Bientôt disponible
                     </Button>
                   </div>
 
@@ -242,7 +217,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-                    <Button size="sm" className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
+                    <Button size="sm" className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
                       Connecter
                     </Button>
                   </div>
@@ -255,7 +230,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Connecté</p>
                       </div>
                     </div>
-                    <Button size="sm" variant="outline" className="w-full border-2 border-rose-300 text-rose-600 hover:bg-rose-50 hover:border-rose-400 transition-all duration-200">
+                    <Button size="sm" variant="outline" className="w-full border-2 border-white text-rose-600 hover:bg-rose-50 hover:border-white transition-all duration-200">
                       <Unlink className="w-4 h-4 mr-2" />
                       Déconnecter
                     </Button>
@@ -269,7 +244,7 @@ const Settings = () => {
                         <p className="text-sm text-gray-600">Non connecté</p>
                       </div>
                     </div>
-                    <Button size="sm" className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
+                    <Button size="sm" className="w-full bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white shadow-md transition-all duration-200 transform hover:scale-[1.02]">
                       Connecter
                     </Button>
                   </div>
@@ -278,7 +253,7 @@ const Settings = () => {
             </Card>
 
             {/* Sécurité */}
-            <Card className="lg:col-span-1 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-1 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <Shield className="w-5 h-5 text-blue-600" />
@@ -302,7 +277,7 @@ const Settings = () => {
             </Card>
 
             {/* Export et sauvegarde */}
-            <Card className="lg:col-span-2 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-2 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <Download className="w-5 h-5 text-blue-600" />
@@ -311,11 +286,11 @@ const Settings = () => {
               </CardHeader>
               <CardContent className="space-y-4 bg-white">
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" className="flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0 shadow-md transition-all duration-200 transform hover:scale-[1.02]">
+                  <Button variant="outline" className="flex items-center space-x-2 bg-gradient-to-r from-indigo-500 to-blue-500 hover:from-indigo-600 hover:to-blue-600 text-white border-0 shadow-md transition-all duration-200 transform hover:scale-[1.02]">
                     <Download className="w-4 h-4" />
                     <span>Exporter les données</span>
                   </Button>
-                  <Button variant="outline" className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white border-0 shadow-md transition-all duration-200 transform hover:scale-[1.02]">
+                  <Button variant="outline" className="flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0 shadow-md transition-all duration-200 transform hover:scale-[1.02]">
                     <Database className="w-4 h-4" />
                     <span>Sauvegarde automatique</span>
                   </Button>
@@ -327,7 +302,7 @@ const Settings = () => {
             </Card>
 
             {/* Zone dangereuse */}
-            <Card className="lg:col-span-3 border-rose-200 bg-white shadow-md">
+            <Card className="lg:col-span-3 border-white bg-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-rose-600">
                   <Trash2 className="w-5 h-5" />
@@ -335,7 +310,7 @@ const Settings = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 bg-white">
-                <Button variant="destructive" className="w-full bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 shadow-lg transition-all duration-200 transform hover:scale-[1.02] border-2 border-red-300">
+                <Button variant="destructive" className="w-full bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600 shadow-lg transition-all duration-200 transform hover:scale-[1.02] border-2 border-white">
                   Supprimer le compte
                 </Button>
                 <p className="text-xs text-slate-500">
@@ -354,10 +329,7 @@ const Settings = () => {
       
 
       
-      <HubSpotConfigModal 
-        isOpen={isHubSpotModalOpen} 
-        onClose={() => setIsHubSpotModalOpen(false)} 
-      />
+
     </SidebarProvider>
   );
 };

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import { TransactionController } from '@/controllers/transactionController.js';
 import { validateRequest, schemas } from '@/middleware/validation.js';
 

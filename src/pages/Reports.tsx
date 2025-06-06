@@ -369,7 +369,7 @@ export default function Reports() {
                 label={({ name, value }) => `${name}: ${value}%`}
               >
                 {sampleData.sales_by_segment.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={['#3b82f6', '#10b981', '#f59e0b', '#ef4444'][index]} />
+                  <Cell key={`cell-${index}`} fill={['#3b82f6', '#10b981', '#ffffff', '#ef4444'][index]} />
                 ))}
               </Pie>
               <Tooltip />
@@ -416,7 +416,7 @@ export default function Reports() {
       
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="bg-white border-b border-slate-200 px-6 py-4">
+        <div className="bg-white border-b border-white px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">Rapports et Analyses</h1>

@@ -29,8 +29,8 @@
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
 
-    --border: 226 232 240;
-    --input: 226 232 240;
+    --border: 255 255 255;
+    --input: 255 255 255;
     --ring: 82 92 255;
 
     --radius: 0.5rem;
@@ -41,7 +41,7 @@
     --sidebar-primary-foreground: 255 255 255;
     --sidebar-accent: 241 245 249;
     --sidebar-accent-foreground: 51 65 85;
-    --sidebar-border: 226 232 240;
+    --sidebar-border: 255 255 255;
     --sidebar-ring: 82 92 255;
   }
 
@@ -70,8 +70,8 @@
     --destructive: 220 38 38;
     --destructive-foreground: 226 232 240;
 
-    --border: 30 41 59;
-    --input: 30 41 59;
+    --border: 255 255 255;
+    --input: 255 255 255;
     --ring: 82 92 255;
 
     --sidebar-background: 15 23 42;
@@ -80,7 +80,7 @@
     --sidebar-primary-foreground: 255 255 255;
     --sidebar-accent: 30 41 59;
     --sidebar-accent-foreground: 226 232 240;
-    --sidebar-border: 30 41 59;
+    --sidebar-border: 255 255 255;
     --sidebar-ring: 82 92 255;
   }
 }
@@ -122,10 +122,6 @@
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   }
   
-  .gradient-emerald {
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-  }
-  
   .gradient-purple {
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   }
@@ -136,14 +132,6 @@
 
   .gradient-red {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-  }
-
-  .gradient-orange {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  }
-
-  .gradient-teal {
-    background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
   }
 
   .gradient-indigo {

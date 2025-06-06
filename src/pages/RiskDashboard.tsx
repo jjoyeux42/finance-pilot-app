@@ -241,15 +241,15 @@ export default function RiskDashboard() {
   const getRiskColor = (status: string) => {
     switch (status) {
       case 'low':
-        return 'text-emerald-600 bg-emerald-50 border-emerald-200';
+        return 'text-emerald-600 bg-emerald-50 border-white';
       case 'medium':
-        return 'text-blue-600 bg-blue-50 border-blue-200';
+        return 'text-blue-600 bg-blue-50 border-white';
       case 'high':
-        return 'text-indigo-600 bg-indigo-50 border-indigo-200';
+        return 'text-indigo-600 bg-indigo-50 border-white';
       case 'critical':
-        return 'text-red-600 bg-red-50 border-red-200';
+        return 'text-red-600 bg-red-50 border-white';
       default:
-        return 'text-slate-600 bg-slate-50 border-slate-200';
+        return 'text-slate-600 bg-slate-50 border-white';
     }
   };
 
@@ -307,7 +307,7 @@ export default function RiskDashboard() {
       
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="bg-white border-b border-slate-200 px-6 py-4">
+        <div className="bg-white border-b border-white px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">Dashboard de Risques</h1>
@@ -455,7 +455,7 @@ export default function RiskDashboard() {
                       <Line 
                         type="monotone" 
                         dataKey="credit" 
-                        stroke="#f59e0b" 
+                        stroke="#ffffff" 
                         strokeWidth={2}
                         name="Crédit"
                       />

@@ -136,9 +136,9 @@ export const sanitizeString = (input: string): string => {
   
   return input
     .trim()
-    .replace(/[<>"'&\x00-\x1F\x7F]/g, '') // Supprime les caractères dangereux et de contrôle
     .replace(/<script[^>]*>.*?<\/script>/gi, '') // Supprime les balises script
     .replace(/<[^>]*>/g, '') // Supprime toutes les balises HTML
+    .replace(/["'&\x00-\x1F\x7F]/g, '') // Supprime les caractères dangereux et de contrôle (sans < >)
     .replace(/DROP\s+TABLE/gi, '') // Supprime les commandes SQL dangereuses
     .replace(/--/g, '') // Supprime les commentaires SQL
     .replace(/;/g, '') // Supprime les points-virgules SQL

@@ -1,6 +1,6 @@
-import { Router, Request, Response } from 'express';
-import { authMiddleware } from '@/middleware/auth.js';
-import { validateRequest, paginationSchema } from '@/middleware/validation.js';
+import { Router, Response } from 'express';
+import { authMiddleware, AuthenticatedRequest } from '@/middleware/auth.js';
+import { validateRequest } from '@/middleware/validation.js';
 import { AnalyticsService } from '@/services/analyticsService.js';
 import { logger } from '@/utils/logger.js';
 import { z } from 'zod';
@@ -20,7 +20,7 @@ const cashFlowSchema = z.object({
 });
 
 // Routes pour les analytics
-router.get('/dashboard', async (req: Request, res: Response) => {
+router.get('/dashboard', async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     if (!userId) {
@@ -35,7 +35,7 @@ router.get('/dashboard', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/reports', validateRequest(reportTypeSchema, 'query'), async (req: Request, res: Response) => {
+router.get('/reports', validateRequest(reportTypeSchema, 'query'), async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     if (!userId) {
@@ -51,7 +51,7 @@ router.get('/reports', validateRequest(reportTypeSchema, 'query'), async (req: R
   }
 });
 
-router.get('/kpis', async (req: Request, res: Response) => {
+router.get('/kpis', async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     if (!userId) {
@@ -66,7 +66,7 @@ router.get('/kpis', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/cashflow', validateRequest(cashFlowSchema, 'query'), async (req: Request, res: Response) => {
+router.get('/cashflow', validateRequest(cashFlowSchema, 'query'), async (req: AuthenticatedRequest, res: Response) => {
   try {
     const userId = req.user?.id;
     if (!userId) {

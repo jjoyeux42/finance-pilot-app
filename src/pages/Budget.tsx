@@ -66,7 +66,7 @@ const mockBudgetCategories: BudgetCategory[] = [
     budgeted: 8000,
     spent: 7200,
     period: 'monthly',
-    color: '#F59E0B',
+    color: '#ffffff',
     description: 'Frais opérationnels et administratifs'
   },
   {
@@ -245,7 +245,7 @@ const Budget = () => {
                           key={category.id}
                           className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${
                             selectedCategory?.id === category.id 
-                              ? 'border-purple-500 bg-purple-50' 
+                              ? 'border-white bg-purple-50' 
                               : 'border-slate-200 bg-white'
                           }`}
                           onClick={() => setSelectedCategory(category)}

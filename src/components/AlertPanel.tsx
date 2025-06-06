@@ -52,13 +52,13 @@ export function AlertPanel() {
   const getAlertColor = (type: string) => {
     switch (type) {
       case 'warning':
-        return 'text-indigo-600 bg-indigo-50 border-indigo-200';
-      case 'danger':
-        return 'text-red-500 bg-red-50 border-red-200';
-      case 'success':
-        return 'text-emerald-600 bg-emerald-50 border-emerald-200';
-      default:
-        return 'text-blue-600 bg-blue-50 border-blue-200';
+        return 'text-indigo-600 bg-indigo-50 border-white';
+    case 'error':
+      return 'text-red-500 bg-red-50 border-white';
+    case 'success':
+      return 'text-emerald-600 bg-emerald-50 border-white';
+    case 'warning':
+      return 'text-blue-600 bg-blue-50 border-white';
     }
   };
 

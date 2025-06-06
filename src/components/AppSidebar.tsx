@@ -133,7 +133,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar className="border-r-0 bg-gradient-to-b from-white to-slate-50/50 backdrop-blur-xl shadow-2xl">
-      <SidebarHeader className="border-b border-slate-200/50 bg-white/80 backdrop-blur-sm">
+      <SidebarHeader className="border-b border-white bg-white/80 backdrop-blur-sm">
         <div className="flex items-center space-x-3 px-3 sm:px-4 py-4 sm:py-6">
           <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
             <span className="text-white font-bold text-sm sm:text-lg">FP</span>
@@ -162,7 +162,7 @@ export function AppSidebar() {
                       asChild 
                       className={`
                         transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
-                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-white' : 'text-slate-600'}
                       `}
                     >
                       <a href={item.url} className="flex items-center space-x-3">
@@ -193,7 +193,7 @@ export function AppSidebar() {
                       asChild 
                       className={`
                         transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
-                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-white' : 'text-slate-600'}
                       `}
                     >
                       <a href={item.url} className="flex items-center space-x-3">
@@ -224,7 +224,7 @@ export function AppSidebar() {
                       asChild 
                       className={`
                         transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
-                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-white' : 'text-slate-600'}
                       `}
                     >
                       <a href={item.url} className="flex items-center space-x-3">
@@ -255,7 +255,7 @@ export function AppSidebar() {
                       asChild 
                       className={`
                         transition-all duration-200 hover:bg-slate-100 hover:text-slate-800
-                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-blue-500' : 'text-slate-600'}
+                        ${isActive ? 'bg-blue-100 text-blue-800 font-medium border-r-2 border-white' : 'text-slate-600'}
                       `}
                     >
                       <a href={item.url} className="flex items-center space-x-3">
@@ -294,7 +294,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-slate-200 p-4 bg-white space-y-2">
+      <SidebarFooter className="border-t border-white p-4 bg-white space-y-2">
         <div className="flex items-center space-x-3 cursor-pointer hover:bg-slate-50 rounded-lg p-2 transition-colors"
              onClick={() => window.location.href = '/profile'}>
           <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">

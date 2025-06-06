@@ -47,7 +47,7 @@ const Profile = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Photo de profil */}
-            <Card className="lg:col-span-1 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-1 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <Camera className="w-5 h-5 text-blue-600" />
@@ -67,7 +67,7 @@ const Profile = () => {
             </Card>
 
             {/* Informations personnelles */}
-            <Card className="lg:col-span-2 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-2 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <User className="w-5 h-5 text-blue-600" />
@@ -81,7 +81,7 @@ const Profile = () => {
                     <Input 
                       id="firstName" 
                       defaultValue={profile?.first_name || ''} 
-                      className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      className="bg-white border-white focus:border-white focus:ring-white"
                     />
                   </div>
                   <div>
@@ -89,7 +89,7 @@ const Profile = () => {
                     <Input 
                       id="lastName" 
                       defaultValue={profile?.last_name || ''} 
-                      className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      className="bg-white border-white focus:border-white focus:ring-white"
                     />
                   </div>
                 </div>
@@ -99,14 +99,14 @@ const Profile = () => {
                     id="email" 
                     type="email" 
                     defaultValue={user?.email || ''} 
-                    className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="bg-white border-white focus:border-white focus:ring-white"
                   />
                 </div>
                 <div>
                   <Label htmlFor="phone" className="text-gray-700">Téléphone</Label>
                   <Input 
                     id="phone" 
-                    className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="bg-white border-white focus:border-white focus:ring-white"
                   />
                 </div>
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white">
@@ -116,7 +116,7 @@ const Profile = () => {
             </Card>
 
             {/* Activité sur la plateforme */}
-            <Card className="lg:col-span-3 bg-white border-gray-200 shadow-md">
+            <Card className="lg:col-span-3 bg-white border-white shadow-md">
               <CardHeader className="bg-white">
                 <CardTitle className="flex items-center space-x-2 text-gray-900">
                   <Activity className="w-5 h-5 text-blue-600" />

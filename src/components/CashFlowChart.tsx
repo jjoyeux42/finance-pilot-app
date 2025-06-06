@@ -70,7 +70,7 @@ export function CashFlowChart() {
               <Tooltip 
                 contentStyle={{
                   backgroundColor: 'rgba(255, 255, 255, 0.98)',
-                  border: '1px solid rgba(226, 232, 240, 0.8)',
+                  border: '1px solid rgba(255, 255, 255, 0.8)',
                   borderRadius: '16px',
                   boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
                   fontSize: '14px',

@@ -245,7 +245,7 @@ export default function OperationalDashboard() {
       
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="bg-white border-b border-slate-200 px-6 py-4">
+        <div className="bg-white border-b border-white px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">Dashboard Opérationnel</h1>
@@ -431,7 +431,7 @@ export default function OperationalDashboard() {
                       <Line 
                         type="monotone" 
                         dataKey="emails" 
-                        stroke="#f59e0b" 
+                        stroke="#ffffff" 
                         strokeWidth={2}
                         name="Emails"
                       />

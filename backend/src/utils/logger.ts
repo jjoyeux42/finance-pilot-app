@@ -1,5 +1,5 @@
 import winston from 'winston';
-import { config } from '@/config/environment.js';
+import { config } from '@/config/environment';
 
 /**
  * Configuration du logger Winston

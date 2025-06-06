@@ -317,7 +317,7 @@ const Invoices = () => {
                             key={invoice.id}
                             className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${
                               selectedInvoice?.id === invoice.id 
-                                ? 'border-green-500 bg-green-50' 
+                                ? 'border-white bg-green-50' 
                                 : 'border-slate-200 bg-white'
                             }`}
                             onClick={() => setSelectedInvoice(invoice)}

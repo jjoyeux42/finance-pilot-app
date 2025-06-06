@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
-import { config } from '@/config/environment.js';
-import { logger } from '@/utils/logger.js';
-import { createError } from '@/middleware/errorHandler.js';
+import { config } from '@/config/environment';
+import { logger } from '@/utils/logger';
+import { createError } from '@/middleware/errorHandler';
 
 const supabase = createClient(config.SUPABASE_URL, config.SUPABASE_SERVICE_KEY);
 

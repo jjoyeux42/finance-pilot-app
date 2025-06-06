@@ -3,7 +3,7 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import request from 'supertest';
-import { app } from '../server.js';
+import app from '../server.js';
 
 describe('API Routes', () => {
   let authToken: string;

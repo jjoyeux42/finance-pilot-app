@@ -61,7 +61,7 @@ const monthlyData = [
 const revenueBySegment = [
   { name: 'Entreprises', value: 45, amount: 1102500, color: '#3b82f6' },
   { name: 'PME', value: 30, amount: 735000, color: '#10b981' },
-  { name: 'Startups', value: 15, amount: 367500, color: '#f59e0b' },
+  { name: 'Startups', value: 15, amount: 367500, color: '#ffffff' },
   { name: 'Particuliers', value: 10, amount: 245000, color: '#ef4444' }
 ];
 
@@ -183,7 +183,7 @@ export default function ExecutiveDashboard() {
       
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="bg-white border-b border-slate-200 px-6 py-4">
+        <div className="bg-white border-b border-white px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">Dashboard Exécutif</h1>

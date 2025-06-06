@@ -70,7 +70,7 @@ export function AnalysisModal({ isOpen, onClose }: AnalysisModalProps) {
           <div className="space-y-2">
             <Label className="text-gray-700">Type d'analyse</Label>
             <Select value={analysisType} onValueChange={setAnalysisType}>
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue placeholder="Sélectionner le type d'analyse" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -103,7 +103,7 @@ export function AnalysisModal({ isOpen, onClose }: AnalysisModalProps) {
                 value={analysisResult}
                 readOnly
                 rows={6}
-                className="bg-gray-50 border-gray-300"
+                className="bg-gray-50 border-white"
               />
             </div>
           )}

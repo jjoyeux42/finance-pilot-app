@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { createClient } from '@supabase/supabase-js';
-import { config } from '@/config/environment.js';
-import { logger } from '@/utils/logger.js';
+import { config } from '@/config/environment';
+import { logger } from '@/utils/logger';
 
 const supabase = createClient(config.SUPABASE_URL, config.SUPABASE_SERVICE_KEY);
 

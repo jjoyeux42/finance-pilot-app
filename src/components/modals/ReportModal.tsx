@@ -59,7 +59,7 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
               value={formData.type} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, type: value }))}
             >
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue placeholder="Sélectionner le type" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -77,7 +77,7 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
               value={formData.period} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, period: value }))}
             >
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue placeholder="Sélectionner la période" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -100,7 +100,7 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
                   value={formData.startDate}
                   onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                   required
-                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  className="bg-white border-white focus:border-white focus:ring-white"
                 />
               </div>
               <div className="space-y-2">
@@ -111,7 +111,7 @@ export function ReportModal({ isOpen, onClose }: ReportModalProps) {
                   value={formData.endDate}
                   onChange={(e) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
                   required
-                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  className="bg-white border-white focus:border-white focus:ring-white"
                 />
               </div>
             </div>

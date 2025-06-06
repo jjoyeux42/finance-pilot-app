@@ -127,17 +127,17 @@ export function NotificationCenter({ isOpen, onClose }: NotificationCenterProps)
   };
 
   const getNotificationColor = (type: string, priority: string) => {
-    if (priority === 'urgent') return 'border-red-500 bg-red-50';
+    if (priority === 'urgent') return 'border-white bg-red-50';
     
     switch (type) {
       case 'warning':
-        return 'border-indigo-500 bg-indigo-50';
+        return 'border-white bg-indigo-50';
       case 'success':
-        return 'border-emerald-500 bg-emerald-50';
+        return 'border-white bg-emerald-50';
       case 'error':
-        return 'border-red-500 bg-red-50';
+        return 'border-white bg-red-50';
       default:
-        return 'border-blue-500 bg-blue-50';
+        return 'border-white bg-blue-50';
     }
   };
 
@@ -283,7 +283,7 @@ export function NotificationCenter({ isOpen, onClose }: NotificationCenterProps)
                       key={notification.id}
                       className={`p-3 rounded-lg border transition-all hover:shadow-sm cursor-pointer ${
                         notification.isRead 
-                          ? 'bg-white border-slate-200' 
+                          ? 'bg-white border-white' 
                           : getNotificationColor(notification.type, notification.priority)
                       }`}
                       onClick={() => !notification.isRead && markAsRead(notification.id)}

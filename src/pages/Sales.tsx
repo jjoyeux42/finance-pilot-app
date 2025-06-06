@@ -169,7 +169,7 @@ const Sales = () => {
             <Card className="border-0 shadow-xl bg-white rounded-2xl">
               <CardHeader className="pb-6">
                 <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
-                  <div className="p-2 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl text-white">
+                  <div className="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-white">
                     📊
                   </div>
                   <span>Performance Commerciale</span>
@@ -245,7 +245,7 @@ const Sales = () => {
               <CardContent>
                 <div className="space-y-4">
                   {pipeline.map((deal) => (
-                    <div key={deal.id} className="p-4 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors">
+                    <div key={deal.id} className="p-4 rounded-lg border border-white hover:bg-slate-50 transition-colors">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-semibold text-slate-900">{deal.prospect}</h4>
                         <span className="font-bold text-emerald-600">{deal.value.toLocaleString()}€</span>
@@ -275,7 +275,7 @@ const Sales = () => {
               <CardContent>
                 <div className="space-y-4">
                   {topClients.map((client) => (
-                    <div key={client.id} className="p-4 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors">
+                    <div key={client.id} className="p-4 rounded-lg border border-white hover:bg-slate-50 transition-colors">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-semibold text-slate-900">{client.name}</h4>
                         <span className="font-bold text-slate-700">{client.revenue.toLocaleString()}€</span>

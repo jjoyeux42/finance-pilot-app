@@ -49,7 +49,7 @@ export function CashFlowAnalysis() {
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {analysisData.map((item, index) => (
-            <div key={index} className="p-4 rounded-lg border border-slate-200 hover:shadow-md transition-all duration-200">
+            <div key={index} className="p-4 rounded-lg border border-white hover:shadow-md transition-all duration-200">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">

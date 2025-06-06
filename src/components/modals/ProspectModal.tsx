@@ -75,7 +75,7 @@ export function ProspectModal({ isOpen, onClose }: ProspectModalProps) {
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               required
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
@@ -86,7 +86,7 @@ export function ProspectModal({ isOpen, onClose }: ProspectModalProps) {
               value={formData.company}
               onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
               required
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
@@ -97,7 +97,7 @@ export function ProspectModal({ isOpen, onClose }: ProspectModalProps) {
               type="email"
               value={formData.email}
               onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
@@ -107,14 +107,14 @@ export function ProspectModal({ isOpen, onClose }: ProspectModalProps) {
               id="phone"
               value={formData.phone}
               onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
           <div className="space-y-2">
             <Label className="text-gray-700">Statut</Label>
             <Select value={formData.status} onValueChange={(value) => setFormData(prev => ({ ...prev, status: value }))}>
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue placeholder="Sélectionner un statut" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -136,7 +136,7 @@ export function ProspectModal({ isOpen, onClose }: ProspectModalProps) {
               step="0.01"
               value={formData.estimatedValue}
               onChange={(e) => setFormData(prev => ({ ...prev, estimatedValue: e.target.value }))}
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
@@ -147,7 +147,7 @@ export function ProspectModal({ isOpen, onClose }: ProspectModalProps) {
               value={formData.notes}
               onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
               rows={3}
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 

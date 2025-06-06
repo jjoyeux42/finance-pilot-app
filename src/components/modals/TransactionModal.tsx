@@ -90,7 +90,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
                 setFormData(prev => ({ ...prev, type: value, category: '' }));
               }}
             >
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -106,7 +106,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
               value={formData.category} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
             >
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue placeholder="Sélectionner une catégorie" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -128,7 +128,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
               value={formData.amount}
               onChange={(e) => setFormData(prev => ({ ...prev, amount: e.target.value }))}
               required
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
@@ -140,7 +140,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
               value={formData.date}
               onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
               required
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 
@@ -151,7 +151,7 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
-              className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+              className="bg-white border-white focus:border-white focus:ring-white"
             />
           </div>
 

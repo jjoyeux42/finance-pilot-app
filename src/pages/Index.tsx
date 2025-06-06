@@ -104,7 +104,7 @@ const Index = () => {
           <TopPerformers />
 
           {/* Footer */}
-          <div className="text-center py-6 border-t border-slate-200">
+          <div className="text-center py-6 border-t border-white">
             <p className="text-sm text-slate-500">
               FinancePilot © 2025 - Pilotage financier intelligent
             </p>

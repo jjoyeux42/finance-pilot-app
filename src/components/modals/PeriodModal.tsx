@@ -53,7 +53,7 @@ export function PeriodModal({ isOpen, onClose }: PeriodModalProps) {
           <div className="space-y-2">
             <Label className="text-gray-700">Période</Label>
             <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
-              <SelectTrigger className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+              <SelectTrigger className="bg-white border-white focus:border-white focus:ring-white">
                 <SelectValue placeholder="Sélectionner une période" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -78,7 +78,7 @@ export function PeriodModal({ isOpen, onClose }: PeriodModalProps) {
                   value={customStart}
                   onChange={(e) => setCustomStart(e.target.value)}
                   required
-                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  className="bg-white border-white focus:border-white focus:ring-white"
                 />
               </div>
               <div className="space-y-2">
@@ -89,7 +89,7 @@ export function PeriodModal({ isOpen, onClose }: PeriodModalProps) {
                   value={customEnd}
                   onChange={(e) => setCustomEnd(e.target.value)}
                   required
-                  className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  className="bg-white border-white focus:border-white focus:ring-white"
                 />
               </div>
             </div>

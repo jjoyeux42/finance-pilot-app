@@ -460,7 +460,7 @@ export default function BenchmarkAnalysis() {
                           <div className="flex items-center gap-3 mb-2">
                             <h4 className="font-semibold text-slate-900">{metric.metric}</h4>
                             {getTrendIcon(metric.trend)}
-                            <Badge className={getPerformanceColor(metric.performance)} size="sm">
+                            <Badge className={getPerformanceColor(metric.performance)}>
                               {getPerformanceLabel(metric.performance)}
                             </Badge>
                           </div>
@@ -507,7 +507,7 @@ export default function BenchmarkAnalysis() {
                         </div>
                         <div className="h-2 bg-slate-200 rounded-full relative">
                           <div 
-                            className="h-2 bg-gradient-to-r from-red-400 via-indigo-400 to-emerald-400 rounded-full"
+                            className="h-2 bg-gradient-to-r from-red-400 via-indigo-400 to-blue-400 rounded-full"
                             style={{ width: '100%' }}
                           />
                           <div 

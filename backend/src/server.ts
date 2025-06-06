@@ -3,12 +3,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import { config } from '@/config/environment.js';
-import { logger } from '@/utils/logger.js';
-import { errorHandler } from '@/middleware/errorHandler.js';
-import { authMiddleware } from '@/middleware/auth.js';
-import { routes } from '@/routes/index.js';
-import { integrationRoutes } from '@/routes/integrations.js';
+import { config } from '@/config/environment';
+import { logger } from '@/utils/logger';
+import { errorHandler } from '@/middleware/errorHandler';
+import { authMiddleware } from '@/middleware/auth';
+import { routes } from '@/routes/index';
+import { integrationRoutes } from '@/routes/integrations';
 
 const app = express();
 
@@ -58,15 +58,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Route proxy HubSpot (sans authentification) - DOIT être avant les routes API
-app.use('/api/integrations/hubspot/proxy', (req, res, next) => {
-  // Rediriger vers le handler du proxy dans integrationRoutes
-  req.url = req.url.replace('/api/integrations/hubspot/proxy', '/hubspot/proxy');
-  req.originalUrl = req.originalUrl.replace('/api/integrations/hubspot/proxy', '/hubspot/proxy');
-  next();
-}, integrationRoutes);
 
-// Routes API avec authentification (après le proxy HubSpot)
+
+// Routes API avec authentification
 app.use('/api', authMiddleware, routes);
 
 // Health check
