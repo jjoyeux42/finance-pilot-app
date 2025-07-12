@@ -289,7 +289,7 @@ export default function BenchmarkAnalysis() {
       case 'poor':
         return 'text-red-600 bg-red-50';
       default:
-        return 'text-slate-600 bg-slate-50';
+        return 'text-slate-600 bg-white';
     }
   };
 
@@ -476,7 +476,7 @@ export default function BenchmarkAnalysis() {
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                        <div className="text-center p-3 bg-slate-50 rounded">
+                        <div className="text-center p-3 bg-white rounded">
                           <p className="text-lg font-semibold text-slate-900">
                             {formatValue(metric.industryAverage, metric.unit)}
                           </p>

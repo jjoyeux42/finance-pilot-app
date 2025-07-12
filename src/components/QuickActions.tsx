@@ -62,7 +62,7 @@ export function QuickActions() {
 
   return (
     <>
-      <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-slate-50/50 backdrop-blur-sm rounded-2xl">
+      <Card className="border-0 shadow-xl bg-gradient-to-br from-white/95 to-white backdrop-blur-sm rounded-2xl">
         <CardHeader className="pb-6">
           <CardTitle className="text-xl font-bold text-slate-900 flex items-center space-x-3">
             <div className="p-2 bg-blue-100 rounded-xl">
@@ -77,7 +77,7 @@ export function QuickActions() {
               <Button
                 key={index}
                 variant="outline"
-                className="h-auto p-6 flex flex-col items-center space-y-3 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-0 bg-gradient-to-br from-white to-slate-50/80 rounded-2xl group"
+                className="h-auto p-6 flex flex-col items-center space-y-3 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-0 bg-gradient-to-br from-white to-white rounded-2xl group"
                 onClick={() => handleActionClick(action.action)}
               >
                 <div className={`p-4 rounded-2xl ${action.color} text-white transition-all duration-300 group-hover:scale-110 shadow-lg`}>

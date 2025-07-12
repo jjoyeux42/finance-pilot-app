@@ -125,10 +125,10 @@ const Customers = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'bg-emerald-100 text-emerald-800';
-      case 'inactive': return 'bg-slate-100 text-slate-800';
+      case 'inactive': return 'bg-white text-slate-800';
       case 'prospect': return 'bg-blue-100 text-blue-800';
       case 'at_risk': return 'bg-red-100 text-red-800';
-      default: return 'bg-slate-100 text-slate-800';
+      default: return 'bg-white text-slate-800';
     }
   };
 
@@ -136,8 +136,8 @@ const Customers = () => {
     switch (segment) {
       case 'premium': return 'bg-purple-100 text-purple-800';
       case 'standard': return 'bg-blue-100 text-blue-800';
-      case 'basic': return 'bg-slate-100 text-slate-800';
-      default: return 'bg-slate-100 text-slate-800';
+      case 'basic': return 'bg-white text-slate-800';
+      default: return 'bg-white text-slate-800';
     }
   };
 
@@ -146,7 +146,7 @@ const Customers = () => {
       case 'current': return 'bg-emerald-100 text-emerald-800';
       case 'pending': return 'bg-blue-100 text-blue-800';
       case 'overdue': return 'bg-red-100 text-red-800';
-      default: return 'bg-slate-100 text-slate-800';
+      default: return 'bg-white text-slate-800';
     }
   };
 
@@ -429,7 +429,7 @@ const Customers = () => {
                       <TabsContent value="history" className="space-y-4">
                         <div className="space-y-3">
                           {customerInteractions.map((interaction) => (
-                            <div key={interaction.id} className="p-3 bg-slate-50 rounded-lg">
+                            <div key={interaction.id} className="p-3 bg-white rounded-lg">
                               <div className="flex items-center justify-between mb-1">
                                 <span className="text-sm font-medium capitalize">
                                   {interaction.type}

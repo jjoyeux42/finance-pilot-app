@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -22,6 +21,29 @@ import RiskDashboard from "./pages/RiskDashboard";
 import Reports from "./pages/Reports";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+
+// Test de connexion FinancePilot
+import { supabase } from '@/integrations/supabase/client';
+
+const testConnection = async () => {
+  try {
+    console.log('🔗 Test connexion ULTRA simple...');
+    
+    const { data, error } = await supabase
+      .from('companies')
+      .select('*')
+      .limit(1);
+    
+    console.log('✅ Données companies:', data);
+    console.log('❌ Erreur companies:', error);
+    
+  } catch (err) {
+    console.error('💥 Erreur catch:', err);
+  }
+};
+
+// Lancer le test au chargement
+testConnection();
 
 const queryClient = new QueryClient();
 

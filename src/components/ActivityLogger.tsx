@@ -346,7 +346,7 @@ export default function ActivityLogger() {
       case 'critical':
         return 'bg-red-100 text-red-800';
       default:
-        return 'bg-slate-100 text-slate-800';
+        return 'bg-white text-slate-800';
     }
   };
 
@@ -371,7 +371,7 @@ export default function ActivityLogger() {
       case 'removed':
         return 'text-red-600 bg-red-50';
       default:
-        return 'text-slate-600 bg-slate-50';
+        return 'text-slate-600 bg-white';
     }
   };
 
@@ -568,7 +568,7 @@ export default function ActivityLogger() {
             <CardContent>
               <div className="space-y-4">
                 {filteredLogs.map((log) => (
-                  <div key={log.id} className="border rounded-lg p-4 hover:bg-slate-50 transition-colors">
+                  <div key={log.id} className="border rounded-lg p-4 hover:bg-white transition-colors">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start gap-3 flex-1">
                         <div className="flex items-center gap-2 mt-1">
@@ -624,7 +624,7 @@ export default function ActivityLogger() {
                           )}
                           
                           {log.details && Object.keys(log.details).length > 0 && (
-                            <div className="mt-2 p-2 bg-slate-100 rounded text-xs">
+                            <div className="mt-2 p-2 bg-white rounded text-xs">
                               <pre className="text-slate-600">
                                 {JSON.stringify(log.details, null, 2)}
                               </pre>
@@ -656,7 +656,7 @@ export default function ActivityLogger() {
                     <div 
                       key={version.id} 
                       className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-                        selectedVersion?.id === version.id ? 'bg-blue-50 border-white' : 'hover:bg-slate-50'
+                        selectedVersion?.id === version.id ? 'bg-blue-50 border-white' : 'hover:bg-white'
                       }`}
                       onClick={() => setSelectedVersion(version)}
                     >

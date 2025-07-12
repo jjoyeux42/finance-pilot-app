@@ -200,9 +200,9 @@ export default function OperationalDashboard() {
       case 'away':
         return 'bg-indigo-100 text-indigo-800';
       case 'offline':
-        return 'bg-slate-100 text-slate-800';
+        return 'bg-white text-slate-800';
       default:
-        return 'bg-slate-100 text-slate-800';
+        return 'bg-white text-slate-800';
     }
   };
 
@@ -215,7 +215,7 @@ export default function OperationalDashboard() {
       case 'low':
         return 'bg-green-100 text-green-800';
       default:
-        return 'bg-slate-100 text-slate-800';
+        return 'bg-white text-slate-800';
     }
   };
 

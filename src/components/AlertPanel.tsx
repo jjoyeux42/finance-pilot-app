@@ -74,7 +74,7 @@ export function AlertPanel() {
         {alerts.map((alert) => (
           <div
             key={alert.id}
-            className="flex items-start space-x-3 p-4 rounded-xl border hover:bg-slate-50/80 transition-all duration-200 hover:shadow-md backdrop-blur-sm"
+            className="flex items-start space-x-3 p-4 rounded-xl border hover:bg-white transition-all duration-200 hover:shadow-md backdrop-blur-sm"
           >
             <div className={`p-2.5 rounded-xl border ${getAlertColor(alert.type)}`}>
               {getAlertIcon(alert.type)}

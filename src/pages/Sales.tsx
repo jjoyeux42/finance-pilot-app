@@ -47,7 +47,7 @@ const Sales = () => {
       case 'active': return 'text-emerald-600 bg-emerald-100';
       case 'growing': return 'text-blue-600 bg-blue-100';
       case 'at_risk': return 'text-red-600 bg-red-100';
-      default: return 'text-slate-600 bg-slate-100';
+      default: return 'text-slate-600 bg-white';
     }
   };
 
@@ -57,7 +57,7 @@ const Sales = () => {
       case 'Négociation': return 'text-blue-600 bg-blue-100';
       case 'Proposition': return 'text-purple-600 bg-purple-100';
       case 'Qualification': return 'text-indigo-600 bg-indigo-100';
-      default: return 'text-slate-600 bg-slate-100';
+      default: return 'text-slate-600 bg-white';
     }
   };
 

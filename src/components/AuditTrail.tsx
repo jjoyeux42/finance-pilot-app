@@ -278,7 +278,7 @@ export function AuditTrail({
       case 'critical':
         return 'bg-red-100 text-red-800';
       default:
-        return 'bg-slate-100 text-slate-800';
+        return 'bg-white text-slate-800';
     }
   };
 
@@ -471,7 +471,7 @@ export function AuditTrail({
                 const { date, time } = formatTimestamp(entry.timestamp);
                 
                 return (
-                  <div key={entry.id} className="border rounded-lg p-4 hover:bg-slate-50 transition-colors">
+                  <div key={entry.id} className="border rounded-lg p-4 hover:bg-white transition-colors">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
                         {getActionIcon(entry.action)}
@@ -507,7 +507,7 @@ export function AuditTrail({
                               <p className="text-xs font-medium text-slate-700 mb-1">Modifications:</p>
                               <div className="space-y-1">
                                 {entry.changes.map((change, idx) => (
-                                  <div key={idx} className="text-xs bg-slate-100 rounded p-2">
+                                  <div key={idx} className="text-xs bg-white rounded p-2">
                                     <span className="font-medium">{change.field}:</span>
                                     <span className="text-red-600 line-through ml-2">{String(change.oldValue)}</span>
                                     <span className="text-emerald-600 ml-2">{String(change.newValue)}</span>
@@ -536,7 +536,7 @@ export function AuditTrail({
                           {entry.metadata && Object.keys(entry.metadata).length > 0 && (
                             <div className="mt-2">
                               <p className="text-xs font-medium text-slate-700 mb-1">Métadonnées:</p>
-                              <div className="text-xs bg-slate-100 rounded p-2">
+                              <div className="text-xs bg-white rounded p-2">
                                 {Object.entries(entry.metadata).map(([key, value]) => (
                                   <div key={key}>
                                     <span className="font-medium">{key}:</span> {String(value)}

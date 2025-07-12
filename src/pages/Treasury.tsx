@@ -55,7 +55,7 @@ const Treasury = () => {
                 variant="outline" 
                 size="sm"
                 onClick={() => setActiveModal('period')}
-                className="hover:bg-slate-100 w-full sm:w-auto"
+                className="hover:bg-white w-full sm:w-auto"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 <span className="hidden sm:inline">Période</span>
@@ -253,7 +253,7 @@ const Treasury = () => {
             <CardContent>
               <div className="space-y-4">
                 {upcomingPayments.map((payment) => (
-                  <div key={payment.id} className="flex items-center justify-between p-4 rounded-lg border border-white hover:bg-slate-50 transition-colors">
+                  <div key={payment.id} className="flex items-center justify-between p-4 rounded-lg border border-white hover:bg-white transition-colors">
                     <div className="flex items-center space-x-4">
                       <div className={`p-2 rounded-full ${payment.type === 'entree' ? 'bg-emerald-100' : 'bg-red-100'}`}>
                         {payment.type === 'entree' ? 

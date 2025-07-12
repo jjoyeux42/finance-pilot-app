@@ -30,11 +30,11 @@ const TopPerformers = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           {topClients.map((client, index) => (
-            <div key={index} className="flex items-center justify-between p-4 bg-gradient-to-r from-white to-slate-50/80 rounded-2xl hover:shadow-lg transition-all duration-300 border border-white hover:border-white group">
+            <div key={index} className="flex items-center justify-between p-4 bg-gradient-to-r from-white to-white rounded-2xl hover:shadow-lg transition-all duration-300 border border-white hover:border-white group">
               <div className="flex items-center space-x-3">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${
                   index === 0 ? 'bg-gradient-to-r from-indigo-400 to-purple-500' :
-                  index === 1 ? 'bg-gradient-to-r from-gray-300 to-gray-500' :
+                  index === 1 ? 'bg-gradient-to-r from-white to-gray-200' :
                   'bg-gradient-to-r from-blue-400 to-indigo-500'
                 }`}>
                   {index + 1}
@@ -65,7 +65,7 @@ const TopPerformers = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           {topProducts.map((product, index) => (
-            <div key={index} className="flex items-center justify-between p-4 bg-gradient-to-r from-white to-slate-50/80 rounded-2xl hover:shadow-lg transition-all duration-300 border border-white hover:border-white group">
+            <div key={index} className="flex items-center justify-between p-4 bg-gradient-to-r from-white to-white rounded-2xl hover:shadow-lg transition-all duration-300 border border-white hover:border-white group">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm">
                   {index + 1}

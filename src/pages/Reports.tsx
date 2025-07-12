@@ -235,7 +235,7 @@ export default function Reports() {
       case 'custom':
         return 'bg-purple-100 text-purple-800';
       default:
-        return 'bg-slate-100 text-slate-800';
+        return 'bg-white text-slate-800';
     }
   };
 

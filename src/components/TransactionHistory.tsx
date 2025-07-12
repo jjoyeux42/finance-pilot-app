@@ -86,7 +86,7 @@ export function TransactionHistory() {
       <CardContent>
         <div className="space-y-3 max-h-96 overflow-y-auto">
           {filteredTransactions.map((transaction) => (
-            <div key={transaction.id} className="flex items-center justify-between p-4 rounded-lg border border-white hover:bg-slate-50 transition-all duration-200 hover:shadow-md">
+            <div key={transaction.id} className="flex items-center justify-between p-4 rounded-lg border border-white hover:bg-white transition-all duration-200 hover:shadow-md">
               <div className="flex items-center space-x-4">
                 <div className={`p-2 rounded-full ${transaction.type === 'entree' ? 'bg-emerald-100' : 'bg-red-100'}`}>
                   {transaction.type === 'entree' ? 
